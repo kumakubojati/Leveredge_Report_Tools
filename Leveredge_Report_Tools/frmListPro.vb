@@ -65,104 +65,209 @@ Public Class frmListPro
     End Sub
 
     Private Sub BWPro_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BWPro.DoWork
-        Dim xlAppPRM As Excel.Application
-        Dim xlWbookPRM As Excel.Workbook
-        Dim xlWsheetPRM As Excel.Worksheet
+        Select Case AppsOffice
+            Case "XL_NotInstalled"
+                Dim xlAppPRM As OBject
+                Dim xlWbookPRM As Object
+                Dim xlWsheetPRM As Object
 
-        Try
-            xlAppPRM = New Excel.Application
-            xlWbookPRM = xlAppPRM.Workbooks.Open(txtPromo_src.Text)
-            xlWsheetPRM = xlWbookPRM.Worksheets("UID List Of Promotion Report")
+                Try
+                    xlAppPRM = CreateObject("Ket.Application")
+                    xlWbookPRM = xlAppPRM.Workbooks.Open(txtPromo_src.Text)
+                    xlWsheetPRM = xlWbookPRM.Worksheets("UID List Of Promotion Report")
 
-            xlWsheetPRM.UsedRange.UnMerge()
-            xlWsheetPRM.UsedRange.WrapText = False
-            xlWsheetPRM.UsedRange.ColumnWidth = 15
-            xlWsheetPRM.UsedRange.RowHeight = 15
+                    xlWsheetPRM.UsedRange.UnMerge()
+                    xlWsheetPRM.UsedRange.WrapText = False
+                    xlWsheetPRM.UsedRange.ColumnWidth = 15
+                    xlWsheetPRM.UsedRange.RowHeight = 15
 
-            Dim rg_head_cut1 As Excel.Range = xlWsheetPRM.Range("B2")
-            Dim rg_head_paste1 As Excel.Range = xlWsheetPRM.Range("A2")
-            rg_head_cut1.Select()
-            rg_head_cut1.Cut(rg_head_paste1)
+                    Dim rg_head_cut1 As Object = xlWsheetPRM.Range("B2")
+                    Dim rg_head_paste1 As Object = xlWsheetPRM.Range("A2")
+                    rg_head_cut1.Select()
+                    rg_head_cut1.Cut(rg_head_paste1)
 
-            Dim rg_head_cut2 As Excel.Range = xlWsheetPRM.Range("B4")
-            Dim rg_head_paste2 As Excel.Range = xlWsheetPRM.Range("A3")
-            rg_head_cut2.Select()
-            rg_head_cut2.Cut(rg_head_paste2)
+                    Dim rg_head_cut2 As Object = xlWsheetPRM.Range("B4")
+                    Dim rg_head_paste2 As Object = xlWsheetPRM.Range("A3")
+                    rg_head_cut2.Select()
+                    rg_head_cut2.Cut(rg_head_paste2)
 
-            xlWsheetPRM.Range("A2").RowHeight = 27
+                    xlWsheetPRM.Range("A2").RowHeight = 27
 
-            Dim paramhead1, paramhead2, paramhead3 As String
-            paramhead1 = xlWsheetPRM.Range("C6").Value & " " & xlWsheetPRM.Range("F6").Value & "; "
-            paramhead1 = paramhead1 & xlWsheetPRM.Range("H6").Value & " " & xlWsheetPRM.Range("J6").Value & "; "
+                    Dim paramhead1, paramhead2, paramhead3 As String
+                    paramhead1 = xlWsheetPRM.Range("C6").Value & " " & xlWsheetPRM.Range("F6").Value & "; "
+                    paramhead1 = paramhead1 & xlWsheetPRM.Range("H6").Value & " " & xlWsheetPRM.Range("J6").Value & "; "
 
-            paramhead2 = xlWsheetPRM.Range("O6").Value & " " & xlWsheetPRM.Range("R6").Value & "; "
-            paramhead2 = paramhead2 & xlWsheetPRM.Range("U6").Value & " " & xlWsheetPRM.Range("X6").Value & "; "
+                    paramhead2 = xlWsheetPRM.Range("O6").Value & " " & xlWsheetPRM.Range("R6").Value & "; "
+                    paramhead2 = paramhead2 & xlWsheetPRM.Range("U6").Value & " " & xlWsheetPRM.Range("X6").Value & "; "
 
-            paramhead3 = xlWsheetPRM.Range("C8").Value & " " & xlWsheetPRM.Range("F8").Value
+                    paramhead3 = xlWsheetPRM.Range("C8").Value & " " & xlWsheetPRM.Range("F8").Value
 
-            xlWsheetPRM.Range("A5").Value = paramhead1
-            xlWsheetPRM.Range("A5").EntireRow.Font.Name = "Calibri"
-            xlWsheetPRM.Range("A6").Value = paramhead2
-            xlWsheetPRM.Range("A6").EntireRow.Font.Name = "Calibri"
-            xlWsheetPRM.Range("A7").Value = paramhead3
-            xlWsheetPRM.Range("A7").EntireRow.Font.Name = "Calibri"
+                    xlWsheetPRM.Range("A5").Value = paramhead1
+                    xlWsheetPRM.Range("A5").EntireRow.Font.Name = "Calibri"
+                    xlWsheetPRM.Range("A6").Value = paramhead2
+                    xlWsheetPRM.Range("A6").EntireRow.Font.Name = "Calibri"
+                    xlWsheetPRM.Range("A7").Value = paramhead3
+                    xlWsheetPRM.Range("A7").EntireRow.Font.Name = "Calibri"
 
-            Dim rg1, rg2, rg3, rg4, rg5, rg6 As Excel.Range
-            rg1 = xlWsheetPRM.Range("B:C")
-            rg1.Select()
-            rg1.Delete()
-            rg2 = xlWsheetPRM.Range("C:H")
-            rg2.Select()
-            rg2.Delete()
-            rg3 = xlWsheetPRM.Range("D:E")
-            rg3.Select()
-            rg3.Delete()
-            rg4 = xlWsheetPRM.Range("E:F")
-            rg4.Select()
-            rg4.Delete()
-            xlWsheetPRM.Range("F:F").EntireColumn.Delete()
-            rg5 = xlWsheetPRM.Range("G:H")
-            rg5.Select()
-            rg5.Delete()
-            rg6 = xlWsheetPRM.Range("H:J")
-            rg6.Select()
-            rg6.Delete()
-            xlWsheetPRM.Range("J:J").EntireColumn.Delete()
+                    Dim rg1, rg2, rg3, rg4, rg5, rg6 As Object
+                    rg1 = xlWsheetPRM.Range("B:C")
+                    rg1.Select()
+                    rg1.Delete()
+                    rg2 = xlWsheetPRM.Range("C:H")
+                    rg2.Select()
+                    rg2.Delete()
+                    rg3 = xlWsheetPRM.Range("D:E")
+                    rg3.Select()
+                    rg3.Delete()
+                    rg4 = xlWsheetPRM.Range("E:F")
+                    rg4.Select()
+                    rg4.Delete()
+                    xlWsheetPRM.Range("F:F").EntireColumn.Delete()
+                    rg5 = xlWsheetPRM.Range("G:H")
+                    rg5.Select()
+                    rg5.Delete()
+                    rg6 = xlWsheetPRM.Range("H:J")
+                    rg6.Select()
+                    rg6.Delete()
+                    xlWsheetPRM.Range("J:J").EntireColumn.Delete()
 
-            xlWsheetPRM.Range("A11:A12").Merge()
-            xlWsheetPRM.Range("A11:A12").HorizontalAlignment = Excel.Constants.xlCenter
-            xlWsheetPRM.Range("B11:B12").Merge()
-            xlWsheetPRM.Range("B11:B12").HorizontalAlignment = Excel.Constants.xlCenter
-            xlWsheetPRM.Range("C11:C12").Merge()
-            xlWsheetPRM.Range("C11:C12").HorizontalAlignment = Excel.Constants.xlCenter
-            xlWsheetPRM.Range("D11:D12").Merge()
-            xlWsheetPRM.Range("D11:D12").HorizontalAlignment = Excel.Constants.xlCenter
-            xlWsheetPRM.Range("E11:F11").Merge()
-            xlWsheetPRM.Range("E11:F11").HorizontalAlignment = Excel.Constants.xlCenter
-            xlWsheetPRM.Range("G11:I11").Merge()
-            xlWsheetPRM.Range("G11:I11").HorizontalAlignment = Excel.Constants.xlCenter
-            xlWsheetPRM.Range("J11:J12").Merge()
-            xlWsheetPRM.Range("J11:J12").HorizontalAlignment = Excel.Constants.xlCenter
-            xlWsheetPRM.Range("K11:K12").Merge()
-            xlWsheetPRM.Range("K11:K12").HorizontalAlignment = Excel.Constants.xlCenter
-            xlWsheetPRM.Range("L11:M11").Merge()
-            xlWsheetPRM.Range("L11:M11").HorizontalAlignment = Excel.Constants.xlCenter
+                    xlWsheetPRM.Range("A11:A12").Merge()
+                    xlWsheetPRM.Range("A11:A12").HorizontalAlignment = 3
+                    xlWsheetPRM.Range("B11:B12").Merge()
+                    xlWsheetPRM.Range("B11:B12").HorizontalAlignment = 3
+                    xlWsheetPRM.Range("C11:C12").Merge()
+                    xlWsheetPRM.Range("C11:C12").HorizontalAlignment = 3
+                    xlWsheetPRM.Range("D11:D12").Merge()
+                    xlWsheetPRM.Range("D11:D12").HorizontalAlignment = 3
+                    xlWsheetPRM.Range("E11:F11").Merge()
+                    xlWsheetPRM.Range("E11:F11").HorizontalAlignment = 3
+                    xlWsheetPRM.Range("G11:I11").Merge()
+                    xlWsheetPRM.Range("G11:I11").HorizontalAlignment = 3
+                    xlWsheetPRM.Range("J11:J12").Merge()
+                    xlWsheetPRM.Range("J11:J12").HorizontalAlignment = 3
+                    xlWsheetPRM.Range("K11:K12").Merge()
+                    xlWsheetPRM.Range("K11:K12").HorizontalAlignment = 3
+                    xlWsheetPRM.Range("L11:M11").Merge()
+                    xlWsheetPRM.Range("L11:M11").HorizontalAlignment = 3
 
-            xlWbookPRM.SaveAs(txtProm_dest.Text)
-            xlWbookPRM.Close()
-            xlAppPRM.Quit()
+                    xlWbookPRM.SaveAs(txtProm_dest.Text)
+                    xlWbookPRM.Close()
+                    xlAppPRM.Quit()
 
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWsheetPRM)
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWbookPRM)
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlAppPRM)
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWsheetPRM)
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWbookPRM)
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlAppPRM)
 
-            xlWsheetPRM = Nothing
-            xlWbookPRM = Nothing
-            xlAppPRM = Nothing
+                    xlWsheetPRM = Nothing
+                    xlWbookPRM = Nothing
+                    xlAppPRM = Nothing
 
-            MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Catch ex As Exception
-            MessageBox.Show("Error : " & ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+                    MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Catch ex As Exception
+                    MessageBox.Show("Error : " & ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+
+            Case "XL_Installed"
+                Dim xlAppPRM As Excel.Application
+                Dim xlWbookPRM As Excel.Workbook
+                Dim xlWsheetPRM As Excel.Worksheet
+
+                Try
+                    xlAppPRM = New Excel.Application
+                    xlWbookPRM = xlAppPRM.Workbooks.Open(txtPromo_src.Text)
+                    xlWsheetPRM = xlWbookPRM.Worksheets("UID List Of Promotion Report")
+
+                    xlWsheetPRM.UsedRange.UnMerge()
+                    xlWsheetPRM.UsedRange.WrapText = False
+                    xlWsheetPRM.UsedRange.ColumnWidth = 15
+                    xlWsheetPRM.UsedRange.RowHeight = 15
+
+                    Dim rg_head_cut1 As Excel.Range = xlWsheetPRM.Range("B2")
+                    Dim rg_head_paste1 As Excel.Range = xlWsheetPRM.Range("A2")
+                    rg_head_cut1.Select()
+                    rg_head_cut1.Cut(rg_head_paste1)
+
+                    Dim rg_head_cut2 As Excel.Range = xlWsheetPRM.Range("B4")
+                    Dim rg_head_paste2 As Excel.Range = xlWsheetPRM.Range("A3")
+                    rg_head_cut2.Select()
+                    rg_head_cut2.Cut(rg_head_paste2)
+
+                    xlWsheetPRM.Range("A2").RowHeight = 27
+
+                    Dim paramhead1, paramhead2, paramhead3 As String
+                    paramhead1 = xlWsheetPRM.Range("C6").Value & " " & xlWsheetPRM.Range("F6").Value & "; "
+                    paramhead1 = paramhead1 & xlWsheetPRM.Range("H6").Value & " " & xlWsheetPRM.Range("J6").Value & "; "
+
+                    paramhead2 = xlWsheetPRM.Range("O6").Value & " " & xlWsheetPRM.Range("R6").Value & "; "
+                    paramhead2 = paramhead2 & xlWsheetPRM.Range("U6").Value & " " & xlWsheetPRM.Range("X6").Value & "; "
+
+                    paramhead3 = xlWsheetPRM.Range("C8").Value & " " & xlWsheetPRM.Range("F8").Value
+
+                    xlWsheetPRM.Range("A5").Value = paramhead1
+                    xlWsheetPRM.Range("A5").EntireRow.Font.Name = "Calibri"
+                    xlWsheetPRM.Range("A6").Value = paramhead2
+                    xlWsheetPRM.Range("A6").EntireRow.Font.Name = "Calibri"
+                    xlWsheetPRM.Range("A7").Value = paramhead3
+                    xlWsheetPRM.Range("A7").EntireRow.Font.Name = "Calibri"
+
+                    Dim rg1, rg2, rg3, rg4, rg5, rg6 As Excel.Range
+                    rg1 = xlWsheetPRM.Range("B:C")
+                    rg1.Select()
+                    rg1.Delete()
+                    rg2 = xlWsheetPRM.Range("C:H")
+                    rg2.Select()
+                    rg2.Delete()
+                    rg3 = xlWsheetPRM.Range("D:E")
+                    rg3.Select()
+                    rg3.Delete()
+                    rg4 = xlWsheetPRM.Range("E:F")
+                    rg4.Select()
+                    rg4.Delete()
+                    xlWsheetPRM.Range("F:F").EntireColumn.Delete()
+                    rg5 = xlWsheetPRM.Range("G:H")
+                    rg5.Select()
+                    rg5.Delete()
+                    rg6 = xlWsheetPRM.Range("H:J")
+                    rg6.Select()
+                    rg6.Delete()
+                    xlWsheetPRM.Range("J:J").EntireColumn.Delete()
+
+                    xlWsheetPRM.Range("A11:A12").Merge()
+                    xlWsheetPRM.Range("A11:A12").HorizontalAlignment = Excel.Constants.xlCenter
+                    xlWsheetPRM.Range("B11:B12").Merge()
+                    xlWsheetPRM.Range("B11:B12").HorizontalAlignment = Excel.Constants.xlCenter
+                    xlWsheetPRM.Range("C11:C12").Merge()
+                    xlWsheetPRM.Range("C11:C12").HorizontalAlignment = Excel.Constants.xlCenter
+                    xlWsheetPRM.Range("D11:D12").Merge()
+                    xlWsheetPRM.Range("D11:D12").HorizontalAlignment = Excel.Constants.xlCenter
+                    xlWsheetPRM.Range("E11:F11").Merge()
+                    xlWsheetPRM.Range("E11:F11").HorizontalAlignment = Excel.Constants.xlCenter
+                    xlWsheetPRM.Range("G11:I11").Merge()
+                    xlWsheetPRM.Range("G11:I11").HorizontalAlignment = Excel.Constants.xlCenter
+                    xlWsheetPRM.Range("J11:J12").Merge()
+                    xlWsheetPRM.Range("J11:J12").HorizontalAlignment = Excel.Constants.xlCenter
+                    xlWsheetPRM.Range("K11:K12").Merge()
+                    xlWsheetPRM.Range("K11:K12").HorizontalAlignment = Excel.Constants.xlCenter
+                    xlWsheetPRM.Range("L11:M11").Merge()
+                    xlWsheetPRM.Range("L11:M11").HorizontalAlignment = Excel.Constants.xlCenter
+
+                    xlWbookPRM.SaveAs(txtProm_dest.Text)
+                    xlWbookPRM.Close()
+                    xlAppPRM.Quit()
+
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWsheetPRM)
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWbookPRM)
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlAppPRM)
+
+                    xlWsheetPRM = Nothing
+                    xlWbookPRM = Nothing
+                    xlAppPRM = Nothing
+
+                    MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Catch ex As Exception
+                    MessageBox.Show("Error : " & ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+
+        End Select
     End Sub
 End Class

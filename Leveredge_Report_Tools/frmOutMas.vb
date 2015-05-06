@@ -62,128 +62,257 @@ Public Class frmOutMas
     End Sub
 
     Private Sub BWOutMas_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BWOutMas.DoWork
-        Dim objApp As Excel.Application
-        Dim objwBook As Excel.Workbook
-        Dim objwSheet As Excel.Worksheet
+        Select Case AppsOffice
+            Case "XL_NotInstalled"
+                Dim objApp As Object
+                Dim objwBook As Object
+                Dim objwSheet As Object
 
 
-        Try
-            objApp = New Excel.Application
-            objwBook = objApp.Workbooks.Open(txtoutmas_src.Text)
-            objwSheet = objwBook.Worksheets("UID Outlet Master Report")
+                Try
+                    objApp = CreateObject("Ket.Application")
+                    objwBook = objApp.Workbooks.Open(txtoutmas_src.Text)
+                    objwSheet = objwBook.Worksheets("UID Outlet Master Report")
 
-            objwSheet.UsedRange.UnMerge()
-            objwSheet.UsedRange.WrapText = False
-            objwSheet.UsedRange.ColumnWidth = 15
-            objwSheet.UsedRange.RowHeight = 15
+                    objwSheet.UsedRange.UnMerge()
+                    objwSheet.UsedRange.WrapText = False
+                    objwSheet.UsedRange.ColumnWidth = 15
+                    objwSheet.UsedRange.RowHeight = 15
 
-            Dim rg_head_cut1 As Excel.Range = objwSheet.Range("C1")
-            Dim rg_head_paste1 As Excel.Range = objwSheet.Range("A2")
-            rg_head_cut1.Select()
-            rg_head_cut1.Cut(rg_head_paste1)
+                    Dim rg_head_cut1 As Object = objwSheet.Range("C1")
+                    Dim rg_head_paste1 As Object = objwSheet.Range("A2")
+                    rg_head_cut1.Select()
+                    rg_head_cut1.Cut(rg_head_paste1)
 
-            objwSheet.Range("A2").RowHeight = 27
+                    objwSheet.Range("A2").RowHeight = 27
 
-            Dim paramhead1, paramhead2, paramhead3, paramhead4 As String
-            paramhead1 = objwSheet.Range("D4").Value & " " & objwSheet.Range("J4").Value & "; "
-            paramhead1 = paramhead1 & objwSheet.Range("N4").Value & " " & objwSheet.Range("U4").Value & "; "
+                    Dim paramhead1, paramhead2, paramhead3, paramhead4 As String
+                    paramhead1 = objwSheet.Range("D4").Value & " " & objwSheet.Range("J4").Value & "; "
+                    paramhead1 = paramhead1 & objwSheet.Range("N4").Value & " " & objwSheet.Range("U4").Value & "; "
 
-            paramhead2 = objwSheet.Range("Z4").Value & " " & objwSheet.Range("AD4").Value & "; "
-            paramhead2 = paramhead2 & objwSheet.Range("AI4").Value & " " & objwSheet.Range("AL4").Value & "; "
+                    paramhead2 = objwSheet.Range("Z4").Value & " " & objwSheet.Range("AD4").Value & "; "
+                    paramhead2 = paramhead2 & objwSheet.Range("AI4").Value & " " & objwSheet.Range("AL4").Value & "; "
 
-            paramhead3 = objwSheet.Range("AP4").Value & " " & objwSheet.Range("AT4").Value & "; "
-            paramhead3 = paramhead3 & objwSheet.Range("AX4").Value & " " & objwSheet.Range("BB4").Value & "; "
-            paramhead3 = paramhead3 & objwSheet.Range("BE4").Value & " " & objwSheet.Range("BI4").Value
+                    paramhead3 = objwSheet.Range("AP4").Value & " " & objwSheet.Range("AT4").Value & "; "
+                    paramhead3 = paramhead3 & objwSheet.Range("AX4").Value & " " & objwSheet.Range("BB4").Value & "; "
+                    paramhead3 = paramhead3 & objwSheet.Range("BE4").Value & " " & objwSheet.Range("BI4").Value
 
-            paramhead4 = objwSheet.Range("B7").Value & " " & objwSheet.Range("I7").Value & "; "
-            paramhead4 = paramhead4 & objwSheet.Range("N7").Value & " " & objwSheet.Range("S7").Value
+                    paramhead4 = objwSheet.Range("B7").Value & " " & objwSheet.Range("I7").Value & "; "
+                    paramhead4 = paramhead4 & objwSheet.Range("N7").Value & " " & objwSheet.Range("S7").Value
 
-            objwSheet.Range("A3").Value = paramhead1
-            objwSheet.Range("A3").EntireRow.Font.Name = "Calibri"
-            objwSheet.Range("A4").Value = paramhead2
-            objwSheet.Range("A4").EntireRow.Font.Name = "Calibri"
-            objwSheet.Range("A5").Value = paramhead3
-            objwSheet.Range("A5").EntireRow.Font.Name = "Calibri"
-            objwSheet.Range("A6").Value = paramhead4
-            objwSheet.Range("A6").EntireRow.Font.Name = "Calibri"
+                    objwSheet.Range("A3").Value = paramhead1
+                    objwSheet.Range("A3").EntireRow.Font.Name = "Calibri"
+                    objwSheet.Range("A4").Value = paramhead2
+                    objwSheet.Range("A4").EntireRow.Font.Name = "Calibri"
+                    objwSheet.Range("A5").Value = paramhead3
+                    objwSheet.Range("A5").EntireRow.Font.Name = "Calibri"
+                    objwSheet.Range("A6").Value = paramhead4
+                    objwSheet.Range("A6").EntireRow.Font.Name = "Calibri"
 
-            objwSheet.Range("A10").EntireRow.Delete()
+                    objwSheet.Range("A10").EntireRow.Delete()
 
-            Dim rg1 As Excel.Range = objwSheet.Range("B:D")
-            rg1.Select()
-            rg1.Delete()
+                    Dim rg1 As Object = objwSheet.Range("B:D")
+                    rg1.Select()
+                    rg1.Delete()
 
-            Dim rg2 As Excel.Range = objwSheet.Range("D:G")
-            rg2.Select()
-            rg2.Delete()
+                    Dim rg2 As Object = objwSheet.Range("D:G")
+                    rg2.Select()
+                    rg2.Delete()
 
-            Dim rg3 As Excel.Range = objwSheet.Range("F:G")
-            rg3.Select()
-            rg3.Delete()
+                    Dim rg3 As Object = objwSheet.Range("F:G")
+                    rg3.Select()
+                    rg3.Delete()
 
-            objwSheet.Range("H:H").EntireColumn.Delete()
+                    objwSheet.Range("H:H").EntireColumn.Delete()
 
-            Dim rg4 As Excel.Range = objwSheet.Range("I:K")
-            rg4.Select()
-            rg4.Delete()
+                    Dim rg4 As Object = objwSheet.Range("I:K")
+                    rg4.Select()
+                    rg4.Delete()
 
-            Dim rg5 As Excel.Range = objwSheet.Range("K:M")
-            rg5.Select()
-            rg5.Delete()
+                    Dim rg5 As Object = objwSheet.Range("K:M")
+                    rg5.Select()
+                    rg5.Delete()
 
-            Dim rg6 As Excel.Range = objwSheet.Range("L:N")
-            rg6.Select()
-            rg6.Delete()
+                    Dim rg6 As Object = objwSheet.Range("L:N")
+                    rg6.Select()
+                    rg6.Delete()
 
-            Dim rg7 As Excel.Range = objwSheet.Range("O:P")
-            rg7.Select()
-            rg7.Delete()
+                    Dim rg7 As Object = objwSheet.Range("O:P")
+                    rg7.Select()
+                    rg7.Delete()
 
-            Dim rg8 As Excel.Range = objwSheet.Range("P:Q")
-            rg8.Select()
-            rg8.Delete()
+                    Dim rg8 As Object = objwSheet.Range("P:Q")
+                    rg8.Select()
+                    rg8.Delete()
 
-            Dim rg9 As Excel.Range = objwSheet.Range("R:S")
-            rg9.Select()
-            rg9.Delete()
+                    Dim rg9 As Object = objwSheet.Range("R:S")
+                    rg9.Select()
+                    rg9.Delete()
 
-            Dim rg10 As Excel.Range = objwSheet.Range("T:U")
-            rg10.Select()
-            rg10.Delete()
+                    Dim rg10 As Object = objwSheet.Range("T:U")
+                    rg10.Select()
+                    rg10.Delete()
 
-            Dim rg11 As Excel.Range = objwSheet.Range("V:W")
-            rg11.Select()
-            rg11.Delete()
+                    Dim rg11 As Object = objwSheet.Range("V:W")
+                    rg11.Select()
+                    rg11.Delete()
 
-            objwSheet.Range("W:W").EntireColumn.Delete()
-            objwSheet.Range("X:X").EntireColumn.Delete()
+                    objwSheet.Range("W:W").EntireColumn.Delete()
+                    objwSheet.Range("X:X").EntireColumn.Delete()
 
-            Dim rg12 As Excel.Range = objwSheet.Range("Y:Z")
-            rg12.Select()
-            rg12.Delete()
+                    Dim rg12 As Object = objwSheet.Range("Y:Z")
+                    rg12.Select()
+                    rg12.Delete()
 
-            Dim rg13 As Excel.Range = objwSheet.Range("AA:AB")
-            rg13.Select()
-            rg13.Delete()
+                    Dim rg13 As Object = objwSheet.Range("AA:AB")
+                    rg13.Select()
+                    rg13.Delete()
 
-            objwSheet.Range("AC:AC").EntireColumn.Delete()
-            objwSheet.Range("AZ:AZ").EntireColumn.Delete()
+                    objwSheet.Range("AC:AC").EntireColumn.Delete()
+                    objwSheet.Range("AZ:AZ").EntireColumn.Delete()
 
-            objwBook.SaveAs(txtDest_OutMas.Text)
-            objwBook.Close()
-            objApp.Quit()
+                    objwBook.SaveAs(txtDest_OutMas.Text)
+                    objwBook.Close()
+                    objApp.Quit()
 
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(objwSheet)
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(objwBook)
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(objApp)
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(objwSheet)
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(objwBook)
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(objApp)
 
-            objwSheet = Nothing
-            objwBook = Nothing
-            objApp = Nothing
-            MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    objwSheet = Nothing
+                    objwBook = Nothing
+                    objApp = Nothing
+                    MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-        Catch ex As Exception
-            MessageBox.Show("Error on : " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+                Catch ex As Exception
+                    MessageBox.Show("Error on : " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            Case "XL_Installed"
+                Dim objApp As Excel.Application
+                Dim objwBook As Excel.Workbook
+                Dim objwSheet As Excel.Worksheet
+
+
+                Try
+                    objApp = New Excel.Application
+                    objwBook = objApp.Workbooks.Open(txtoutmas_src.Text)
+                    objwSheet = objwBook.Worksheets("UID Outlet Master Report")
+
+                    objwSheet.UsedRange.UnMerge()
+                    objwSheet.UsedRange.WrapText = False
+                    objwSheet.UsedRange.ColumnWidth = 15
+                    objwSheet.UsedRange.RowHeight = 15
+
+                    Dim rg_head_cut1 As Excel.Range = objwSheet.Range("C1")
+                    Dim rg_head_paste1 As Excel.Range = objwSheet.Range("A2")
+                    rg_head_cut1.Select()
+                    rg_head_cut1.Cut(rg_head_paste1)
+
+                    objwSheet.Range("A2").RowHeight = 27
+
+                    Dim paramhead1, paramhead2, paramhead3, paramhead4 As String
+                    paramhead1 = objwSheet.Range("D4").Value & " " & objwSheet.Range("J4").Value & "; "
+                    paramhead1 = paramhead1 & objwSheet.Range("N4").Value & " " & objwSheet.Range("U4").Value & "; "
+
+                    paramhead2 = objwSheet.Range("Z4").Value & " " & objwSheet.Range("AD4").Value & "; "
+                    paramhead2 = paramhead2 & objwSheet.Range("AI4").Value & " " & objwSheet.Range("AL4").Value & "; "
+
+                    paramhead3 = objwSheet.Range("AP4").Value & " " & objwSheet.Range("AT4").Value & "; "
+                    paramhead3 = paramhead3 & objwSheet.Range("AX4").Value & " " & objwSheet.Range("BB4").Value & "; "
+                    paramhead3 = paramhead3 & objwSheet.Range("BE4").Value & " " & objwSheet.Range("BI4").Value
+
+                    paramhead4 = objwSheet.Range("B7").Value & " " & objwSheet.Range("I7").Value & "; "
+                    paramhead4 = paramhead4 & objwSheet.Range("N7").Value & " " & objwSheet.Range("S7").Value
+
+                    objwSheet.Range("A3").Value = paramhead1
+                    objwSheet.Range("A3").EntireRow.Font.Name = "Calibri"
+                    objwSheet.Range("A4").Value = paramhead2
+                    objwSheet.Range("A4").EntireRow.Font.Name = "Calibri"
+                    objwSheet.Range("A5").Value = paramhead3
+                    objwSheet.Range("A5").EntireRow.Font.Name = "Calibri"
+                    objwSheet.Range("A6").Value = paramhead4
+                    objwSheet.Range("A6").EntireRow.Font.Name = "Calibri"
+
+                    objwSheet.Range("A10").EntireRow.Delete()
+
+                    Dim rg1 As Excel.Range = objwSheet.Range("B:D")
+                    rg1.Select()
+                    rg1.Delete()
+
+                    Dim rg2 As Excel.Range = objwSheet.Range("D:G")
+                    rg2.Select()
+                    rg2.Delete()
+
+                    Dim rg3 As Excel.Range = objwSheet.Range("F:G")
+                    rg3.Select()
+                    rg3.Delete()
+
+                    objwSheet.Range("H:H").EntireColumn.Delete()
+
+                    Dim rg4 As Excel.Range = objwSheet.Range("I:K")
+                    rg4.Select()
+                    rg4.Delete()
+
+                    Dim rg5 As Excel.Range = objwSheet.Range("K:M")
+                    rg5.Select()
+                    rg5.Delete()
+
+                    Dim rg6 As Excel.Range = objwSheet.Range("L:N")
+                    rg6.Select()
+                    rg6.Delete()
+
+                    Dim rg7 As Excel.Range = objwSheet.Range("O:P")
+                    rg7.Select()
+                    rg7.Delete()
+
+                    Dim rg8 As Excel.Range = objwSheet.Range("P:Q")
+                    rg8.Select()
+                    rg8.Delete()
+
+                    Dim rg9 As Excel.Range = objwSheet.Range("R:S")
+                    rg9.Select()
+                    rg9.Delete()
+
+                    Dim rg10 As Excel.Range = objwSheet.Range("T:U")
+                    rg10.Select()
+                    rg10.Delete()
+
+                    Dim rg11 As Excel.Range = objwSheet.Range("V:W")
+                    rg11.Select()
+                    rg11.Delete()
+
+                    objwSheet.Range("W:W").EntireColumn.Delete()
+                    objwSheet.Range("X:X").EntireColumn.Delete()
+
+                    Dim rg12 As Excel.Range = objwSheet.Range("Y:Z")
+                    rg12.Select()
+                    rg12.Delete()
+
+                    Dim rg13 As Excel.Range = objwSheet.Range("AA:AB")
+                    rg13.Select()
+                    rg13.Delete()
+
+                    objwSheet.Range("AC:AC").EntireColumn.Delete()
+                    objwSheet.Range("AZ:AZ").EntireColumn.Delete()
+
+                    objwBook.SaveAs(txtDest_OutMas.Text)
+                    objwBook.Close()
+                    objApp.Quit()
+
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(objwSheet)
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(objwBook)
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(objApp)
+
+                    objwSheet = Nothing
+                    objwBook = Nothing
+                    objApp = Nothing
+                    MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                Catch ex As Exception
+                    MessageBox.Show("Error on : " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+        End Select
+
+        
     End Sub
 End Class

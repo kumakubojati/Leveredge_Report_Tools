@@ -34,13 +34,17 @@ Partial Class frmDSM
         Me.BWDSM = New System.ComponentModel.BackgroundWorker()
         Me.OFD_DSM = New System.Windows.Forms.OpenFileDialog()
         Me.SFD_DSM = New System.Windows.Forms.SaveFileDialog()
+        Me.gbDSM = New System.Windows.Forms.GroupBox()
+        Me.rbDSM_rph = New System.Windows.Forms.RadioButton()
+        Me.rbDSM_qty = New System.Windows.Forms.RadioButton()
         CType(Me.PicBar_DSM, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbDSM.SuspendLayout()
         Me.SuspendLayout()
         '
         'PicBar_DSM
         '
         Me.PicBar_DSM.Image = CType(resources.GetObject("PicBar_DSM.Image"), System.Drawing.Image)
-        Me.PicBar_DSM.Location = New System.Drawing.Point(6, 75)
+        Me.PicBar_DSM.Location = New System.Drawing.Point(6, 126)
         Me.PicBar_DSM.Name = "PicBar_DSM"
         Me.PicBar_DSM.Size = New System.Drawing.Size(80, 80)
         Me.PicBar_DSM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -52,7 +56,7 @@ Partial Class frmDSM
         '
         Me.btnBrow_DSM_dest.BackColor = System.Drawing.Color.Transparent
         Me.btnBrow_DSM_dest.Image = CType(resources.GetObject("btnBrow_DSM_dest.Image"), System.Drawing.Image)
-        Me.btnBrow_DSM_dest.Location = New System.Drawing.Point(313, 45)
+        Me.btnBrow_DSM_dest.Location = New System.Drawing.Point(313, 96)
         Me.btnBrow_DSM_dest.Name = "btnBrow_DSM_dest"
         Me.btnBrow_DSM_dest.Size = New System.Drawing.Size(25, 23)
         Me.btnBrow_DSM_dest.TabIndex = 24
@@ -60,7 +64,7 @@ Partial Class frmDSM
         '
         'txtDSM_dest
         '
-        Me.txtDSM_dest.Location = New System.Drawing.Point(79, 46)
+        Me.txtDSM_dest.Location = New System.Drawing.Point(79, 97)
         Me.txtDSM_dest.Name = "txtDSM_dest"
         Me.txtDSM_dest.Size = New System.Drawing.Size(229, 20)
         Me.txtDSM_dest.TabIndex = 23
@@ -68,7 +72,7 @@ Partial Class frmDSM
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(6, 51)
+        Me.Label14.Location = New System.Drawing.Point(6, 102)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(60, 13)
         Me.Label14.TabIndex = 22
@@ -79,7 +83,7 @@ Partial Class frmDSM
         Me.btnNeu_DSM.Enabled = False
         Me.btnNeu_DSM.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNeu_DSM.Image = CType(resources.GetObject("btnNeu_DSM.Image"), System.Drawing.Image)
-        Me.btnNeu_DSM.Location = New System.Drawing.Point(344, 12)
+        Me.btnNeu_DSM.Location = New System.Drawing.Point(344, 63)
         Me.btnNeu_DSM.Name = "btnNeu_DSM"
         Me.btnNeu_DSM.Size = New System.Drawing.Size(55, 56)
         Me.btnNeu_DSM.TabIndex = 21
@@ -90,7 +94,7 @@ Partial Class frmDSM
         '
         Me.btnBrow_DSM_src.BackColor = System.Drawing.Color.Transparent
         Me.btnBrow_DSM_src.Image = CType(resources.GetObject("btnBrow_DSM_src.Image"), System.Drawing.Image)
-        Me.btnBrow_DSM_src.Location = New System.Drawing.Point(313, 11)
+        Me.btnBrow_DSM_src.Location = New System.Drawing.Point(313, 62)
         Me.btnBrow_DSM_src.Name = "btnBrow_DSM_src"
         Me.btnBrow_DSM_src.Size = New System.Drawing.Size(25, 23)
         Me.btnBrow_DSM_src.TabIndex = 20
@@ -98,7 +102,7 @@ Partial Class frmDSM
         '
         'txtDSM_src
         '
-        Me.txtDSM_src.Location = New System.Drawing.Point(79, 12)
+        Me.txtDSM_src.Location = New System.Drawing.Point(79, 63)
         Me.txtDSM_src.Name = "txtDSM_src"
         Me.txtDSM_src.Size = New System.Drawing.Size(229, 20)
         Me.txtDSM_src.TabIndex = 19
@@ -106,7 +110,7 @@ Partial Class frmDSM
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(6, 15)
+        Me.Label15.Location = New System.Drawing.Point(6, 66)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(41, 13)
         Me.Label15.TabIndex = 18
@@ -124,12 +128,47 @@ Partial Class frmDSM
         '
         Me.SFD_DSM.Filter = "Excel files (*.xls,*.xlsx)|*.xls;*xlsx"
         '
+        'gbDSM
+        '
+        Me.gbDSM.Controls.Add(Me.rbDSM_rph)
+        Me.gbDSM.Controls.Add(Me.rbDSM_qty)
+        Me.gbDSM.Location = New System.Drawing.Point(13, 3)
+        Me.gbDSM.Name = "gbDSM"
+        Me.gbDSM.Size = New System.Drawing.Size(157, 54)
+        Me.gbDSM.TabIndex = 26
+        Me.gbDSM.TabStop = False
+        Me.gbDSM.Text = "Report Type"
+        '
+        'rbDSM_rph
+        '
+        Me.rbDSM_rph.AutoSize = True
+        Me.rbDSM_rph.Location = New System.Drawing.Point(90, 23)
+        Me.rbDSM_rph.Name = "rbDSM_rph"
+        Me.rbDSM_rph.Size = New System.Drawing.Size(59, 17)
+        Me.rbDSM_rph.TabIndex = 1
+        Me.rbDSM_rph.TabStop = True
+        Me.rbDSM_rph.Text = "Rupiah"
+        Me.rbDSM_rph.UseVisualStyleBackColor = True
+        '
+        'rbDSM_qty
+        '
+        Me.rbDSM_qty.AutoSize = True
+        Me.rbDSM_qty.Checked = True
+        Me.rbDSM_qty.Location = New System.Drawing.Point(10, 23)
+        Me.rbDSM_qty.Name = "rbDSM_qty"
+        Me.rbDSM_qty.Size = New System.Drawing.Size(64, 17)
+        Me.rbDSM_qty.TabIndex = 0
+        Me.rbDSM_qty.TabStop = True
+        Me.rbDSM_qty.Text = "Quantity"
+        Me.rbDSM_qty.UseVisualStyleBackColor = True
+        '
         'frmDSM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ClientSize = New System.Drawing.Size(404, 159)
+        Me.ClientSize = New System.Drawing.Size(404, 212)
+        Me.Controls.Add(Me.gbDSM)
         Me.Controls.Add(Me.PicBar_DSM)
         Me.Controls.Add(Me.btnBrow_DSM_dest)
         Me.Controls.Add(Me.txtDSM_dest)
@@ -142,6 +181,8 @@ Partial Class frmDSM
         Me.Name = "frmDSM"
         Me.Text = "Daily Stock Mutation"
         CType(Me.PicBar_DSM, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbDSM.ResumeLayout(False)
+        Me.gbDSM.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -157,4 +198,7 @@ Partial Class frmDSM
     Friend WithEvents BWDSM As System.ComponentModel.BackgroundWorker
     Friend WithEvents OFD_DSM As System.Windows.Forms.OpenFileDialog
     Friend WithEvents SFD_DSM As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents gbDSM As System.Windows.Forms.GroupBox
+    Friend WithEvents rbDSM_rph As System.Windows.Forms.RadioButton
+    Friend WithEvents rbDSM_qty As System.Windows.Forms.RadioButton
 End Class

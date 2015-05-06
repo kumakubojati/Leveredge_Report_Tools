@@ -32,7 +32,7 @@ Public Class frmSPR
 
     Private Sub btnBrow_SPR_dest_Click(sender As Object, e As EventArgs) Handles btnBrow_SPR_dest.Click
         Dim datenow As DateTime = DateTime.Now
-        Dim filename As String = "Neutralize_SalesPerf" & datenow.ToString("ddMMyyyy_HHmm")
+        Dim filename As String = "Neutralize_SalesPerf" & SPRreptype & "_" & datenow.ToString("ddMMyyyy_HHmm")
         SFD_SPR.FileName = filename
         Dim SPRpath_Dest As String
         If SFD_SPR.ShowDialog = DialogResult.OK Then
@@ -77,99 +77,200 @@ Public Class frmSPR
     End Sub
 
     Private Sub BWSPR_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BWSPR.DoWork
-        Dim xlAppSPR As Excel.Application
-        Dim xlWbookSPR As Excel.Workbook
-        Dim xlWsheetSPR As Excel.Worksheet
+        Select Case AppsOffice
+            Case "XL_NotInstalled"
+                Dim xlAppSPR As Object
+                Dim xlWbookSPR As Object
+                Dim xlWsheetSPR As Object
 
-        Select Case SPRreptype
-            Case "QTY"
-                'Need Confirmation to Pak Arif for Dynamic Column
+                Select Case SPRreptype
+                    Case "QTY"
+                        'Need Confirmation to Pak Arif for Dynamic Column
 
-            Case "VAL"
-                Try
-                    xlAppSPR = New Excel.Application
-                    xlWbookSPR = xlAppSPR.Workbooks.Open(txtSPR_src.Text)
-                    xlWsheetSPR = xlWbookSPR.Worksheets("UID Sales Perfomance Report")
+                    Case "VAL"
+                        Try
+                            xlAppSPR = CreateObject("Ket.Application")
+                            xlWbookSPR = xlAppSPR.Workbooks.Open(txtSPR_src.Text)
+                            xlWsheetSPR = xlWbookSPR.Worksheets("UID Sales Perfomance Report")
 
-                    xlWsheetSPR.UsedRange.UnMerge()
-                    xlWsheetSPR.UsedRange.WrapText = False
-                    xlWsheetSPR.UsedRange.ColumnWidth = 15
-                    xlWsheetSPR.UsedRange.RowHeight = 15
+                            xlWsheetSPR.UsedRange.UnMerge()
+                            xlWsheetSPR.UsedRange.WrapText = False
+                            xlWsheetSPR.UsedRange.ColumnWidth = 15
+                            xlWsheetSPR.UsedRange.RowHeight = 15
 
-                    Dim rg_head_cut1 As Excel.Range = xlWsheetSPR.Range("B2")
-                    Dim rg_head_paste1 As Excel.Range = xlWsheetSPR.Range("A2")
-                    rg_head_cut1.Select()
-                    rg_head_cut1.Cut(rg_head_paste1)
+                            Dim rg_head_cut1 As Object = xlWsheetSPR.Range("B2")
+                            Dim rg_head_paste1 As Object = xlWsheetSPR.Range("A2")
+                            rg_head_cut1.Select()
+                            rg_head_cut1.Cut(rg_head_paste1)
 
-                    Dim rg_head_cut2 As Excel.Range = xlWsheetSPR.Range("B4")
-                    Dim rg_head_paste2 As Excel.Range = xlWsheetSPR.Range("A3")
-                    rg_head_cut2.Select()
-                    rg_head_cut2.Cut(rg_head_paste2)
+                            Dim rg_head_cut2 As Object = xlWsheetSPR.Range("B4")
+                            Dim rg_head_paste2 As Object = xlWsheetSPR.Range("A3")
+                            rg_head_cut2.Select()
+                            rg_head_cut2.Cut(rg_head_paste2)
 
-                    xlWsheetSPR.Range("A2").RowHeight = 27
+                            xlWsheetSPR.Range("A2").RowHeight = 27
 
-                    Dim paramhead1, paramhead2 As String
-                    paramhead1 = xlWsheetSPR.Range("C6").Value & " " & xlWsheetSPR.Range("F6").Value & "; "
-                    paramhead1 = paramhead1 & xlWsheetSPR.Range("H6").Value & " " & xlWsheetSPR.Range("K6").Value & "; "
+                            Dim paramhead1, paramhead2 As String
+                            paramhead1 = xlWsheetSPR.Range("C6").Value & " " & xlWsheetSPR.Range("F6").Value & "; "
+                            paramhead1 = paramhead1 & xlWsheetSPR.Range("H6").Value & " " & xlWsheetSPR.Range("K6").Value & "; "
 
-                    paramhead2 = xlWsheetSPR.Range("P6").Value & " " & xlWsheetSPR.Range("S6").Value & "; "
-                    paramhead2 = paramhead2 & xlWsheetSPR.Range("W6").Value & " " & xlWsheetSPR.Range("Z6").Value & "; "
+                            paramhead2 = xlWsheetSPR.Range("P6").Value & " " & xlWsheetSPR.Range("S6").Value & "; "
+                            paramhead2 = paramhead2 & xlWsheetSPR.Range("W6").Value & " " & xlWsheetSPR.Range("Z6").Value & "; "
 
-                    xlWsheetSPR.Range("A6").Value = paramhead1
-                    xlWsheetSPR.Range("A6").EntireRow.Font.Name = "Calibri"
-                    xlWsheetSPR.Range("A7").Value = paramhead2
-                    xlWsheetSPR.Range("A7").EntireRow.Font.Name = "Calibri"
+                            xlWsheetSPR.Range("A6").Value = paramhead1
+                            xlWsheetSPR.Range("A6").EntireRow.Font.Name = "Calibri"
+                            xlWsheetSPR.Range("A7").Value = paramhead2
+                            xlWsheetSPR.Range("A7").EntireRow.Font.Name = "Calibri"
 
-                    Dim rg1, rg2, rg3, rg4, rg5, rg6 As Excel.Range
-                    rg1 = xlWsheetSPR.Range("B:C")
-                    rg1.Select()
-                    rg1.Delete()
+                            Dim rg1, rg2, rg3, rg4, rg5, rg6 As Object
+                            rg1 = xlWsheetSPR.Range("B:C")
+                            rg1.Select()
+                            rg1.Delete()
 
-                    rg2 = xlWsheetSPR.Range("C:F")
-                    rg2.Select()
-                    rg2.Delete()
+                            rg2 = xlWsheetSPR.Range("C:F")
+                            rg2.Select()
+                            rg2.Delete()
 
-                    rg3 = xlWsheetSPR.Range("D:E")
-                    rg3.Select()
-                    rg3.Delete()
+                            rg3 = xlWsheetSPR.Range("D:E")
+                            rg3.Select()
+                            rg3.Delete()
 
-                    xlWsheetSPR.Range("E:E").EntireColumn.Delete()
+                            xlWsheetSPR.Range("E:E").EntireColumn.Delete()
 
-                    rg4 = xlWsheetSPR.Range("F:G")
-                    rg4.Select()
-                    rg4.Delete()
+                            rg4 = xlWsheetSPR.Range("F:G")
+                            rg4.Select()
+                            rg4.Delete()
 
-                    rg5 = xlWsheetSPR.Range("G:H")
-                    rg5.Select()
-                    rg5.Delete()
+                            rg5 = xlWsheetSPR.Range("G:H")
+                            rg5.Select()
+                            rg5.Delete()
 
-                    rg6 = xlWsheetSPR.Range("H:J")
-                    rg6.Select()
-                    rg6.Delete()
+                            rg6 = xlWsheetSPR.Range("H:J")
+                            rg6.Select()
+                            rg6.Delete()
 
-                    xlWsheetSPR.Range("J:J").EntireColumn.Delete()
-                    xlWsheetSPR.Range("A4").EntireRow.Delete()
+                            xlWsheetSPR.Range("J:J").EntireColumn.Delete()
+                            xlWsheetSPR.Range("A4").EntireRow.Delete()
 
-                    xlWbookSPR.SaveAs(txtSPR_dest.Text)
-                    xlWbookSPR.Close()
-                    xlAppSPR.Quit()
+                            xlWbookSPR.SaveAs(txtSPR_dest.Text)
+                            xlWbookSPR.Close()
+                            xlAppSPR.Quit()
 
-                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWsheetSPR)
-                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWbookSPR)
-                    System.Runtime.InteropServices.Marshal.ReleaseComObject(xlAppSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWsheetSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWbookSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlAppSPR)
 
-                    xlWsheetSPR = Nothing
-                    xlWbookSPR = Nothing
-                    xlAppSPR = Nothing
+                            xlWsheetSPR = Nothing
+                            xlWbookSPR = Nothing
+                            xlAppSPR = Nothing
 
-                    MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                Catch ex As Exception
-                    MessageBox.Show("Error : " & ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
+                        Catch ex As Exception
+                            MessageBox.Show("Error : " & ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
 
-            Case "AVG"
-                'Need Confirmation to Pak Arif for Dynamic Column
+                    Case "AVG"
+                        'Need Confirmation to Pak Arif for Dynamic Column
+                End Select
+
+            Case "XL_Installed"
+                Dim xlAppSPR As Excel.Application
+                Dim xlWbookSPR As Excel.Workbook
+                Dim xlWsheetSPR As Excel.Worksheet
+
+                Select Case SPRreptype
+                    Case "QTY"
+                        'Need Confirmation to Pak Arif for Dynamic Column
+
+                    Case "VAL"
+                        Try
+                            xlAppSPR = New Excel.Application
+                            xlWbookSPR = xlAppSPR.Workbooks.Open(txtSPR_src.Text)
+                            xlWsheetSPR = xlWbookSPR.Worksheets("UID Sales Perfomance Report")
+
+                            xlWsheetSPR.UsedRange.UnMerge()
+                            xlWsheetSPR.UsedRange.WrapText = False
+                            xlWsheetSPR.UsedRange.ColumnWidth = 15
+                            xlWsheetSPR.UsedRange.RowHeight = 15
+
+                            Dim rg_head_cut1 As Excel.Range = xlWsheetSPR.Range("B2")
+                            Dim rg_head_paste1 As Excel.Range = xlWsheetSPR.Range("A2")
+                            rg_head_cut1.Select()
+                            rg_head_cut1.Cut(rg_head_paste1)
+
+                            Dim rg_head_cut2 As Excel.Range = xlWsheetSPR.Range("B4")
+                            Dim rg_head_paste2 As Excel.Range = xlWsheetSPR.Range("A3")
+                            rg_head_cut2.Select()
+                            rg_head_cut2.Cut(rg_head_paste2)
+
+                            xlWsheetSPR.Range("A2").RowHeight = 27
+
+                            Dim paramhead1, paramhead2 As String
+                            paramhead1 = xlWsheetSPR.Range("C6").Value & " " & xlWsheetSPR.Range("F6").Value & "; "
+                            paramhead1 = paramhead1 & xlWsheetSPR.Range("H6").Value & " " & xlWsheetSPR.Range("K6").Value & "; "
+
+                            paramhead2 = xlWsheetSPR.Range("P6").Value & " " & xlWsheetSPR.Range("S6").Value & "; "
+                            paramhead2 = paramhead2 & xlWsheetSPR.Range("W6").Value & " " & xlWsheetSPR.Range("Z6").Value & "; "
+
+                            xlWsheetSPR.Range("A6").Value = paramhead1
+                            xlWsheetSPR.Range("A6").EntireRow.Font.Name = "Calibri"
+                            xlWsheetSPR.Range("A7").Value = paramhead2
+                            xlWsheetSPR.Range("A7").EntireRow.Font.Name = "Calibri"
+
+                            Dim rg1, rg2, rg3, rg4, rg5, rg6 As Excel.Range
+                            rg1 = xlWsheetSPR.Range("B:C")
+                            rg1.Select()
+                            rg1.Delete()
+
+                            rg2 = xlWsheetSPR.Range("C:F")
+                            rg2.Select()
+                            rg2.Delete()
+
+                            rg3 = xlWsheetSPR.Range("D:E")
+                            rg3.Select()
+                            rg3.Delete()
+
+                            xlWsheetSPR.Range("E:E").EntireColumn.Delete()
+
+                            rg4 = xlWsheetSPR.Range("F:G")
+                            rg4.Select()
+                            rg4.Delete()
+
+                            rg5 = xlWsheetSPR.Range("G:H")
+                            rg5.Select()
+                            rg5.Delete()
+
+                            rg6 = xlWsheetSPR.Range("H:J")
+                            rg6.Select()
+                            rg6.Delete()
+
+                            xlWsheetSPR.Range("J:J").EntireColumn.Delete()
+                            xlWsheetSPR.Range("A4").EntireRow.Delete()
+
+                            xlWbookSPR.SaveAs(txtSPR_dest.Text)
+                            xlWbookSPR.Close()
+                            xlAppSPR.Quit()
+
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWsheetSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWbookSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlAppSPR)
+
+                            xlWsheetSPR = Nothing
+                            xlWbookSPR = Nothing
+                            xlAppSPR = Nothing
+
+                            MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                        Catch ex As Exception
+                            MessageBox.Show("Error : " & ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
+
+                    Case "AVG"
+                        'Need Confirmation to Pak Arif for Dynamic Column
+                End Select
+
         End Select
+        
     End Sub
 End Class
