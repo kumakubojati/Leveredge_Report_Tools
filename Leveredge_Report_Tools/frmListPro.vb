@@ -168,12 +168,12 @@ Public Class frmListPro
                 End Try
 
             Case "XL_Installed"
-                Dim xlAppPRM As Excel.Application
-                Dim xlWbookPRM As Excel.Workbook
-                Dim xlWsheetPRM As Excel.Worksheet
+                Dim xlAppPRM As Object
+                Dim xlWbookPRM As Object
+                Dim xlWsheetPRM As Object
 
                 Try
-                    xlAppPRM = New Excel.Application
+                    xlAppPRM = CreateObject("Excel.Application")
                     xlWbookPRM = xlAppPRM.Workbooks.Open(txtPromo_src.Text)
                     xlWsheetPRM = xlWbookPRM.Worksheets("UID List Of Promotion Report")
 

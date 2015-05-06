@@ -192,12 +192,12 @@ Public Class frmDSR
                 End Try
 
             Case "XL_Installed"
-                Dim xlAppDistStock As Excel.Application
-                Dim xlWbookDistStock As Excel.Workbook
-                Dim xlWsheetDistStock As Excel.Worksheet
+                Dim xlAppDistStock As Object
+                Dim xlWbookDistStock As Object
+                Dim xlWsheetDistStock As Object
 
                 Try
-                    xlAppDistStock = New Excel.Application
+                    xlAppDistStock = CreateObject("Excel.Application")
                     xlWbookDistStock = xlAppDistStock.Workbooks.Open(txtDistStock_src.Text)
                     xlWsheetDistStock = xlWbookDistStock.Worksheets("UID Distributor Stock Report")
 

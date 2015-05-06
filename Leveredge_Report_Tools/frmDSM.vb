@@ -473,14 +473,14 @@ Public Class frmDSM
                 End Select
 
             Case "XL_Installed"
-                Dim xlAppDSM As Excel.Application
-                Dim xlWbookDSM As Excel.Workbook
-                Dim xlWsheetDSM As Excel.Worksheet
+                Dim xlAppDSM As Object
+                Dim xlWbookDSM As Object
+                Dim xlWsheetDSM As Object
 
                 Select Case DSMreptype
                     Case "QTY"
                         Try
-                            xlAppDSM = New Excel.Application
+                            xlAppDSM = CreateObject("Excel.Application")
                             xlWbookDSM = xlAppDSM.Workbooks.Open(txtDSM_src.Text)
                             xlWsheetDSM = xlWbookDSM.Worksheets("UID Daily Stock Mutation Report")
 
@@ -692,7 +692,7 @@ Public Class frmDSM
 
                     Case "RPH"
                         Try
-                            xlAppDSM = New Excel.Application
+                            xlAppDSM = CreateObject("Excel.Application")
                             xlWbookDSM = xlAppDSM.Workbooks.Open(txtDSM_src.Text)
                             xlWsheetDSM = xlWbookDSM.Worksheets("UID Daily Stock Mutation Report")
 

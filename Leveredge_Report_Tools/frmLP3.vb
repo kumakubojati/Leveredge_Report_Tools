@@ -366,14 +366,14 @@ Gothrough: PicBarLP3.Visible = True
                 End Select
 
             Case "XL_Installed"
-                Dim xlAppLP3 As Excel.Application
-                Dim xlWbookLP3 As Excel.Workbook
-                Dim xlWsheetLP3 As Excel.Worksheet
+                Dim xlAppLP3 As Object
+                Dim xlWbookLP3 As Object
+                Dim xlWsheetLP3 As Object
 
                 Select Case LP3RptType
                     Case "ALL"
                         Try
-                            xlAppLP3 = New Excel.Application
+                            xlAppLP3 = CreateObject("Excel.Application")
                             xlWbookLP3 = xlAppLP3.Workbooks.Open(txtLP3_src.Text)
                             xlWsheetLP3 = xlWbookLP3.Worksheets("UID Weekly Stock and Sales Repo")
 
@@ -503,7 +503,7 @@ Gothrough: PicBarLP3.Visible = True
 
                     Case "RPH"
                         Try
-                            xlAppLP3 = New Excel.Application
+                            xlAppLP3 = CreateObject("Excel.Application")
                             xlWbookLP3 = xlAppLP3.Workbooks.Open(txtLP3_src.Text)
                             xlWsheetLP3 = xlWbookLP3.Worksheets("UID Weekly Stock and Sales Repo")
 
@@ -576,7 +576,7 @@ Gothrough: PicBarLP3.Visible = True
 
                     Case "QTY"
                         Try
-                            xlAppLP3 = New Excel.Application
+                            xlAppLP3 = CreateObject("Excel.Application")
                             xlWbookLP3 = xlAppLP3.Workbooks.Open(txtLP3_src.Text)
                             xlWsheetLP3 = xlWbookLP3.Worksheets("UID Weekly Stock and Sales Repo")
 

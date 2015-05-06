@@ -250,12 +250,12 @@ Public Class frmProdMas
                 End Try
 
             Case "XL_Installed"
-                Dim xlAppProdMas As Excel.Application
-                Dim xlWbookProdMas As Excel.Workbook
-                Dim xlWsheetProdMas As Excel.Worksheet
+                Dim xlAppProdMas As Object
+                Dim xlWbookProdMas As Object
+                Dim xlWsheetProdMas As Object
 
                 Try
-                    xlAppProdMas = New Excel.Application
+                    xlAppProdMas = CreateObject("Excel.Application")
                     xlWbookProdMas = xlAppProdMas.Workbooks.Open(txtProdMas_src.Text)
                     xlWsheetProdMas = xlWbookProdMas.Worksheets("UID Product Master Report")
 

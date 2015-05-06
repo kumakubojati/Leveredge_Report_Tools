@@ -426,14 +426,14 @@ Public Class frmDSS
                 End Select
 
             Case "XL_Installed"
-                Dim xlAppDSS As Excel.Application
-                Dim xlWbookDSS As Excel.Workbook
-                Dim xlWsheetDSS As Excel.Worksheet
+                Dim xlAppDSS As Object
+                Dim xlWbookDSS As Object
+                Dim xlWsheetDSS As Object
 
                 Select Case DSStype
                     Case "ALL"
                         Try
-                            xlAppDSS = New Excel.Application
+                            xlAppDSS = CreateObject("Excel.Application")
                             xlWbookDSS = xlAppDSS.Workbooks.Open(txtDSS_src.Text)
                             xlWsheetDSS = xlWbookDSS.Worksheets("UID Daily Sales Summary Report")
 
@@ -601,7 +601,7 @@ Public Class frmDSS
 
                     Case "RUPIAH"
                         Try
-                            xlAppDSS = New Excel.Application
+                            xlAppDSS = CreateObject("Excel.Application")
                             xlWbookDSS = xlAppDSS.Workbooks.Open(txtDSS_src.Text)
                             xlWsheetDSS = xlWbookDSS.Worksheets("UID Daily Sales Summary Report")
 
@@ -685,7 +685,7 @@ Public Class frmDSS
                         End Try
                     Case "PRODUK"
                         Try
-                            xlAppDSS = New Excel.Application
+                            xlAppDSS = CreateObject("Excel.Application")
                             xlWbookDSS = xlAppDSS.Workbooks.Open(txtDSS_src.Text)
                             xlWsheetDSS = xlWbookDSS.Worksheets("UID Daily Sales Summary Report")
 

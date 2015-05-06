@@ -175,9 +175,9 @@ Public Class frmSPR
                 End Select
 
             Case "XL_Installed"
-                Dim xlAppSPR As Excel.Application
-                Dim xlWbookSPR As Excel.Workbook
-                Dim xlWsheetSPR As Excel.Worksheet
+                Dim xlAppSPR As Object
+                Dim xlWbookSPR As Object
+                Dim xlWsheetSPR As Object
 
                 Select Case SPRreptype
                     Case "QTY"
@@ -185,7 +185,7 @@ Public Class frmSPR
 
                     Case "VAL"
                         Try
-                            xlAppSPR = New Excel.Application
+                            xlAppSPR = CreateObject("Excel.Application")
                             xlWbookSPR = xlAppSPR.Workbooks.Open(txtSPR_src.Text)
                             xlWsheetSPR = xlWbookSPR.Worksheets("UID Sales Perfomance Report")
 
