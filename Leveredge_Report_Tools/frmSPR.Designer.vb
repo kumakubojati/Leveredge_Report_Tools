@@ -57,7 +57,6 @@ Partial Class frmSPR
         'RBSPR_Avg
         '
         Me.RBSPR_Avg.AutoSize = True
-        Me.RBSPR_Avg.Enabled = False
         Me.RBSPR_Avg.Location = New System.Drawing.Point(148, 22)
         Me.RBSPR_Avg.Name = "RBSPR_Avg"
         Me.RBSPR_Avg.Size = New System.Drawing.Size(65, 17)
@@ -80,7 +79,6 @@ Partial Class frmSPR
         'RBSPR_Qty
         '
         Me.RBSPR_Qty.AutoSize = True
-        Me.RBSPR_Qty.Enabled = False
         Me.RBSPR_Qty.Location = New System.Drawing.Point(7, 22)
         Me.RBSPR_Qty.Name = "RBSPR_Qty"
         Me.RBSPR_Qty.Size = New System.Drawing.Size(64, 17)

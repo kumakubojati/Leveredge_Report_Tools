@@ -107,6 +107,12 @@
     <Compile Include="frmABP.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAR.Designer.vb">
+      <DependentUpon>frmAR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAR.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDSM.Designer.vb">
       <DependentUpon>frmDSM.vb</DependentUpon>
     </Compile>
@@ -162,6 +168,12 @@
     <Compile Include="frmRepABP.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSISR.Designer.vb">
+      <DependentUpon>frmSISR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSISR.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmSPR.Designer.vb">
       <DependentUpon>frmSPR.vb</DependentUpon>
     </Compile>
@@ -195,6 +207,9 @@
     <EmbeddedResource Include="frmABP.resx">
       <DependentUpon>frmABP.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAR.resx">
+      <DependentUpon>frmAR.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDSM.resx">
       <DependentUpon>frmDSM.vb</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRepABP.resx">
       <DependentUpon>frmRepABP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSISR.resx">
+      <DependentUpon>frmSISR.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSPR.resx">
       <DependentUpon>frmSPR.vb</DependentUpon>

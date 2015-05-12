@@ -32,6 +32,7 @@ Partial Class frmMain
         Me.WeeklySalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesPerformanceReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DailySalesSummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ARReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StockToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DistributorStockReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DailyStockMutationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,6 +41,7 @@ Partial Class frmMain
         Me.ReportGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AchievementByOutletToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MSMain.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -65,7 +67,7 @@ Partial Class frmMain
         '
         Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductToolStripMenuItem, Me.ProductMasterReportToolStripMenuItem})
         Me.MasterToolStripMenuItem.Name = "MasterToolStripMenuItem"
-        Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.MasterToolStripMenuItem.Text = "Master"
         '
         'ProductToolStripMenuItem
@@ -82,34 +84,40 @@ Partial Class frmMain
         '
         'SalesToolStripMenuItem
         '
-        Me.SalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WeeklySalesToolStripMenuItem, Me.SalesPerformanceReportToolStripMenuItem, Me.DailySalesSummaryToolStripMenuItem})
+        Me.SalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WeeklySalesToolStripMenuItem, Me.SalesPerformanceReportToolStripMenuItem, Me.DailySalesSummaryToolStripMenuItem, Me.ARReportToolStripMenuItem, Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem})
         Me.SalesToolStripMenuItem.Name = "SalesToolStripMenuItem"
-        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SalesToolStripMenuItem.Text = "Sales"
         '
         'WeeklySalesToolStripMenuItem
         '
         Me.WeeklySalesToolStripMenuItem.Name = "WeeklySalesToolStripMenuItem"
-        Me.WeeklySalesToolStripMenuItem.Size = New System.Drawing.Size(230, 22)
+        Me.WeeklySalesToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
         Me.WeeklySalesToolStripMenuItem.Text = "Weekly Stock And Sales (LP3)"
         '
         'SalesPerformanceReportToolStripMenuItem
         '
         Me.SalesPerformanceReportToolStripMenuItem.Name = "SalesPerformanceReportToolStripMenuItem"
-        Me.SalesPerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(230, 22)
+        Me.SalesPerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
         Me.SalesPerformanceReportToolStripMenuItem.Text = "Sales Performance Report"
         '
         'DailySalesSummaryToolStripMenuItem
         '
         Me.DailySalesSummaryToolStripMenuItem.Name = "DailySalesSummaryToolStripMenuItem"
-        Me.DailySalesSummaryToolStripMenuItem.Size = New System.Drawing.Size(230, 22)
+        Me.DailySalesSummaryToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
         Me.DailySalesSummaryToolStripMenuItem.Text = "Daily Sales Summary"
+        '
+        'ARReportToolStripMenuItem
+        '
+        Me.ARReportToolStripMenuItem.Name = "ARReportToolStripMenuItem"
+        Me.ARReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
+        Me.ARReportToolStripMenuItem.Text = "AR Report"
         '
         'StockToolStripMenuItem
         '
         Me.StockToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DistributorStockReportToolStripMenuItem, Me.DailyStockMutationToolStripMenuItem})
         Me.StockToolStripMenuItem.Name = "StockToolStripMenuItem"
-        Me.StockToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.StockToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.StockToolStripMenuItem.Text = "Stock"
         '
         'DistributorStockReportToolStripMenuItem
@@ -128,7 +136,7 @@ Partial Class frmMain
         '
         Me.PromotionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListOfPromotionToolStripMenuItem})
         Me.PromotionToolStripMenuItem.Name = "PromotionToolStripMenuItem"
-        Me.PromotionToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.PromotionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PromotionToolStripMenuItem.Text = "Promotion"
         '
         'ListOfPromotionToolStripMenuItem
@@ -159,6 +167,12 @@ Partial Class frmMain
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
+        '
+        'SummaryInvoiceAndSalesReturnReportToolStripMenuItem
+        '
+        Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Name = "SummaryInvoiceAndSalesReturnReportToolStripMenuItem"
+        Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
+        Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Text = "Summary Invoice And Sales Return Report"
         '
         'frmMain
         '
@@ -198,5 +212,7 @@ Partial Class frmMain
     Friend WithEvents PromotionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ListOfPromotionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents ARReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SummaryInvoiceAndSalesReturnReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

@@ -32,7 +32,7 @@ Public Class frmSPR
 
     Private Sub btnBrow_SPR_dest_Click(sender As Object, e As EventArgs) Handles btnBrow_SPR_dest.Click
         Dim datenow As DateTime = DateTime.Now
-        Dim filename As String = "Neutralize_SalesPerf" & SPRreptype & "_" & datenow.ToString("ddMMyyyy_HHmm")
+        Dim filename As String = "Neutralize_SalesPerf_" & SPRreptype & "_" & datenow.ToString("ddMMyyyy_HHmm")
         SFD_SPR.FileName = filename
         Dim SPRpath_Dest As String
         If SFD_SPR.ShowDialog = DialogResult.OK Then
@@ -86,6 +86,97 @@ Public Class frmSPR
                 Select Case SPRreptype
                     Case "QTY"
                         'Need Confirmation to Pak Arif for Dynamic Column
+                        Try
+                            xlAppSPR = CreateObject("Ket.Application")
+                            xlWbookSPR = xlAppSPR.Workbooks.Open(txtSPR_src.Text)
+                            xlWsheetSPR = xlWbookSPR.Worksheets("UID Sales Perfomance Report")
+
+                            xlWsheetSPR.UsedRange.UnMerge()
+                            xlWsheetSPR.UsedRange.WrapText = False
+                            xlWsheetSPR.UsedRange.ColumnWidth = 15
+                            xlWsheetSPR.UsedRange.RowHeight = 15
+
+                            Dim rg_head_cut1 As Object = xlWsheetSPR.Range("B2")
+                            Dim rg_head_paste1 As Object = xlWsheetSPR.Range("A2")
+                            rg_head_cut1.Select()
+                            rg_head_cut1.Cut(rg_head_paste1)
+
+                            Dim rg_head_cut2 As Object = xlWsheetSPR.Range("B4")
+                            Dim rg_head_paste2 As Object = xlWsheetSPR.Range("A3")
+                            rg_head_cut2.Select()
+                            rg_head_cut2.Cut(rg_head_paste2)
+
+                            xlWsheetSPR.Range("A2").RowHeight = 27
+
+                            Dim paramhead1, paramhead2 As String
+                            paramhead1 = xlWsheetSPR.Range("C6").Value & " " & xlWsheetSPR.Range("F6").Value & "; "
+                            paramhead1 = paramhead1 & xlWsheetSPR.Range("I6").Value & " " & xlWsheetSPR.Range("L6").Value & "; "
+
+                            paramhead2 = xlWsheetSPR.Range("O6").Value & " " & xlWsheetSPR.Range("R6").Value & "; "
+                            paramhead2 = paramhead2 & xlWsheetSPR.Range("W6").Value & " " & xlWsheetSPR.Range("Z6").Value & "; "
+
+                            xlWsheetSPR.Range("A6").Value = paramhead1
+                            xlWsheetSPR.Range("A6").EntireRow.Font.Name = "Calibri"
+                            xlWsheetSPR.Range("A7").Value = paramhead2
+                            xlWsheetSPR.Range("A7").EntireRow.Font.Name = "Calibri"
+
+                            xlWsheetSPR.range("C6:Z6").value = ""
+
+                            Dim xlfunc As Object
+                            xlfunc = xlAppSPR.WorksheetFunction
+                            Dim lnCol As Long
+                            Dim i, j As Long
+                            Dim rnarea As Object = xlWsheetSPR.UsedRange
+
+                            lnCol = rnarea.Columns.Count
+                            For i = lnCol To 1 Step -1
+                                If xlfunc.CountA(rnarea.Columns(i)) = 0 Then
+                                    rnarea.Columns(i).Delete()
+                                    j = j + 1
+                                End If
+                            Next
+
+                            xlWsheetSPR.Range("A8:A9").Merge()
+                            xlWsheetSPR.Range("A8:A9").HorizontalAlignment = Excel.Constants.xlCenter
+                            xlWsheetSPR.Range("B8:B9").Merge()
+                            xlWsheetSPR.Range("B8:B9").HorizontalAlignment = Excel.Constants.xlCenter
+                            xlWsheetSPR.Range("C8:C9").Merge()
+                            xlWsheetSPR.Range("C8:C9").HorizontalAlignment = Excel.Constants.xlCenter
+                            xlWsheetSPR.Range("D8:D9").Merge()
+                            xlWsheetSPR.Range("D8:D9").HorizontalAlignment = Excel.Constants.xlCenter
+
+                            Dim lastcol1 As Long
+                            Dim x, y As Integer
+                            Dim lasval As String = ""
+                            Dim rn As Excel.Range
+                            y = 5
+                            Do Until lasval = "Rata – Rata"
+                                lastcol1 = xlWsheetSPR.Cells(8, y).End(Excel.XlDirection.xlToRight).Column
+                                x = lastcol1 - 1
+                                rn = xlWsheetSPR.Range(xlWsheetSPR.Cells(8, y), xlWsheetSPR.Cells(8, x))
+                                rn.Merge()
+                                rn.HorizontalAlignment = Excel.Constants.xlCenter
+                                lasval = xlWsheetSPR.Cells(8, lastcol1).Value
+                                y = y + 3
+                            Loop
+
+                            xlWbookSPR.SaveAs(txtSPR_dest.Text)
+                            xlWbookSPR.Close()
+                            xlAppSPR.Quit()
+
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWsheetSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWbookSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlAppSPR)
+
+                            xlWsheetSPR = Nothing
+                            xlWbookSPR = Nothing
+                            xlAppSPR = Nothing
+
+                            MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                        Catch ex As Exception
+                            MessageBox.Show("Error : " & ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
 
                     Case "VAL"
                         Try
@@ -172,6 +263,102 @@ Public Class frmSPR
 
                     Case "AVG"
                         'Need Confirmation to Pak Arif for Dynamic Column
+                        Try
+                            xlAppSPR = CreateObject("Ket.Application")
+                            xlWbookSPR = xlAppSPR.Workbooks.Open(txtSPR_src.Text)
+                            xlWsheetSPR = xlWbookSPR.Worksheets("UID Sales Perfomance Report")
+
+                            xlWsheetSPR.UsedRange.UnMerge()
+                            xlWsheetSPR.UsedRange.WrapText = False
+                            xlWsheetSPR.UsedRange.ColumnWidth = 15
+                            xlWsheetSPR.UsedRange.RowHeight = 15
+
+                            Dim rg_head_cut1 As Object = xlWsheetSPR.Range("B2")
+                            Dim rg_head_paste1 As Object = xlWsheetSPR.Range("A2")
+                            rg_head_cut1.Select()
+                            rg_head_cut1.Cut(rg_head_paste1)
+
+                            Dim rg_head_cut2 As Object = xlWsheetSPR.Range("B4")
+                            Dim rg_head_paste2 As Object = xlWsheetSPR.Range("A3")
+                            rg_head_cut2.Select()
+                            rg_head_cut2.Cut(rg_head_paste2)
+
+                            xlWsheetSPR.Range("A2").RowHeight = 27
+
+                            Dim paramhead1, paramhead2 As String
+                            paramhead1 = xlWsheetSPR.Range("C6").Value & " " & xlWsheetSPR.Range("F6").Value & "; "
+                            paramhead1 = paramhead1 & xlWsheetSPR.Range("I6").Value & " " & xlWsheetSPR.Range("L6").Value & "; "
+
+                            paramhead2 = xlWsheetSPR.Range("P6").Value & " " & xlWsheetSPR.Range("S6").Value & "; "
+                            paramhead2 = paramhead2 & xlWsheetSPR.Range("W6").Value & " " & xlWsheetSPR.Range("Z6").Value & "; "
+
+                            xlWsheetSPR.Range("A5").Value = paramhead1
+                            xlWsheetSPR.Range("A5").EntireRow.Font.Name = "Calibri"
+                            xlWsheetSPR.Range("A7").Value = paramhead2
+                            xlWsheetSPR.Range("A7").EntireRow.Font.Name = "Calibri"
+
+                            xlWsheetSPR.Range("A6").EntireRow.Delete()
+                            xlWsheetSPR.Range("A7").EntireRow.Delete()
+
+                            Dim rg1 As Object
+                            rg1 = xlWsheetSPR.Range("B:C")
+                            rg1.Select()
+                            rg1.Delete()
+
+                            Dim xlfunc As Object
+                            xlfunc = xlAppSPR.WorksheetFunction
+                            Dim lnCol As Long
+                            Dim i, j As Long
+                            Dim rnarea As Object = xlWsheetSPR.UsedRange
+
+                            lnCol = rnarea.Columns.Count
+                            For i = lnCol To 1 Step -1
+                                If xlfunc.CountA(rnarea.Columns(i)) = 0 Then
+                                    rnarea.Columns(i).Delete()
+                                    j = j + 1
+                                End If
+                            Next
+
+                            xlWsheetSPR.Range("A7:A8").Merge()
+
+                            Dim lastcol As Long
+                            Dim x, y As Integer
+                            Dim lasval As String = ""
+                            Dim rn As Excel.Range
+                            y = 2
+                            Do Until lasval = "Average"
+                                lastcol = xlWsheetSPR.Cells(7, y).End(Excel.XlDirection.xlToRight).Column
+                                x = lastcol - 1
+                                rn = xlWsheetSPR.Range(xlWsheetSPR.Cells(7, y), xlWsheetSPR.Cells(7, x))
+                                rn.Merge()
+                                rn.HorizontalAlignment = Excel.Constants.xlCenter
+                                lasval = xlWsheetSPR.Cells(7, lastcol).Value
+                                y = y + 2
+                            Loop
+
+                            'Dim lastcol2 As Long = xlWsheetSPR.Cells(7, xlWsheetSPR.Columns.Count).End(Excel.XlDirection.xlToRight).Column
+                            'Dim rn2 As Excel.Range
+                            'rn2 = xlWsheetSPR.Range(xlWsheetSPR.Cells(7, lastcol2), xlWsheetSPR.Cells(8, lastcol2))
+                            'rn2.Merge()
+                            'rn2.HorizontalAlignment = Excel.Constants.xlCenter
+
+                            xlWbookSPR.SaveAs(txtSPR_dest.Text)
+                            xlWbookSPR.Close()
+                            xlAppSPR.Quit()
+
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWsheetSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWbookSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlAppSPR)
+
+                            xlWsheetSPR = Nothing
+                            xlWbookSPR = Nothing
+                            xlAppSPR = Nothing
+
+                            MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                        Catch ex As Exception
+                            MessageBox.Show("Error : " & ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
                 End Select
 
             Case "XL_Installed"
@@ -182,6 +369,99 @@ Public Class frmSPR
                 Select Case SPRreptype
                     Case "QTY"
                         'Need Confirmation to Pak Arif for Dynamic Column
+
+                        Try
+                            xlAppSPR = CreateObject("Excel.Application")
+                            xlWbookSPR = xlAppSPR.Workbooks.Open(txtSPR_src.Text)
+                            xlWsheetSPR = xlWbookSPR.Worksheets("UID Sales Perfomance Report")
+
+                            xlWsheetSPR.UsedRange.UnMerge()
+                            xlWsheetSPR.UsedRange.WrapText = False
+                            xlWsheetSPR.UsedRange.ColumnWidth = 15
+                            xlWsheetSPR.UsedRange.RowHeight = 15
+
+                            Dim rg_head_cut1 As Excel.Range = xlWsheetSPR.Range("B2")
+                            Dim rg_head_paste1 As Excel.Range = xlWsheetSPR.Range("A2")
+                            rg_head_cut1.Select()
+                            rg_head_cut1.Cut(rg_head_paste1)
+
+                            Dim rg_head_cut2 As Excel.Range = xlWsheetSPR.Range("B4")
+                            Dim rg_head_paste2 As Excel.Range = xlWsheetSPR.Range("A3")
+                            rg_head_cut2.Select()
+                            rg_head_cut2.Cut(rg_head_paste2)
+
+                            xlWsheetSPR.Range("A2").RowHeight = 27
+
+                            Dim paramhead1, paramhead2 As String
+                            paramhead1 = xlWsheetSPR.Range("C6").Value & " " & xlWsheetSPR.Range("F6").Value & "; "
+                            paramhead1 = paramhead1 & xlWsheetSPR.Range("I6").Value & " " & xlWsheetSPR.Range("L6").Value & "; "
+
+                            paramhead2 = xlWsheetSPR.Range("O6").Value & " " & xlWsheetSPR.Range("R6").Value & "; "
+                            paramhead2 = paramhead2 & xlWsheetSPR.Range("W6").Value & " " & xlWsheetSPR.Range("Z6").Value & "; "
+
+                            xlWsheetSPR.Range("A6").Value = paramhead1
+                            xlWsheetSPR.Range("A6").EntireRow.Font.Name = "Calibri"
+                            xlWsheetSPR.Range("A7").Value = paramhead2
+                            xlWsheetSPR.Range("A7").EntireRow.Font.Name = "Calibri"
+
+                            xlWsheetSPR.range("C6:Z6").value = ""
+
+                            Dim xlfunc As Excel.WorksheetFunction
+                            xlfunc = xlAppSPR.WorksheetFunction
+                            Dim lnCol As Long
+                            Dim i, j As Long
+                            Dim rnarea As Excel.Range = xlWsheetSPR.UsedRange
+
+                            lnCol = rnarea.Columns.Count
+                            For i = lnCol To 1 Step -1
+                                If xlfunc.CountA(rnarea.Columns(i)) = 0 Then
+                                    rnarea.Columns(i).Delete()
+                                    j = j + 1
+                                End If
+                            Next
+
+                            xlWsheetSPR.Range("A8:A9").Merge()
+                            xlWsheetSPR.Range("A8:A9").HorizontalAlignment = Excel.Constants.xlCenter
+                            xlWsheetSPR.Range("B8:B9").Merge()
+                            xlWsheetSPR.Range("B8:B9").HorizontalAlignment = Excel.Constants.xlCenter
+                            xlWsheetSPR.Range("C8:C9").Merge()
+                            xlWsheetSPR.Range("C8:C9").HorizontalAlignment = Excel.Constants.xlCenter
+                            xlWsheetSPR.Range("D8:D9").Merge()
+                            xlWsheetSPR.Range("D8:D9").HorizontalAlignment = Excel.Constants.xlCenter
+
+                            Dim lastcol1 As Long
+                            Dim x, y As Integer
+                            Dim lasval As String = ""
+                            Dim rn As Excel.Range
+                            y = 5
+                            Do Until lasval = "Rata – Rata"
+                                lastcol1 = xlWsheetSPR.Cells(8, y).End(Excel.XlDirection.xlToRight).Column
+                                x = lastcol1 - 1
+                                rn = xlWsheetSPR.Range(xlWsheetSPR.Cells(8, y), xlWsheetSPR.Cells(8, x))
+                                rn.Merge()
+                                rn.HorizontalAlignment = Excel.Constants.xlCenter
+                                lasval = xlWsheetSPR.Cells(8, lastcol1).Value
+                                y = y + 3
+                            Loop
+
+                            xlWbookSPR.SaveAs(txtSPR_dest.Text)
+                            xlWbookSPR.Close()
+                            xlAppSPR.Quit()
+
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWsheetSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWbookSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlAppSPR)
+
+                            xlWsheetSPR = Nothing
+                            xlWbookSPR = Nothing
+                            xlAppSPR = Nothing
+
+                            MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                        Catch ex As Exception
+                            MessageBox.Show("Error : " & ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
+                        
 
                     Case "VAL"
                         Try
@@ -208,9 +488,9 @@ Public Class frmSPR
 
                             Dim paramhead1, paramhead2 As String
                             paramhead1 = xlWsheetSPR.Range("C6").Value & " " & xlWsheetSPR.Range("F6").Value & "; "
-                            paramhead1 = paramhead1 & xlWsheetSPR.Range("H6").Value & " " & xlWsheetSPR.Range("K6").Value & "; "
+                            paramhead1 = paramhead1 & xlWsheetSPR.Range("I6").Value & " " & xlWsheetSPR.Range("L6").Value & "; "
 
-                            paramhead2 = xlWsheetSPR.Range("P6").Value & " " & xlWsheetSPR.Range("S6").Value & "; "
+                            paramhead2 = xlWsheetSPR.Range("O6").Value & " " & xlWsheetSPR.Range("R6").Value & "; "
                             paramhead2 = paramhead2 & xlWsheetSPR.Range("W6").Value & " " & xlWsheetSPR.Range("Z6").Value & "; "
 
                             xlWsheetSPR.Range("A6").Value = paramhead1
@@ -268,6 +548,102 @@ Public Class frmSPR
 
                     Case "AVG"
                         'Need Confirmation to Pak Arif for Dynamic Column
+                        Try
+                            xlAppSPR = CreateObject("Excel.Application")
+                            xlWbookSPR = xlAppSPR.Workbooks.Open(txtSPR_src.Text)
+                            xlWsheetSPR = xlWbookSPR.Worksheets("UID Sales Perfomance Report")
+
+                            xlWsheetSPR.UsedRange.UnMerge()
+                            xlWsheetSPR.UsedRange.WrapText = False
+                            xlWsheetSPR.UsedRange.ColumnWidth = 15
+                            xlWsheetSPR.UsedRange.RowHeight = 15
+
+                            Dim rg_head_cut1 As Excel.Range = xlWsheetSPR.Range("B2")
+                            Dim rg_head_paste1 As Excel.Range = xlWsheetSPR.Range("A2")
+                            rg_head_cut1.Select()
+                            rg_head_cut1.Cut(rg_head_paste1)
+
+                            Dim rg_head_cut2 As Excel.Range = xlWsheetSPR.Range("B4")
+                            Dim rg_head_paste2 As Excel.Range = xlWsheetSPR.Range("A3")
+                            rg_head_cut2.Select()
+                            rg_head_cut2.Cut(rg_head_paste2)
+
+                            xlWsheetSPR.Range("A2").RowHeight = 27
+
+                            Dim paramhead1, paramhead2 As String
+                            paramhead1 = xlWsheetSPR.Range("C6").Value & " " & xlWsheetSPR.Range("F6").Value & "; "
+                            paramhead1 = paramhead1 & xlWsheetSPR.Range("I6").Value & " " & xlWsheetSPR.Range("L6").Value & "; "
+
+                            paramhead2 = xlWsheetSPR.Range("P6").Value & " " & xlWsheetSPR.Range("S6").Value & "; "
+                            paramhead2 = paramhead2 & xlWsheetSPR.Range("W6").Value & " " & xlWsheetSPR.Range("Z6").Value & "; "
+
+                            xlWsheetSPR.Range("A5").Value = paramhead1
+                            xlWsheetSPR.Range("A5").EntireRow.Font.Name = "Calibri"
+                            xlWsheetSPR.Range("A7").Value = paramhead2
+                            xlWsheetSPR.Range("A7").EntireRow.Font.Name = "Calibri"
+
+                            xlWsheetSPR.Range("A6").EntireRow.Delete()
+                            xlWsheetSPR.Range("A7").EntireRow.Delete()
+
+                            Dim rg1 As Excel.Range
+                            rg1 = xlWsheetSPR.Range("B:C")
+                            rg1.Select()
+                            rg1.Delete()
+
+                            Dim xlfunc As Excel.WorksheetFunction
+                            xlfunc = xlAppSPR.WorksheetFunction
+                            Dim lnCol As Long
+                            Dim i, j As Long
+                            Dim rnarea As Excel.Range = xlWsheetSPR.UsedRange
+
+                            lnCol = rnarea.Columns.Count
+                            For i = lnCol To 1 Step -1
+                                If xlfunc.CountA(rnarea.Columns(i)) = 0 Then
+                                    rnarea.Columns(i).Delete()
+                                    j = j + 1
+                                End If
+                            Next
+
+                            xlWsheetSPR.Range("A7:A8").Merge()
+
+                            Dim lastcol As Long
+                            Dim x, y As Integer
+                            Dim lasval As String = ""
+                            Dim rn As Excel.Range
+                            y = 2
+                            Do Until lasval = "Average"
+                                lastcol = xlWsheetSPR.Cells(7, y).End(Excel.XlDirection.xlToRight).Column
+                                x = lastcol - 1
+                                rn = xlWsheetSPR.Range(xlWsheetSPR.Cells(7, y), xlWsheetSPR.Cells(7, x))
+                                rn.Merge()
+                                rn.HorizontalAlignment = Excel.Constants.xlCenter
+                                lasval = xlWsheetSPR.Cells(7, lastcol).Value
+                                y = y + 2
+                            Loop
+
+                            'Dim lastcol2 As Long = xlWsheetSPR.Cells(7, xlWsheetSPR.Columns.Count).End(Excel.XlDirection.xlToRight).Column
+                            'Dim rn2 As Excel.Range
+                            'rn2 = xlWsheetSPR.Range(xlWsheetSPR.Cells(7, lastcol2), xlWsheetSPR.Cells(8, lastcol2))
+                            'rn2.Merge()
+                            'rn2.HorizontalAlignment = Excel.Constants.xlCenter
+
+                            xlWbookSPR.SaveAs(txtSPR_dest.Text)
+                            xlWbookSPR.Close()
+                            xlAppSPR.Quit()
+
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWsheetSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlWbookSPR)
+                            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlAppSPR)
+
+                            xlWsheetSPR = Nothing
+                            xlWbookSPR = Nothing
+                            xlAppSPR = Nothing
+
+                            MessageBox.Show("Neutralize Completed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                        Catch ex As Exception
+                            MessageBox.Show("Error : " & ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
                 End Select
 
         End Select

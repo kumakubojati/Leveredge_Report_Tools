@@ -36,4 +36,12 @@ Public Class frmMain
     Private Sub AchievementByOutletToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AchievementByOutletToolStripMenuItem.Click
         frmABP.Show()
     End Sub
+
+    Private Sub ARReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ARReportToolStripMenuItem.Click
+        frmAR.Show()
+    End Sub
+
+    Private Sub SummaryInvoiceAndSalesReturnReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Click
+        frmSISR.Show()
+    End Sub
 End Class
