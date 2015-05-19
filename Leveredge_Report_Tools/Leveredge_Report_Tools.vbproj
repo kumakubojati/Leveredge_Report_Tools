@@ -119,6 +119,12 @@
     <Compile Include="frmDSM.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmDSPS.Designer.vb">
+      <DependentUpon>frmDSPS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSPS.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDSR.Designer.vb">
       <DependentUpon>frmDSR.vb</DependentUpon>
     </Compile>
@@ -212,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDSM.resx">
       <DependentUpon>frmDSM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSPS.resx">
+      <DependentUpon>frmDSPS.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDSR.resx">
       <DependentUpon>frmDSR.vb</DependentUpon>

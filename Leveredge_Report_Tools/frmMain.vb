@@ -44,4 +44,9 @@ Public Class frmMain
     Private Sub SummaryInvoiceAndSalesReturnReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Click
         frmSISR.Show()
     End Sub
+
+    Private Sub DailySalesAndPaymentSummaryReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DailySalesAndPaymentSummaryReportToolStripMenuItem.Click
+        'frmDSPS.Show()
+        MessageBox.Show("Under Maintenance, Wait for the new Release", "Hello", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 End Class

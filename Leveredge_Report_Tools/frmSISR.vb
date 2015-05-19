@@ -122,7 +122,7 @@ Public Class frmSISR
                             xlfunc = xlAppSISR.WorksheetFunction
                             Dim lnCol As Long
                             Dim i, j As Long
-                            Dim rnarea As Excel.Range = xlWsheetSISR.UsedRange
+                            Dim rnarea As Object = xlWsheetSISR.UsedRange
 
                             lnCol = rnarea.Columns.Count
                             For i = lnCol To 1 Step -1

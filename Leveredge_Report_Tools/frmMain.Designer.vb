@@ -33,6 +33,7 @@ Partial Class frmMain
         Me.SalesPerformanceReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DailySalesSummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ARReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StockToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DistributorStockReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DailyStockMutationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -41,7 +42,7 @@ Partial Class frmMain
         Me.ReportGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AchievementByOutletToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MSMain.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -84,7 +85,7 @@ Partial Class frmMain
         '
         'SalesToolStripMenuItem
         '
-        Me.SalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WeeklySalesToolStripMenuItem, Me.SalesPerformanceReportToolStripMenuItem, Me.DailySalesSummaryToolStripMenuItem, Me.ARReportToolStripMenuItem, Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem})
+        Me.SalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WeeklySalesToolStripMenuItem, Me.SalesPerformanceReportToolStripMenuItem, Me.DailySalesSummaryToolStripMenuItem, Me.DailySalesAndPaymentSummaryReportToolStripMenuItem, Me.ARReportToolStripMenuItem, Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem})
         Me.SalesToolStripMenuItem.Name = "SalesToolStripMenuItem"
         Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SalesToolStripMenuItem.Text = "Sales"
@@ -112,6 +113,12 @@ Partial Class frmMain
         Me.ARReportToolStripMenuItem.Name = "ARReportToolStripMenuItem"
         Me.ARReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
         Me.ARReportToolStripMenuItem.Text = "AR Report"
+        '
+        'SummaryInvoiceAndSalesReturnReportToolStripMenuItem
+        '
+        Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Name = "SummaryInvoiceAndSalesReturnReportToolStripMenuItem"
+        Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
+        Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Text = "Summary Invoice And Sales Return Report"
         '
         'StockToolStripMenuItem
         '
@@ -168,11 +175,12 @@ Partial Class frmMain
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
-        'SummaryInvoiceAndSalesReturnReportToolStripMenuItem
+        'DailySalesAndPaymentSummaryReportToolStripMenuItem
         '
-        Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Name = "SummaryInvoiceAndSalesReturnReportToolStripMenuItem"
-        Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
-        Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Text = "Summary Invoice And Sales Return Report"
+        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem.Name = "DailySalesAndPaymentSummaryReportToolStripMenuItem"
+        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
+        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem.Text = "Daily Sales And Payment Summary Report"
+        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem.Visible = False
         '
         'frmMain
         '
@@ -214,5 +222,6 @@ Partial Class frmMain
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents ARReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SummaryInvoiceAndSalesReturnReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DailySalesAndPaymentSummaryReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
