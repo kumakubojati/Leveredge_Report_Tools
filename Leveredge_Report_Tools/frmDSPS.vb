@@ -172,10 +172,7 @@ Public Class frmDSPS
                     xlWsheetDSPS.Range("A6").Value = paramhead2
                     xlWsheetDSPS.Range("A6").EntireRow.Font.Name = "Calibri"
 
-                    'xlWsheetDSPS.Range("B6:Z6").Value = ""
-                    'xlWsheetDSPS.Cells(6, 27).Value = ""
-                    'xlWsheetDSPS.Cells(6, 28).Value = ""
-                    'xlWsheetDSPS.Cells(6, 29).Value = ""
+                    xlWsheetDSPS.Range("B6:AC6").Value = ""
 
                     Dim xlfunc As Object
                     xlfunc = xlAppDSPS.WorksheetFunction

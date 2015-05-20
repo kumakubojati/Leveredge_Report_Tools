@@ -33,11 +33,11 @@ Public Class frmListPro
         Dim datenow As DateTime = DateTime.Now
         Dim filename As String
         filename = "Neutralize_ListOfPromo_" & datenow.ToString("ddMMyyyy_HHmm")
-        OFD_Pro.FileName = filename
+        SFD_Pro.FileName = filename
 
         Dim Prompath_Dest As String
-        If OFD_Pro.ShowDialog = DialogResult.OK Then
-            Prompath_Dest = OFD_Pro.FileName
+        If SFD_Pro.ShowDialog = DialogResult.OK Then
+            Prompath_Dest = SFD_Pro.FileName
             txtProm_dest.Text = Prompath_Dest
         End If
         If txtPromo_src.Text <> "" Then
