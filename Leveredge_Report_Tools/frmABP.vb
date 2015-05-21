@@ -97,67 +97,100 @@ Public Class frmABP
         com1 = com1 & "WHERE CONVERT(DATE,DOC_DATE) BETWEEN CONVERT (DATE,'" & datefrom & "') AND CONVERT(DATE,'" & dateto & "') "
         com1 = com1 & "AND REF_DOC_NO IS NOT NULL AND REF_DOCUMENT='GN' GROUP BY PJP) g ON a.pjp = g.PJP FULL OUTER JOIN "
         com1 = com1 & "(SELECT DISTINCT PJP, COUNT(DISTINCT JUM_OUT) AS JUM_OUT, COUNT(DOC_NO) AS JUM_INV FROM("
-        com1 = com1 & "SELECT a.PJP,a.POP AS JUM_OUT, b.DOC_NO as DOC_NO,b.SKU, b.QTY1,b.QTY2,b.QTY3 "
+        com1 = com1 & "SELECT a.PJP,a.POP AS JUM_OUT, b.DOC_NO as DOC_NO,b.SKU, c.PCSQTY "
         com1 = com1 & "FROM CASHMEMO a INNER JOIN CASHMEMO_DETAIL b ON a.DOC_NO = b.DOC_NO "
-        com1 = com1 & "AND CONVERT(DATE,b.DOC_DATE) BETWEEN CONVERT (DATE,'" & datefrom & "') AND CONVERT(DATE,'" & dateto & "') "
-        com1 = com1 & "GROUP BY a.PJP,a.POP,b.DOC_NO,b.SKU,b.QTY1,b.QTY2,b.QTY3) tt WHERE "
+        com1 = com1 & "INNER JOIN (SELECT DOC_NO,SKU,((QTY1*SELL_FACTOR1) + (QTY2*SELL_FACTOR2) + QTY3)as PCSQTY "
+        com1 = com1 & "FROM (SELECT x.DOC_NO,x.SKU,x.QTY1,x.QTY2,x.QTY3,z.SELL_FACTOR1,z.SELL_FACTOR2 "
+        com1 = com1 & "FROM CASHMEMO_DETAIL x INNER JOIN SKU z ON x.SKU=z.SKU "
+        com1 = com1 & "WHERE x.SKU IN ("
 
         Dim totalrow As Integer = dgridSKU.RowCount - 1
-        Dim com2 As String
+        Dim com2, com3, sku As String
         Select Case rep_cond
             Case "AND"
                 If totalrow >= 2 Then
                     For i As Integer = 0 To totalrow
-                        Dim qty1, qty2, qty3 As String
+                        Dim qty1, qty2, qty3, pcsqty As String
                         If i = 0 Then
                             Dim r1 As String = dgridSKU.Rows(i).Cells(0).Value
                             Dim split = r1.Split("-")
                             'QTY1
                             If dgridSKU.Rows(i).Cells(1).Value > 0 Then
-                                qty1 = ">=" & dgridSKU.Rows(i).Cells(1).Value
+                                qty1 = dgridSKU.Rows(i).Cells(1).Value
                             Else
-                                qty1 = "= 0"
+                                qty1 = "0"
                             End If
                             'QTY2
                             If dgridSKU.Rows(i).Cells(2).Value > 0 Then
-                                qty2 = ">=" & dgridSKU.Rows(i).Cells(2).Value
+                                qty2 = dgridSKU.Rows(i).Cells(2).Value
                             Else
-                                qty2 = "= 0"
+                                qty2 = "0"
                             End If
                             'QTY3
                             If dgridSKU.Rows(i).Cells(3).Value > 0 Then
-                                qty3 = ">= " & dgridSKU.Rows(i).Cells(3).Value
+                                qty3 = dgridSKU.Rows(i).Cells(3).Value
                             Else
-                                qty3 = "= 0"
+                                qty3 = "0"
                             End If
-                            com2 = "SKU='" & split(0).ToString() & "' AND QTY1" & qty1 & " AND QTY2" & qty2 & " AND QTY3" & qty3
+                            sku = "'" & split(0).ToString() & "'"
+                            Dim min_qty_com, min_qty As String
+                            min_qty_com = "SELECT ((" & qty1 & " * SELL_FACTOR1) + (" & qty2 & " * SELL_FACTOR2) + " & qty3
+                            min_qty_com = min_qty_com & ") AS pcsqty FROM SKU WHERE SKU='" & split(0).ToString & "'"
+                            Try
+                                Get_dbCon()
+                                sqlcon.ConnectionString = readdata
+                                Dim sqlcom As New SqlCommand(min_qty_com, sqlcon)
+                                sqlcon.Open()
+                                min_qty = sqlcom.ExecuteScalar
+                                sqlcon.Close()
+                            Catch ex As Exception
+                                MessageBox.Show("Error On : " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            End Try
+                            com3 = "SKU='" & split(0).ToString() & "' AND PCSQTY >= " & min_qty
                             i = i + 1
                         End If
                         Dim r2 As String = dgridSKU.Rows(i).Cells(0).Value
                         Dim split2 = r2.Split("-")
                         If dgridSKU.Rows(i).Cells(1).Value > 0 Then
-                            qty1 = ">=" & dgridSKU.Rows(i).Cells(1).Value
+                            qty1 = dgridSKU.Rows(i).Cells(1).Value
                         Else
-                            qty1 = "= 0"
+                            qty1 = "0"
                         End If
                         'QTY2
                         If dgridSKU.Rows(i).Cells(2).Value > 0 Then
-                            qty2 = ">=" & dgridSKU.Rows(i).Cells(2).Value
+                            qty2 = dgridSKU.Rows(i).Cells(2).Value
                         Else
-                            qty2 = "= 0"
+                            qty2 = "0"
                         End If
                         'QTY3
                         If dgridSKU.Rows(i).Cells(3).Value > 0 Then
-                            qty3 = ">= " & dgridSKU.Rows(i).Cells(3).Value
+                            qty3 = dgridSKU.Rows(i).Cells(3).Value
                         Else
-                            qty3 = "= 0"
+                            qty3 = "0"
                         End If
-                        com2 = com2 & " AND SKU='" & split2(0).ToString() & "' AND QTY1" & qty1 & " AND QTY2" & qty2 & " AND QTY3" & qty3
+                        sku = sku & ",'" & split2(0).ToString() & "'"
+                        Dim min_qty_com2, min_qty2 As String
+                        min_qty_com2 = "SELECT ((" & qty1 & " * SELL_FACTOR1) + (" & qty2 & " * SELL_FACTOR2) + " & qty3
+                        min_qty_com2 = min_qty_com2 & ") AS pcsqty FROM SKU WHERE SKU='" & split2(0).ToString & "'"
+                        Try
+                            Get_dbCon()
+                            sqlcon.ConnectionString = readdata
+                            Dim sqlcom As New SqlCommand(min_qty_com2, sqlcon)
+                            sqlcon.Open()
+                            min_qty2 = sqlcom.ExecuteScalar
+                            sqlcon.Close()
+                        Catch ex As Exception
+                            MessageBox.Show("Error On : " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
+                        com3 = com3 & " AND SKU='" & split2(0).ToString() & "' AND PCSQTY >= " & min_qty2
                         i = i + 1
                     Next
-                    Dim com3 As String = com1 & com2
-                    com3 = com3 & " GROUP BY PJP) ts ON ts.pjp = a.PJP "
-                    com3 = com3 & "GROUP BY a.PJP, b.NAME,c.SDESC,f.JUM_OUT_BELI,g.JUM_INVOICE,ts.JUM_OUT,ts.JUM_INV"
+                    com2 = sku & ") GROUP BY x.DOC_NO,x.SKU,x.QTY1,x.QTY2,x.QTY3,z.SELL_FACTOR1,z.SELL_FACTOR2)gg) c ON a.DOC_NO = c.DOC_NO "
+                    com2 = com2 & "WHERE CONVERT(DATE,b.DOC_DATE) BETWEEN CONVERT (DATE,'" & datefrom & "') AND CONVERT(DATE,'" & dateto & "') "
+                    com2 = com2 & "AND b.SKU IN (" & sku & ") GROUP BY a.PJP,a.POP,b.DOC_NO,b.SKU,b.QTY1,b.QTY2,b.QTY3,c.PCSQTY) tt WHERE " & com3
+                    Dim comfinal As String = com1 & com2
+                    comfinal = comfinal & " GROUP BY PJP) ts ON ts.pjp = a.PJP "
+                    comfinal = comfinal & "GROUP BY a.PJP, b.NAME,c.SDESC,f.JUM_OUT_BELI,g.JUM_INVOICE,ts.JUM_OUT,ts.JUM_INV"
 
                     Dim comhead1 As String
                     comhead1 = "SELECT NAME as Name, (SELECT 'Achievement By Product') AS repname, (SELECT 'AND') AS condmin, "
@@ -176,7 +209,7 @@ Public Class frmABP
                         frmRepABP.dtHeadRepBindingSource.DataSource = dsHeadRep
 
                         Dim dsRep As New DataSet
-                        Dim sComRep As New SqlCommand(com3, sqlcon)
+                        Dim sComRep As New SqlCommand(comfinal, sqlcon)
                         Dim saRep As New SqlDataAdapter(sComRep)
                         saRep.Fill(dsRep)
                         dsRep.Tables(0).TableName = "dtRep"
@@ -209,10 +242,28 @@ Public Class frmABP
                     Else
                         qty3 = "= 0"
                     End If
-                    com2 = "SKU='" & split(0).ToString() & "' AND QTY1" & qty1 & " AND QTY2" & qty2 & " AND QTY3" & qty3
-                    Dim com3 As String = com1 & com2
-                    com3 = com3 & " GROUP BY PJP) ts ON ts.pjp = a.PJP "
-                    com3 = com3 & "GROUP BY a.PJP, b.NAME,c.SDESC,f.JUM_OUT_BELI,g.JUM_INVOICE,ts.JUM_OUT,ts.JUM_INV"
+                    sku = "'" & split(0).ToString() & "'"
+                    Dim min_qty_com, min_qty As String
+                    min_qty_com = "SELECT ((" & qty1 & " * SELL_FACTOR1) + (" & qty2 & " * SELL_FACTOR2) + " & qty3
+                    min_qty_com = min_qty_com & ") AS pcsqty FROM SKU WHERE SKU='" & split(0).ToString & "'"
+                    Try
+                        Get_dbCon()
+                        sqlcon.ConnectionString = readdata
+                        Dim sqlcom As New SqlCommand(min_qty_com, sqlcon)
+                        sqlcon.Open()
+                        min_qty = sqlcom.ExecuteScalar
+                        sqlcon.Close()
+                    Catch ex As Exception
+                        MessageBox.Show("Error On : " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                    com3 = "SKU='" & split(0).ToString() & "' AND PCSQTY >= " & min_qty
+                    com2 = sku & ") GROUP BY x.DOC_NO,x.SKU,x.QTY1,x.QTY2,x.QTY3,z.SELL_FACTOR1,z.SELL_FACTOR2)gg) c ON a.DOC_NO = c.DOC_NO "
+                    com2 = com2 & "WHERE CONVERT(DATE,b.DOC_DATE) BETWEEN CONVERT (DATE,'" & datefrom & "') AND CONVERT(DATE,'" & dateto & "') "
+                    com2 = com2 & "AND b.SKU IN (" & sku & ") GROUP BY a.PJP,a.POP,b.DOC_NO,b.SKU,b.QTY1,b.QTY2,b.QTY3,c.PCSQTY) tt WHERE " & com3
+
+                    Dim comfinal As String = com1 & com2
+                    comfinal = comfinal & " GROUP BY PJP) ts ON ts.pjp = a.PJP "
+                    comfinal = comfinal & "GROUP BY a.PJP, b.NAME,c.SDESC,f.JUM_OUT_BELI,g.JUM_INVOICE,ts.JUM_OUT,ts.JUM_INV"
 
                     Dim comhead1 As String
                     comhead1 = "SELECT NAME as Name, (SELECT 'Achievement By Product') AS repname, (SELECT 'AND') AS condmin, "
@@ -247,59 +298,90 @@ Public Class frmABP
             Case "OR"
                 If totalrow >= 2 Then
                     For i As Integer = 0 To totalrow
-                        Dim qty1, qty2, qty3 As String
+                        Dim qty1, qty2, qty3, pcsqty As String
                         If i = 0 Then
                             Dim r1 As String = dgridSKU.Rows(i).Cells(0).Value
                             Dim split = r1.Split("-")
                             'QTY1
                             If dgridSKU.Rows(i).Cells(1).Value > 0 Then
-                                qty1 = ">=" & dgridSKU.Rows(i).Cells(1).Value
+                                qty1 = dgridSKU.Rows(i).Cells(1).Value
                             Else
-                                qty1 = "= 0"
+                                qty1 = "0"
                             End If
                             'QTY2
                             If dgridSKU.Rows(i).Cells(2).Value > 0 Then
-                                qty2 = ">=" & dgridSKU.Rows(i).Cells(2).Value
+                                qty2 = dgridSKU.Rows(i).Cells(2).Value
                             Else
-                                qty2 = "= 0"
+                                qty2 = "0"
                             End If
                             'QTY3
                             If dgridSKU.Rows(i).Cells(3).Value > 0 Then
-                                qty3 = ">= " & dgridSKU.Rows(i).Cells(3).Value
+                                qty3 = dgridSKU.Rows(i).Cells(3).Value
                             Else
-                                qty3 = "= 0"
+                                qty3 = "0"
                             End If
-                            com2 = "SKU='" & split(0).ToString() & "' AND QTY1" & qty1 & " AND QTY2" & qty2 & " AND QTY3" & qty3
+                            sku = "'" & split(0).ToString() & "'"
+                            Dim min_qty_com, min_qty As String
+                            min_qty_com = "SELECT ((" & qty1 & " * SELL_FACTOR1) + (" & qty2 & " * SELL_FACTOR2) + " & qty3
+                            min_qty_com = min_qty_com & ") AS pcsqty FROM SKU WHERE SKU='" & split(0).ToString & "'"
+                            Try
+                                Get_dbCon()
+                                sqlcon.ConnectionString = readdata
+                                Dim sqlcom As New SqlCommand(min_qty_com, sqlcon)
+                                sqlcon.Open()
+                                min_qty = sqlcom.ExecuteScalar
+                                sqlcon.Close()
+                            Catch ex As Exception
+                                MessageBox.Show("Error On : " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            End Try
+                            com3 = "SKU='" & split(0).ToString() & "' AND PCSQTY >= " & min_qty
                             i = i + 1
                         End If
                         Dim r2 As String = dgridSKU.Rows(i).Cells(0).Value
                         Dim split2 = r2.Split("-")
                         If dgridSKU.Rows(i).Cells(1).Value > 0 Then
-                            qty1 = ">=" & dgridSKU.Rows(i).Cells(1).Value
+                            qty1 = dgridSKU.Rows(i).Cells(1).Value
                         Else
-                            qty1 = "= 0"
+                            qty1 = "0"
                         End If
                         'QTY2
                         If dgridSKU.Rows(i).Cells(2).Value > 0 Then
-                            qty2 = ">=" & dgridSKU.Rows(i).Cells(2).Value
+                            qty2 = dgridSKU.Rows(i).Cells(2).Value
                         Else
-                            qty2 = "= 0"
+                            qty2 = "0"
                         End If
                         'QTY3
                         If dgridSKU.Rows(i).Cells(3).Value > 0 Then
-                            qty3 = ">= " & dgridSKU.Rows(i).Cells(3).Value
+                            qty3 = dgridSKU.Rows(i).Cells(3).Value
                         Else
-                            qty3 = "= 0"
+                            qty3 = "0"
                         End If
-                        com2 = com2 & " OR SKU='" & split2(0).ToString() & "' AND QTY1" & qty1 & " AND QTY2" & qty2 & " AND QTY3" & qty3
+                        sku = sku & ",'" & split2(0).ToString() & "'"
+                        Dim min_qty_com2, min_qty2 As String
+                        min_qty_com2 = "SELECT ((" & qty1 & " * SELL_FACTOR1) + (" & qty2 & " * SELL_FACTOR2) + " & qty3
+                        min_qty_com2 = min_qty_com2 & ") AS pcsqty FROM SKU WHERE SKU='" & split2(0).ToString & "'"
+                        Try
+                            Get_dbCon()
+                            sqlcon.ConnectionString = readdata
+                            Dim sqlcom As New SqlCommand(min_qty_com2, sqlcon)
+                            sqlcon.Open()
+                            min_qty2 = sqlcom.ExecuteScalar()
+                            sqlcon.Close()
+                        Catch ex As Exception
+                            MessageBox.Show("Error On : " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
+                        com3 = com3 & " OR SKU='" & split2(0).ToString() & "' AND PCSQTY >= " & min_qty2
                         i = i + 1
                     Next
-                    Dim com3 As String = com1 & com2
-                    com3 = com3 & " GROUP BY PJP) ts ON ts.pjp = a.PJP "
-                    com3 = com3 & "GROUP BY a.PJP, b.NAME,c.SDESC,f.JUM_OUT_BELI,g.JUM_INVOICE,ts.JUM_OUT,ts.JUM_INV"
+                    com2 = sku & ") GROUP BY x.DOC_NO,x.SKU,x.QTY1,x.QTY2,x.QTY3,z.SELL_FACTOR1,z.SELL_FACTOR2)gg) c ON a.DOC_NO = c.DOC_NO "
+                    com2 = com2 & "WHERE CONVERT(DATE,b.DOC_DATE) BETWEEN CONVERT (DATE,'" & datefrom & "') AND CONVERT(DATE,'" & dateto & "') "
+                    com2 = com2 & "AND b.SKU IN (" & sku & ") GROUP BY a.PJP,a.POP,b.DOC_NO,b.SKU,b.QTY1,b.QTY2,b.QTY3,c.PCSQTY) tt WHERE " & com3
+                    Dim comfinal As String = com1 & com2
+                    comfinal = comfinal & " GROUP BY PJP) ts ON ts.pjp = a.PJP "
+                    comfinal = comfinal & "GROUP BY a.PJP, b.NAME,c.SDESC,f.JUM_OUT_BELI,g.JUM_INVOICE,ts.JUM_OUT,ts.JUM_INV"
 
                     Dim comhead1 As String
-                    comhead1 = "SELECT NAME as Name, (SELECT 'Achievement By Product') AS repname, (SELECT 'OR') AS condmin, "
+                    comhead1 = "SELECT NAME as Name, (SELECT 'Achievement By Product') AS repname, (SELECT 'AND') AS condmin, "
                     comhead1 = comhead1 & "(SELECT '" & dtpfrom_ABP.Value.ToString("dd MMM yyyy") & " - " & dtpTo_ABP.Value.ToString("dd MMM yyyy")
                     comhead1 = comhead1 & "') AS Tanggal FROM DISTRIBUTOR"
 
@@ -315,7 +397,7 @@ Public Class frmABP
                         frmRepABP.dtHeadRepBindingSource.DataSource = dsHeadRep
 
                         Dim dsRep As New DataSet
-                        Dim sComRep As New SqlCommand(com3, sqlcon)
+                        Dim sComRep As New SqlCommand(comfinal, sqlcon)
                         Dim saRep As New SqlDataAdapter(sComRep)
                         saRep.Fill(dsRep)
                         dsRep.Tables(0).TableName = "dtRep"
@@ -348,13 +430,31 @@ Public Class frmABP
                     Else
                         qty3 = "= 0"
                     End If
-                    com2 = "SKU='" & split(0).ToString() & "' AND QTY1" & qty1 & " AND QTY2" & qty2 & " AND QTY3" & qty3
-                    Dim com3 As String = com1 & com2
-                    com3 = com3 & " GROUP BY PJP) ts ON ts.pjp = a.PJP "
-                    com3 = com3 & "GROUP BY a.PJP, b.NAME,c.SDESC,f.JUM_OUT_BELI,g.JUM_INVOICE,ts.JUM_OUT,ts.JUM_INV"
+                    sku = "'" & split(0).ToString() & "'"
+                    Dim min_qty_com, min_qty As String
+                    min_qty_com = "SELECT ((" & qty1 & " * SELL_FACTOR1) + (" & qty2 & " * SELL_FACTOR2) + " & qty3
+                    min_qty_com = min_qty_com & ") AS pcsqty FROM SKU WHERE SKU='" & split(0).ToString & "'"
+                    Try
+                        Get_dbCon()
+                        sqlcon.ConnectionString = readdata
+                        Dim sqlcom As New SqlCommand(min_qty_com, sqlcon)
+                        sqlcon.Open()
+                        min_qty = sqlcom.ExecuteScalar
+                        sqlcon.Close()
+                    Catch ex As Exception
+                        MessageBox.Show("Error On : " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                    com3 = "SKU='" & split(0).ToString() & "' AND PCSQTY >= " & min_qty
+                    com2 = sku & ") GROUP BY x.DOC_NO,x.SKU,x.QTY1,x.QTY2,x.QTY3,z.SELL_FACTOR1,z.SELL_FACTOR2)gg) c ON a.DOC_NO = c.DOC_NO "
+                    com2 = com2 & "WHERE CONVERT(DATE,b.DOC_DATE) BETWEEN CONVERT (DATE,'" & datefrom & "') AND CONVERT(DATE,'" & dateto & "') "
+                    com2 = com2 & "AND b.SKU IN (" & sku & ") GROUP BY a.PJP,a.POP,b.DOC_NO,b.SKU,b.QTY1,b.QTY2,b.QTY3,c.PCSQTY) tt WHERE " & com3
+
+                    Dim comfinal As String = com1 & com2
+                    comfinal = comfinal & " GROUP BY PJP) ts ON ts.pjp = a.PJP "
+                    comfinal = comfinal & "GROUP BY a.PJP, b.NAME,c.SDESC,f.JUM_OUT_BELI,g.JUM_INVOICE,ts.JUM_OUT,ts.JUM_INV"
 
                     Dim comhead1 As String
-                    comhead1 = "SELECT NAME as Name, (SELECT 'Achievement By Product') AS repname, (SELECT 'OR') AS condmin, "
+                    comhead1 = "SELECT NAME as Name, (SELECT 'Achievement By Product') AS repname, (SELECT 'AND') AS condmin, "
                     comhead1 = comhead1 & "(SELECT '" & dtpfrom_ABP.Value.ToString("dd MMM yyyy") & " - " & dtpTo_ABP.Value.ToString("dd MMM yyyy")
                     comhead1 = comhead1 & "') AS Tanggal FROM DISTRIBUTOR"
 
@@ -380,6 +480,7 @@ Public Class frmABP
                     Catch ex As Exception
                         MessageBox.Show("Error On Loading Report : " & ex.Message.ToString, "Error Loading Report", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
+
                 End If
         End Select
         sqlcon.Close()
