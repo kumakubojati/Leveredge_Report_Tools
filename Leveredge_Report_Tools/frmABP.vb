@@ -29,7 +29,7 @@ Public Class frmABP
 
     Private Sub init_dgridSKU()
 
-        Dim com As String = "SELECT SKU+' - '+LDESC as SKU FROM SKU ORDER BY SKU"
+        Dim com As String = "SELECT SKU+' - '+LDESC as SKU FROM SKU ORDER BY LDESC"
 
         Try
             Dim cmb As New DataGridViewComboBoxColumn()
@@ -96,7 +96,7 @@ Public Class frmABP
         com1 = com1 & "INNER JOIN (SELECT PJP,COUNT(DOC_NO) AS JUM_INVOICE FROM CASHMEMO "
         com1 = com1 & "WHERE CONVERT(DATE,DOC_DATE) BETWEEN CONVERT (DATE,'" & datefrom & "') AND CONVERT(DATE,'" & dateto & "') "
         com1 = com1 & "AND REF_DOC_NO IS NOT NULL AND REF_DOCUMENT='GN' GROUP BY PJP) g ON a.pjp = g.PJP FULL OUTER JOIN "
-        com1 = com1 & "(SELECT DISTINCT PJP, COUNT(DISTINCT JUM_OUT) AS JUM_OUT, COUNT(DOC_NO) AS JUM_INV FROM("
+        com1 = com1 & "(SELECT DISTINCT PJP, COUNT(DISTINCT JUM_OUT) AS JUM_OUT, COUNT(DISTINCT DOC_NO) AS JUM_INV FROM("
         com1 = com1 & "SELECT a.PJP,a.POP AS JUM_OUT, b.DOC_NO as DOC_NO,b.SKU, c.PCSQTY "
         com1 = com1 & "FROM CASHMEMO a INNER JOIN CASHMEMO_DETAIL b ON a.DOC_NO = b.DOC_NO "
         com1 = com1 & "INNER JOIN (SELECT DOC_NO,SKU,((QTY1*SELL_FACTOR1) + (QTY2*SELL_FACTOR2) + QTY3)as PCSQTY "

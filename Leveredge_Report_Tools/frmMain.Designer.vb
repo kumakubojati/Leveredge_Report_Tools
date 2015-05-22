@@ -32,6 +32,7 @@ Partial Class frmMain
         Me.WeeklySalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesPerformanceReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DailySalesSummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ARReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StockToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -42,7 +43,6 @@ Partial Class frmMain
         Me.ReportGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AchievementByOutletToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MSMain.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -107,6 +107,12 @@ Partial Class frmMain
         Me.DailySalesSummaryToolStripMenuItem.Name = "DailySalesSummaryToolStripMenuItem"
         Me.DailySalesSummaryToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
         Me.DailySalesSummaryToolStripMenuItem.Text = "Daily Sales Summary"
+        '
+        'DailySalesAndPaymentSummaryReportToolStripMenuItem
+        '
+        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem.Name = "DailySalesAndPaymentSummaryReportToolStripMenuItem"
+        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
+        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem.Text = "Daily Sales And Payment Summary Report"
         '
         'ARReportToolStripMenuItem
         '
@@ -174,13 +180,6 @@ Partial Class frmMain
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
-        '
-        'DailySalesAndPaymentSummaryReportToolStripMenuItem
-        '
-        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem.Name = "DailySalesAndPaymentSummaryReportToolStripMenuItem"
-        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
-        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem.Text = "Daily Sales And Payment Summary Report"
-        Me.DailySalesAndPaymentSummaryReportToolStripMenuItem.Visible = False
         '
         'frmMain
         '

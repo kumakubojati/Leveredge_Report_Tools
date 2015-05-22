@@ -46,7 +46,6 @@ Public Class frmMain
     End Sub
 
     Private Sub DailySalesAndPaymentSummaryReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DailySalesAndPaymentSummaryReportToolStripMenuItem.Click
-        'frmDSPS.Show()
-        MessageBox.Show("Under Maintenance, Wait for the new Release", "Hello", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        frmDSPS.Show()
     End Sub
 End Class

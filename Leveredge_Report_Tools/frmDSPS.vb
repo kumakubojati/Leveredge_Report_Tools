@@ -100,19 +100,51 @@ Public Class frmDSPS
 
                     xlWsheetDSPS.Range("C6:AD6").Value = ""
 
-                    Dim xlfunc As Object
-                    xlfunc = xlAppDSPS.WorksheetFunction
-                    Dim lnCol As Long
-                    Dim i, j As Long
-                    Dim rnarea As Object = xlWsheetDSPS.UsedRange
+                    'Dim xlfunc As Object
+                    'xlfunc = xlAppDSPS.WorksheetFunction
+                    'Dim lnCol As Long
+                    'Dim i, j As Long
+                    'Dim rnarea As Object = xlWsheetDSPS.UsedRange
 
-                    lnCol = rnarea.Columns.Count
-                    For i = lnCol To 1 Step -1
-                        If xlfunc.CountA(rnarea.Columns(i)) = 0 Then
-                            rnarea.Columns(i).Delete()
-                            j = j + 1
-                        End If
-                    Next
+                    'lnCol = rnarea.Columns.Count
+                    'For i = lnCol To 1 Step -1
+                    '    If xlfunc.CountA(rnarea.Columns(i)) = 0 Then
+                    '        rnarea.Columns(i).Delete()
+                    '        j = j + 1
+                    '    End If
+                    'Next
+
+                    xlWsheetDSPS.Range("B:C").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("C:D").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("D:K").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("E:E").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("F:G").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("G:H").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("H:I").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("I:J").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("J:J").EntireColumn.Delete()
+
+                    xlWsheetDSPS.Range("D8").Copy(xlWsheetDSPS.Range("A8"))
+                    xlWsheetDSPS.Range("A8").Value = "Date"
+                    xlWsheetDSPS.Range("A8").Font.Color = System.Drawing.ColorTranslator.ToOle(Color.White)
+                    xlWsheetDSPS.Range("A8").HorizontalAlignment = 3
+
+                    xlWsheetDSPS.Range("D8").Copy(xlWsheetDSPS.Range("B8"))
+                    xlWsheetDSPS.Range("B8").Value = "Salesman Code"
+                    xlWsheetDSPS.Range("B8").Font.Color = System.Drawing.ColorTranslator.ToOle(Color.White)
+                    xlWsheetDSPS.Range("B8").HorizontalAlignment = 3
+
+                    xlWsheetDSPS.Range("D8").Copy(xlWsheetDSPS.Range("C8"))
+                    xlWsheetDSPS.Range("C8").Value = "Salesman Name"
+                    xlWsheetDSPS.Range("C8").Font.Color = System.Drawing.ColorTranslator.ToOle(Color.White)
+                    xlWsheetDSPS.Range("C8").HorizontalAlignment = 3
+
+                    xlWsheetDSPS.Range("D8").Copy(xlWsheetDSPS.Range("K8"))
+                    xlWsheetDSPS.Range("K8").Value = "Setor"
+                    xlWsheetDSPS.Range("K8").Font.Color = System.Drawing.ColorTranslator.ToOle(Color.White)
+                    xlWsheetDSPS.Range("K8").HorizontalAlignment = 3
+
+                    xlWsheetDSPS.Range("L8").Value = "Selisih"
 
                     xlWbookDSPS.SaveAs(txtDSPS_dest.Text)
                     xlWbookDSPS.Close()
@@ -174,19 +206,51 @@ Public Class frmDSPS
 
                     xlWsheetDSPS.Range("B6:AC6").Value = ""
 
-                    Dim xlfunc As Object
-                    xlfunc = xlAppDSPS.WorksheetFunction
-                    Dim lnCol As Long
-                    Dim i, j As Long
-                    Dim rnarea As Excel.Range = xlWsheetDSPS.UsedRange
+                    'Dim xlfunc As Object
+                    'xlfunc = xlAppDSPS.WorksheetFunction
+                    'Dim lnCol As Long
+                    'Dim i, j As Long
+                    'Dim rnarea As Excel.Range = xlWsheetDSPS.UsedRange
 
-                    lnCol = rnarea.Columns.Count
-                    For i = lnCol To 1 Step -1
-                        If xlfunc.CountA(rnarea.Columns(i)) = 0 Then
-                            rnarea.Columns(i).Delete()
-                            j = j + 1
-                        End If
-                    Next
+                    'lnCol = rnarea.Columns.Count
+                    'For i = lnCol To 1 Step -1
+                    '    If xlfunc.CountA(rnarea.Columns(i)) = 0 Then
+                    '        rnarea.Columns(i).Delete()
+                    '        j = j + 1
+                    '    End If
+                    'Next
+
+                    xlWsheetDSPS.Range("B:C").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("C:D").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("D:K").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("E:E").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("F:G").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("G:H").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("H:I").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("I:J").EntireColumn.Delete()
+                    xlWsheetDSPS.Range("J:J").EntireColumn.Delete()
+
+                    xlWsheetDSPS.Range("D8").Copy(xlWsheetDSPS.Range("A8"))
+                    xlWsheetDSPS.Range("A8").Value = "Date"
+                    xlWsheetDSPS.Range("A8").Font.Color = System.Drawing.ColorTranslator.ToOle(Color.White)
+                    xlWsheetDSPS.Range("A8").HorizontalAlignment = 3
+
+                    xlWsheetDSPS.Range("D8").Copy(xlWsheetDSPS.Range("B8"))
+                    xlWsheetDSPS.Range("B8").Value = "Salesman Code"
+                    xlWsheetDSPS.Range("B8").Font.Color = System.Drawing.ColorTranslator.ToOle(Color.White)
+                    xlWsheetDSPS.Range("B8").HorizontalAlignment = 3
+
+                    xlWsheetDSPS.Range("D8").Copy(xlWsheetDSPS.Range("C8"))
+                    xlWsheetDSPS.Range("C8").Value = "Salesman Name"
+                    xlWsheetDSPS.Range("C8").Font.Color = System.Drawing.ColorTranslator.ToOle(Color.White)
+                    xlWsheetDSPS.Range("C8").HorizontalAlignment = 3
+
+                    xlWsheetDSPS.Range("D8").Copy(xlWsheetDSPS.Range("K8"))
+                    xlWsheetDSPS.Range("K8").Value = "Setor"
+                    xlWsheetDSPS.Range("K8").Font.Color = System.Drawing.ColorTranslator.ToOle(Color.White)
+                    xlWsheetDSPS.Range("K8").HorizontalAlignment = 3
+
+                    xlWsheetDSPS.Range("L8").Value = "Selisih"
 
                     xlWbookDSPS.SaveAs(txtDSPS_dest.Text)
                     xlWbookDSPS.Close()
