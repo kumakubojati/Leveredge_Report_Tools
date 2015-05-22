@@ -48,4 +48,8 @@ Public Class frmMain
     Private Sub DailySalesAndPaymentSummaryReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DailySalesAndPaymentSummaryReportToolStripMenuItem.Click
         frmDSPS.Show()
     End Sub
+
+    Private Sub SalesPerformanceIncentiveReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesPerformanceIncentiveReportToolStripMenuItem.Click
+        frmSPIR.Show()
+    End Sub
 End Class

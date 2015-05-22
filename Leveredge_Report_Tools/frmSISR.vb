@@ -118,7 +118,7 @@ Public Class frmSISR
 
                             xlWsheetSISR.Range("A9").EntireRow.Delete()
 
-                            Dim xlfunc As Object
+                            Dim xlfunc As Excel.WorksheetFunction
                             xlfunc = xlAppSISR.WorksheetFunction
                             Dim lnCol As Long
                             Dim i, j As Long
@@ -194,7 +194,7 @@ Public Class frmSISR
 
                             xlWsheetSISR.Range("A9").EntireRow.Delete()
 
-                            Dim xlfunc As Object
+                            Dim xlfunc As Excel.WorksheetFunction
                             xlfunc = xlAppSISR.WorksheetFunction
                             Dim lnCol As Long
                             Dim i, j As Long

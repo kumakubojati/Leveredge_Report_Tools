@@ -92,24 +92,23 @@ Public Class frmAR
                     paramhead1 = paramhead1 & xlWsheetAR.Range("K6").Value & " " & xlWsheetAR.Range("O6").Value
 
                     paramhead2 = xlWsheetAR.Range("B7").Value & " " & xlWsheetAR.Range("F7").Value & "; "
-                    paramhead2 = paramhead2 & xlWsheetAR.Range("K7").Value & " " & xlWsheetAR.Range("O7").Value
+                    paramhead2 = paramhead2 & xlWsheetAR.Range("K7").Value & " " & xlWsheetAR.Range("O7").Value & "; "
                     paramhead2 = paramhead2 & xlWsheetAR.Range("R7").Value & " " & xlWsheetAR.Range("W7").Value
 
                     paramhead3 = xlWsheetAR.Range("C9").Value & " " & xlWsheetAR.Range("F9").Value & "; "
                     paramhead3 = paramhead3 & xlWsheetAR.Range("J9").Value & " " & xlWsheetAR.Range("O9").Value
 
-                    xlWsheetAR.Range("A5").Value = paramhead1
+                    xlWsheetAR.Range("A4").Value = paramhead1
+                    xlWsheetAR.Range("A4").EntireRow.Font.Name = "Calibri"
+                    xlWsheetAR.Range("A5").Value = paramhead2
                     xlWsheetAR.Range("A5").EntireRow.Font.Name = "Calibri"
-                    xlWsheetAR.Range("A6").Value = paramhead2
+                    xlWsheetAR.Range("A6").Value = paramhead3
                     xlWsheetAR.Range("A6").EntireRow.Font.Name = "Calibri"
-                    xlWsheetAR.Range("A7").Value = paramhead3
-                    xlWsheetAR.Range("A7").EntireRow.Font.Name = "Calibri"
 
-                    xlWsheetAR.Range("B6:Z6").Value = ""
-                    xlWsheetAR.Range("B7:Z7").Value = ""
-                    xlWsheetAR.Range("B9:Z9").Value = ""
+                    xlWsheetAR.Range("B6:W7").Value = ""
+                    xlWsheetAR.Range("A8:A9").EntireRow.Delete()
 
-                    Dim xlfunc As Object
+                    Dim xlfunc As Excel.WorksheetFunction
                     xlfunc = xlAppAR.WorksheetFunction
                     Dim lnCol As Long
                     Dim i, j As Long
@@ -122,9 +121,6 @@ Public Class frmAR
                             j = j + 1
                         End If
                     Next
-
-                    xlWsheetAR.Range("A8").EntireRow.Delete()
-                    xlWsheetAR.Range("A9").EntireRow.Delete()
 
                     xlWbookAR.SaveAs(txtAR_dest.Text)
                     xlWbookAR.Close()
@@ -174,22 +170,25 @@ Public Class frmAR
                     xlWsheetAR.Range("A2").RowHeight = 27
 
                     Dim paramhead1, paramhead2, paramhead3 As String
-                    paramhead1 = xlWsheetAR.Range("C6").Value & " " & xlWsheetAR.Range("E6").Value & "; "
-                    paramhead1 = paramhead1 & xlWsheetAR.Range("H6").Value & " " & xlWsheetAR.Range("J6").Value
+                    paramhead1 = xlWsheetAR.Range("B6").Value & " " & xlWsheetAR.Range("F6").Value & "; "
+                    paramhead1 = paramhead1 & xlWsheetAR.Range("K6").Value & " " & xlWsheetAR.Range("O6").Value
 
-                    paramhead2 = xlWsheetAR.Range("M6").Value & " " & xlWsheetAR.Range("O6").Value & "; "
-                    paramhead2 = paramhead2 & xlWsheetAR.Range("T6").Value & " " & xlWsheetAR.Range("W6").Value
+                    paramhead2 = xlWsheetAR.Range("B7").Value & " " & xlWsheetAR.Range("F7").Value & "; "
+                    paramhead2 = paramhead2 & xlWsheetAR.Range("K7").Value & " " & xlWsheetAR.Range("O7").Value & "; "
+                    paramhead2 = paramhead2 & xlWsheetAR.Range("R7").Value & " " & xlWsheetAR.Range("W7").Value
 
-                    paramhead3 = xlWsheetAR.Range("Z6").Value & " " & xlWsheetAR.Range("AA6").Value & "; "                 
+                    paramhead3 = xlWsheetAR.Range("C9").Value & " " & xlWsheetAR.Range("F9").Value & "; "
+                    paramhead3 = paramhead3 & xlWsheetAR.Range("J9").Value & " " & xlWsheetAR.Range("O9").Value
 
-                    xlWsheetAR.Range("A5").Value = paramhead1
+                    xlWsheetAR.Range("A4").Value = paramhead1
+                    xlWsheetAR.Range("A4").EntireRow.Font.Name = "Calibri"
+                    xlWsheetAR.Range("A5").Value = paramhead2
                     xlWsheetAR.Range("A5").EntireRow.Font.Name = "Calibri"
-                    xlWsheetAR.Range("A6").Value = paramhead2
+                    xlWsheetAR.Range("A6").Value = paramhead3
                     xlWsheetAR.Range("A6").EntireRow.Font.Name = "Calibri"
-                    xlWsheetAR.Range("A7").Value = paramhead3
-                    xlWsheetAR.Range("A7").EntireRow.Font.Name = "Calibri"
 
-                    xlWsheetAR.Range("B6:AA6").Value = ""
+                    xlWsheetAR.Range("B6:W7").Value = ""
+                    xlWsheetAR.Range("A8:A9").EntireRow.Delete()
 
                     Dim xlfunc As Excel.WorksheetFunction
                     xlfunc = xlAppAR.WorksheetFunction
@@ -204,9 +203,6 @@ Public Class frmAR
                             j = j + 1
                         End If
                     Next
-
-                    xlWsheetAR.Range("A8").EntireRow.Delete()
-                    xlWsheetAR.Range("A9").EntireRow.Delete()
 
                     xlWbookAR.SaveAs(txtAR_dest.Text)
                     xlWbookAR.Close()

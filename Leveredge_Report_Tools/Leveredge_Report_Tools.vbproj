@@ -180,6 +180,12 @@
     <Compile Include="frmSISR.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSPIR.Designer.vb">
+      <DependentUpon>frmSPIR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSPIR.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmSPR.Designer.vb">
       <DependentUpon>frmSPR.vb</DependentUpon>
     </Compile>
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSISR.resx">
       <DependentUpon>frmSISR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSPIR.resx">
+      <DependentUpon>frmSPIR.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSPR.resx">
       <DependentUpon>frmSPR.vb</DependentUpon>

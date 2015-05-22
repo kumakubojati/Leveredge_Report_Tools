@@ -34,10 +34,10 @@ Public Class frmDSPS
         Dim datenow As DateTime = DateTime.Now
         Dim filename As String = "Neutralize_DSPS_" & datenow.ToString("ddMMyyyy_HHmm")
         SFD_DSPS.FileName = filename
-        Dim DSMpath_Dest As String
+        Dim DSPSpath_Dest As String
         If SFD_DSPS.ShowDialog = DialogResult.OK Then
-            DSMpath_Dest = SFD_DSPS.FileName
-            txtDSPS_dest.Text = DSMpath_Dest
+            DSPSpath_Dest = SFD_DSPS.FileName
+            txtDSPS_dest.Text = DSPSpath_Dest
         End If
         If txtDSPS_src.Text <> "" Then
             btnNeu_DSPS.Enabled = True

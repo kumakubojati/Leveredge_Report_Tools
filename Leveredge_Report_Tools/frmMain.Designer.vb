@@ -43,6 +43,7 @@ Partial Class frmMain
         Me.ReportGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AchievementByOutletToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.SalesPerformanceIncentiveReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MSMain.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -85,7 +86,7 @@ Partial Class frmMain
         '
         'SalesToolStripMenuItem
         '
-        Me.SalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WeeklySalesToolStripMenuItem, Me.SalesPerformanceReportToolStripMenuItem, Me.DailySalesSummaryToolStripMenuItem, Me.DailySalesAndPaymentSummaryReportToolStripMenuItem, Me.ARReportToolStripMenuItem, Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem})
+        Me.SalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WeeklySalesToolStripMenuItem, Me.SalesPerformanceReportToolStripMenuItem, Me.SalesPerformanceIncentiveReportToolStripMenuItem, Me.DailySalesSummaryToolStripMenuItem, Me.DailySalesAndPaymentSummaryReportToolStripMenuItem, Me.ARReportToolStripMenuItem, Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem})
         Me.SalesToolStripMenuItem.Name = "SalesToolStripMenuItem"
         Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SalesToolStripMenuItem.Text = "Sales"
@@ -181,6 +182,12 @@ Partial Class frmMain
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
+        'SalesPerformanceIncentiveReportToolStripMenuItem
+        '
+        Me.SalesPerformanceIncentiveReportToolStripMenuItem.Name = "SalesPerformanceIncentiveReportToolStripMenuItem"
+        Me.SalesPerformanceIncentiveReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
+        Me.SalesPerformanceIncentiveReportToolStripMenuItem.Text = "Sales Performance Incentive Report"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -222,5 +229,6 @@ Partial Class frmMain
     Friend WithEvents ARReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SummaryInvoiceAndSalesReturnReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DailySalesAndPaymentSummaryReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SalesPerformanceIncentiveReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
