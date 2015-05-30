@@ -31,19 +31,23 @@ Partial Class frmMain
         Me.SalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WeeklySalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesPerformanceReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SalesPerformanceIncentiveReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DailySalesSummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DailySalesAndPaymentSummaryReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ARReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TurnOverReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StockToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DistributorStockReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DailyStockMutationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PromotionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListOfPromotionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListOfInvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AchievementByOutletToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.SalesPerformanceIncentiveReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ServiceLevelReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MSMain.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -60,7 +64,7 @@ Partial Class frmMain
         '
         'ReportNeutralizerToolStripMenuItem
         '
-        Me.ReportNeutralizerToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterToolStripMenuItem, Me.SalesToolStripMenuItem, Me.StockToolStripMenuItem, Me.PromotionToolStripMenuItem})
+        Me.ReportNeutralizerToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterToolStripMenuItem, Me.SalesToolStripMenuItem, Me.StockToolStripMenuItem, Me.PromotionToolStripMenuItem, Me.CustomToolStripMenuItem})
         Me.ReportNeutralizerToolStripMenuItem.Name = "ReportNeutralizerToolStripMenuItem"
         Me.ReportNeutralizerToolStripMenuItem.Size = New System.Drawing.Size(119, 20)
         Me.ReportNeutralizerToolStripMenuItem.Text = "Report Neutralizer"
@@ -86,7 +90,7 @@ Partial Class frmMain
         '
         'SalesToolStripMenuItem
         '
-        Me.SalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WeeklySalesToolStripMenuItem, Me.SalesPerformanceReportToolStripMenuItem, Me.SalesPerformanceIncentiveReportToolStripMenuItem, Me.DailySalesSummaryToolStripMenuItem, Me.DailySalesAndPaymentSummaryReportToolStripMenuItem, Me.ARReportToolStripMenuItem, Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem})
+        Me.SalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WeeklySalesToolStripMenuItem, Me.SalesPerformanceReportToolStripMenuItem, Me.SalesPerformanceIncentiveReportToolStripMenuItem, Me.DailySalesSummaryToolStripMenuItem, Me.DailySalesAndPaymentSummaryReportToolStripMenuItem, Me.ARReportToolStripMenuItem, Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem, Me.TurnOverReportToolStripMenuItem})
         Me.SalesToolStripMenuItem.Name = "SalesToolStripMenuItem"
         Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SalesToolStripMenuItem.Text = "Sales"
@@ -102,6 +106,12 @@ Partial Class frmMain
         Me.SalesPerformanceReportToolStripMenuItem.Name = "SalesPerformanceReportToolStripMenuItem"
         Me.SalesPerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
         Me.SalesPerformanceReportToolStripMenuItem.Text = "Sales Performance Report"
+        '
+        'SalesPerformanceIncentiveReportToolStripMenuItem
+        '
+        Me.SalesPerformanceIncentiveReportToolStripMenuItem.Name = "SalesPerformanceIncentiveReportToolStripMenuItem"
+        Me.SalesPerformanceIncentiveReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
+        Me.SalesPerformanceIncentiveReportToolStripMenuItem.Text = "Sales Performance Incentive Report"
         '
         'DailySalesSummaryToolStripMenuItem
         '
@@ -126,6 +136,12 @@ Partial Class frmMain
         Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Name = "SummaryInvoiceAndSalesReturnReportToolStripMenuItem"
         Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
         Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem.Text = "Summary Invoice And Sales Return Report"
+        '
+        'TurnOverReportToolStripMenuItem
+        '
+        Me.TurnOverReportToolStripMenuItem.Name = "TurnOverReportToolStripMenuItem"
+        Me.TurnOverReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
+        Me.TurnOverReportToolStripMenuItem.Text = "Turn Over Report"
         '
         'StockToolStripMenuItem
         '
@@ -159,6 +175,19 @@ Partial Class frmMain
         Me.ListOfPromotionToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.ListOfPromotionToolStripMenuItem.Text = "List Of Promotion"
         '
+        'CustomToolStripMenuItem
+        '
+        Me.CustomToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListOfInvoiceToolStripMenuItem, Me.ServiceLevelReportToolStripMenuItem})
+        Me.CustomToolStripMenuItem.Name = "CustomToolStripMenuItem"
+        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CustomToolStripMenuItem.Text = "Custom"
+        '
+        'ListOfInvoiceToolStripMenuItem
+        '
+        Me.ListOfInvoiceToolStripMenuItem.Name = "ListOfInvoiceToolStripMenuItem"
+        Me.ListOfInvoiceToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.ListOfInvoiceToolStripMenuItem.Text = "List Of Invoice Report"
+        '
         'ReportGeneratorToolStripMenuItem
         '
         Me.ReportGeneratorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AchievementByOutletToolStripMenuItem})
@@ -182,11 +211,11 @@ Partial Class frmMain
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
-        'SalesPerformanceIncentiveReportToolStripMenuItem
+        'ServiceLevelReportToolStripMenuItem
         '
-        Me.SalesPerformanceIncentiveReportToolStripMenuItem.Name = "SalesPerformanceIncentiveReportToolStripMenuItem"
-        Me.SalesPerformanceIncentiveReportToolStripMenuItem.Size = New System.Drawing.Size(300, 22)
-        Me.SalesPerformanceIncentiveReportToolStripMenuItem.Text = "Sales Performance Incentive Report"
+        Me.ServiceLevelReportToolStripMenuItem.Name = "ServiceLevelReportToolStripMenuItem"
+        Me.ServiceLevelReportToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.ServiceLevelReportToolStripMenuItem.Text = "Service Level Report"
         '
         'frmMain
         '
@@ -230,5 +259,9 @@ Partial Class frmMain
     Friend WithEvents SummaryInvoiceAndSalesReturnReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DailySalesAndPaymentSummaryReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SalesPerformanceIncentiveReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TurnOverReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CustomToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ListOfInvoiceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ServiceLevelReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

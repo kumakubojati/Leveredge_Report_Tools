@@ -485,4 +485,15 @@ Public Class frmABP
         End Select
         sqlcon.Close()
     End Sub
+    Dim combogrid As ComboBox
+    Private Sub dgridSKU_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) Handles dgridSKU.EditingControlShowing
+        combogrid = CType(e.Control, ComboBox)
+        If dgridSKU.CurrentCellAddress.X > 0 Then
+            Exit Sub
+        End If
+        If combogrid IsNot Nothing Then
+            combogrid.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+            combogrid.AutoCompleteSource = AutoCompleteSource.ListItems
+        End If
+    End Sub
 End Class

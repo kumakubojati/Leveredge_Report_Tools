@@ -52,4 +52,16 @@ Public Class frmMain
     Private Sub SalesPerformanceIncentiveReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesPerformanceIncentiveReportToolStripMenuItem.Click
         frmSPIR.Show()
     End Sub
+
+    Private Sub TurnOverReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurnOverReportToolStripMenuItem.Click
+        frmTOR.Show()
+    End Sub
+
+    Private Sub ListOfInvoiceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListOfInvoiceToolStripMenuItem.Click
+        frmLIR.Show()
+    End Sub
+
+    Private Sub ServiceLevelReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ServiceLevelReportToolStripMenuItem.Click
+        frmSL.Show()
+    End Sub
 End Class

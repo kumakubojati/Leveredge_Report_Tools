@@ -116,7 +116,7 @@ Public Class frmDSM
                             xlWsheetDSM.Range("A8").Value = "PCODE"
                             xlWsheetDSM.Range("A8").Font.Color = System.Drawing.ColorTranslator.ToOle(Color.White)
                             xlWsheetDSM.Range("A8:A9").Merge()
-                            xlWsheetDSM.Range("A8:A9").HorizontalAlignment = xlAppDSM.Constant.xlCenter
+                            xlWsheetDSM.Range("A8:A9").HorizontalAlignment = 3
 
                             Dim rg1, rg2, rg3, rg4, rg5, rg6, rg7, rg8, rg9, rg10, rg11 As Object
                             rg1 = xlWsheetDSM.Range("B:C")

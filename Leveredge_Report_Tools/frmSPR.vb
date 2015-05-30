@@ -85,7 +85,7 @@ Public Class frmSPR
 
                 Select Case SPRreptype
                     Case "QTY"
-                        'Need Confirmation to Pak Arif for Dynamic Column
+
                         Try
                             xlAppSPR = CreateObject("Ket.Application")
                             xlWbookSPR = xlAppSPR.Workbooks.Open(txtSPR_src.Text)
@@ -262,7 +262,7 @@ Public Class frmSPR
                         End Try
 
                     Case "AVG"
-                        'Need Confirmation to Pak Arif for Dynamic Column
+
                         Try
                             xlAppSPR = CreateObject("Ket.Application")
                             xlWbookSPR = xlAppSPR.Workbooks.Open(txtSPR_src.Text)
@@ -368,7 +368,6 @@ Public Class frmSPR
 
                 Select Case SPRreptype
                     Case "QTY"
-                        'Need Confirmation to Pak Arif for Dynamic Column
 
                         Try
                             xlAppSPR = CreateObject("Excel.Application")
