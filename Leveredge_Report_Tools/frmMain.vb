@@ -64,4 +64,8 @@ Public Class frmMain
     Private Sub ServiceLevelReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ServiceLevelReportToolStripMenuItem.Click
         frmSL.Show()
     End Sub
+
+    Private Sub ListOfPromotionUtilizationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListOfPromotionUtilizationToolStripMenuItem.Click
+        frmLPU.Show()
+    End Sub
 End Class

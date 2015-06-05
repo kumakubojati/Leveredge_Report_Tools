@@ -44,10 +44,11 @@ Partial Class frmMain
         Me.ListOfPromotionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CustomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListOfInvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ServiceLevelReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AchievementByOutletToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.ServiceLevelReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListOfPromotionUtilizationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MSMain.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -164,7 +165,7 @@ Partial Class frmMain
         '
         'PromotionToolStripMenuItem
         '
-        Me.PromotionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListOfPromotionToolStripMenuItem})
+        Me.PromotionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListOfPromotionToolStripMenuItem, Me.ListOfPromotionUtilizationToolStripMenuItem})
         Me.PromotionToolStripMenuItem.Name = "PromotionToolStripMenuItem"
         Me.PromotionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PromotionToolStripMenuItem.Text = "Promotion"
@@ -172,7 +173,7 @@ Partial Class frmMain
         'ListOfPromotionToolStripMenuItem
         '
         Me.ListOfPromotionToolStripMenuItem.Name = "ListOfPromotionToolStripMenuItem"
-        Me.ListOfPromotionToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.ListOfPromotionToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.ListOfPromotionToolStripMenuItem.Text = "List Of Promotion"
         '
         'CustomToolStripMenuItem
@@ -187,6 +188,12 @@ Partial Class frmMain
         Me.ListOfInvoiceToolStripMenuItem.Name = "ListOfInvoiceToolStripMenuItem"
         Me.ListOfInvoiceToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.ListOfInvoiceToolStripMenuItem.Text = "List Of Invoice Report"
+        '
+        'ServiceLevelReportToolStripMenuItem
+        '
+        Me.ServiceLevelReportToolStripMenuItem.Name = "ServiceLevelReportToolStripMenuItem"
+        Me.ServiceLevelReportToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.ServiceLevelReportToolStripMenuItem.Text = "Service Level Report"
         '
         'ReportGeneratorToolStripMenuItem
         '
@@ -211,11 +218,11 @@ Partial Class frmMain
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
-        'ServiceLevelReportToolStripMenuItem
+        'ListOfPromotionUtilizationToolStripMenuItem
         '
-        Me.ServiceLevelReportToolStripMenuItem.Name = "ServiceLevelReportToolStripMenuItem"
-        Me.ServiceLevelReportToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
-        Me.ServiceLevelReportToolStripMenuItem.Text = "Service Level Report"
+        Me.ListOfPromotionUtilizationToolStripMenuItem.Name = "ListOfPromotionUtilizationToolStripMenuItem"
+        Me.ListOfPromotionUtilizationToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
+        Me.ListOfPromotionUtilizationToolStripMenuItem.Text = "List Of Promotion Utilization"
         '
         'frmMain
         '
@@ -263,5 +270,6 @@ Partial Class frmMain
     Friend WithEvents CustomToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ListOfInvoiceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ServiceLevelReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ListOfPromotionUtilizationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

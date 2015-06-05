@@ -155,6 +155,12 @@
     <Compile Include="frmLP3.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmLPU.Designer.vb">
+      <DependentUpon>frmLPU.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLPU.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -260,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLP3.resx">
       <DependentUpon>frmLP3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLPU.resx">
+      <DependentUpon>frmLPU.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
