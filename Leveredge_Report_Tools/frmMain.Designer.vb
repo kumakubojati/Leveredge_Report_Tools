@@ -42,13 +42,13 @@ Partial Class frmMain
         Me.DailyStockMutationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PromotionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListOfPromotionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListOfPromotionUtilizationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CustomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListOfInvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ServiceLevelReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AchievementByOutletToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.ListOfPromotionUtilizationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MSMain.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -74,7 +74,7 @@ Partial Class frmMain
         '
         Me.MasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductToolStripMenuItem, Me.ProductMasterReportToolStripMenuItem})
         Me.MasterToolStripMenuItem.Name = "MasterToolStripMenuItem"
-        Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.MasterToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.MasterToolStripMenuItem.Text = "Master"
         '
         'ProductToolStripMenuItem
@@ -93,7 +93,7 @@ Partial Class frmMain
         '
         Me.SalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WeeklySalesToolStripMenuItem, Me.SalesPerformanceReportToolStripMenuItem, Me.SalesPerformanceIncentiveReportToolStripMenuItem, Me.DailySalesSummaryToolStripMenuItem, Me.DailySalesAndPaymentSummaryReportToolStripMenuItem, Me.ARReportToolStripMenuItem, Me.SummaryInvoiceAndSalesReturnReportToolStripMenuItem, Me.TurnOverReportToolStripMenuItem})
         Me.SalesToolStripMenuItem.Name = "SalesToolStripMenuItem"
-        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.SalesToolStripMenuItem.Text = "Sales"
         '
         'WeeklySalesToolStripMenuItem
@@ -148,7 +148,7 @@ Partial Class frmMain
         '
         Me.StockToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DistributorStockReportToolStripMenuItem, Me.DailyStockMutationToolStripMenuItem})
         Me.StockToolStripMenuItem.Name = "StockToolStripMenuItem"
-        Me.StockToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.StockToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.StockToolStripMenuItem.Text = "Stock"
         '
         'DistributorStockReportToolStripMenuItem
@@ -167,7 +167,7 @@ Partial Class frmMain
         '
         Me.PromotionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListOfPromotionToolStripMenuItem, Me.ListOfPromotionUtilizationToolStripMenuItem})
         Me.PromotionToolStripMenuItem.Name = "PromotionToolStripMenuItem"
-        Me.PromotionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PromotionToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.PromotionToolStripMenuItem.Text = "Promotion"
         '
         'ListOfPromotionToolStripMenuItem
@@ -176,11 +176,17 @@ Partial Class frmMain
         Me.ListOfPromotionToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.ListOfPromotionToolStripMenuItem.Text = "List Of Promotion"
         '
+        'ListOfPromotionUtilizationToolStripMenuItem
+        '
+        Me.ListOfPromotionUtilizationToolStripMenuItem.Name = "ListOfPromotionUtilizationToolStripMenuItem"
+        Me.ListOfPromotionUtilizationToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
+        Me.ListOfPromotionUtilizationToolStripMenuItem.Text = "List Of Promotion Utilization"
+        '
         'CustomToolStripMenuItem
         '
         Me.CustomToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListOfInvoiceToolStripMenuItem, Me.ServiceLevelReportToolStripMenuItem})
         Me.CustomToolStripMenuItem.Name = "CustomToolStripMenuItem"
-        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.CustomToolStripMenuItem.Text = "Custom"
         '
         'ListOfInvoiceToolStripMenuItem
@@ -217,12 +223,6 @@ Partial Class frmMain
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
-        '
-        'ListOfPromotionUtilizationToolStripMenuItem
-        '
-        Me.ListOfPromotionUtilizationToolStripMenuItem.Name = "ListOfPromotionUtilizationToolStripMenuItem"
-        Me.ListOfPromotionUtilizationToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
-        Me.ListOfPromotionUtilizationToolStripMenuItem.Text = "List Of Promotion Utilization"
         '
         'frmMain
         '

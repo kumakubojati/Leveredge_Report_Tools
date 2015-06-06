@@ -1,4 +1,5 @@
-﻿
+﻿Imports System.Net
+Imports System.IO
 Public Class frmMain
 
     Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem.Click
@@ -67,5 +68,46 @@ Public Class frmMain
 
     Private Sub ListOfPromotionUtilizationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListOfPromotionUtilizationToolStripMenuItem.Click
         frmLPU.Show()
+    End Sub
+
+    Public Function IsInternetAvailable() As Boolean
+        Dim objUrl As New System.Uri("http://www.Google.com")
+        Dim objWebReq As WebRequest
+        objWebReq = WebRequest.Create(objUrl)
+        Dim objresp As WebResponse
+
+        Try
+            objresp = objWebReq.GetResponse
+            objresp.Close()
+            objresp = Nothing
+            Return True
+
+        Catch ex As Exception
+            objresp = Nothing
+            objWebReq = Nothing
+            Return False
+        End Try
+    End Function
+    Public newversion As String
+    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If IsInternetAvailable() = True Then
+            Dim request As HttpWebRequest = HttpWebRequest.Create("Http://182.253.21.82:8020/LastVersion.txt")
+            Dim response As HttpWebResponse = request.GetResponse()
+            Dim sr As StreamReader = New StreamReader(response.GetResponseStream())
+            newversion = sr.ReadToEnd()
+            Dim currentverison As String = Application.ProductVersion
+            If newversion.Contains(currentverison) Then
+                Exit Sub
+            Else
+                Dim update As Integer = MessageBox.Show("New version (ver " & newversion & ") are available, proceed to download? ", "New Version", MessageBoxButtons.YesNo)
+                If update = DialogResult.Yes Then
+                    SSdownload.Show()
+                ElseIf update = DialogResult.No Then
+                    Exit Sub
+                End If
+            End If
+        Else
+            MessageBox.Show("No Internet Connection")
+        End If
     End Sub
 End Class

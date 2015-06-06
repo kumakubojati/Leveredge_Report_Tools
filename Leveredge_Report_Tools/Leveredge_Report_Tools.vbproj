@@ -231,6 +231,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SSdownload.Designer.vb">
+      <DependentUpon>SSdownload.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SSdownload.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SSLoading.Designer.vb">
       <DependentUpon>SSLoading.vb</DependentUpon>
     </Compile>
@@ -302,6 +308,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SSdownload.resx">
+      <DependentUpon>SSdownload.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SSLoading.resx">
       <DependentUpon>SSLoading.vb</DependentUpon>
