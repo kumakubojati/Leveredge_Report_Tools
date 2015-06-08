@@ -107,10 +107,28 @@
     <Compile Include="frmABP.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmABR_IC.Designer.vb">
+      <DependentUpon>frmABR_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmABR_IC.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAR.Designer.vb">
       <DependentUpon>frmAR.vb</DependentUpon>
     </Compile>
     <Compile Include="frmAR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBEPT.Designer.vb">
+      <DependentUpon>frmBEPT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBEPT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCNI_IC.Designer.vb">
+      <DependentUpon>frmCNI_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCNI_IC.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDSM.Designer.vb">
@@ -249,8 +267,17 @@
     <EmbeddedResource Include="frmABP.resx">
       <DependentUpon>frmABP.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmABR_IC.resx">
+      <DependentUpon>frmABR_IC.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAR.resx">
       <DependentUpon>frmAR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBEPT.resx">
+      <DependentUpon>frmBEPT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCNI_IC.resx">
+      <DependentUpon>frmCNI_IC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDSM.resx">
       <DependentUpon>frmDSM.vb</DependentUpon>

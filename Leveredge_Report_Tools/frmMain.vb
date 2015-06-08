@@ -110,4 +110,16 @@ Public Class frmMain
             MessageBox.Show("No Internet Connection")
         End If
     End Sub
+
+    Private Sub AnalysisBackupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnalysisBackupToolStripMenuItem.Click
+        frmABR_IC.Show()
+    End Sub
+
+    Private Sub BEPThroughputToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BEPThroughputToolStripMenuItem.Click
+        frmBEPT.Show()
+    End Sub
+
+    Private Sub CabinetNetIncreaseReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CabinetNetIncreaseReportToolStripMenuItem.Click
+        frmCNI_IC.Show()
+    End Sub
 End Class
