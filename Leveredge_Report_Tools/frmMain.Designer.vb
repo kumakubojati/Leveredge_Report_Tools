@@ -46,13 +46,22 @@ Partial Class frmMain
         Me.CustomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListOfInvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ServiceLevelReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReportGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AchievementByOutletToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.IceCreamToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AnalysisBackupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BEPThroughputToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CabinetNetIncreaseReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomerVisitReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DistributorDriveReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.IQToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.IQPerformanceReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.IQSummaryReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NonPerformanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NetIncreaseReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OutletStoreClassReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AchievementByOutletToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.ThroughPutCabinetReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MSMain.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -205,6 +214,80 @@ Partial Class frmMain
         Me.ServiceLevelReportToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.ServiceLevelReportToolStripMenuItem.Text = "Service Level Report"
         '
+        'IceCreamToolStripMenuItem
+        '
+        Me.IceCreamToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AnalysisBackupToolStripMenuItem, Me.BEPThroughputToolStripMenuItem, Me.CabinetNetIncreaseReportToolStripMenuItem, Me.CustomerVisitReportToolStripMenuItem, Me.DistributorDriveReportToolStripMenuItem, Me.IQToolStripMenuItem, Me.NonPerformanceToolStripMenuItem, Me.NetIncreaseReportToolStripMenuItem, Me.OutletStoreClassReportToolStripMenuItem, Me.ThroughPutCabinetReportToolStripMenuItem})
+        Me.IceCreamToolStripMenuItem.Name = "IceCreamToolStripMenuItem"
+        Me.IceCreamToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.IceCreamToolStripMenuItem.Text = "Ice Cream"
+        '
+        'AnalysisBackupToolStripMenuItem
+        '
+        Me.AnalysisBackupToolStripMenuItem.Name = "AnalysisBackupToolStripMenuItem"
+        Me.AnalysisBackupToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.AnalysisBackupToolStripMenuItem.Text = "Analysis Backup Report"
+        '
+        'BEPThroughputToolStripMenuItem
+        '
+        Me.BEPThroughputToolStripMenuItem.Name = "BEPThroughputToolStripMenuItem"
+        Me.BEPThroughputToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.BEPThroughputToolStripMenuItem.Text = "BEP Throughput Report"
+        '
+        'CabinetNetIncreaseReportToolStripMenuItem
+        '
+        Me.CabinetNetIncreaseReportToolStripMenuItem.Name = "CabinetNetIncreaseReportToolStripMenuItem"
+        Me.CabinetNetIncreaseReportToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.CabinetNetIncreaseReportToolStripMenuItem.Text = "Cabinet Net Increase Report"
+        '
+        'CustomerVisitReportToolStripMenuItem
+        '
+        Me.CustomerVisitReportToolStripMenuItem.Name = "CustomerVisitReportToolStripMenuItem"
+        Me.CustomerVisitReportToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.CustomerVisitReportToolStripMenuItem.Text = "Customer Visit Report"
+        '
+        'DistributorDriveReportToolStripMenuItem
+        '
+        Me.DistributorDriveReportToolStripMenuItem.Name = "DistributorDriveReportToolStripMenuItem"
+        Me.DistributorDriveReportToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.DistributorDriveReportToolStripMenuItem.Text = "Distributor Drive Report"
+        '
+        'IQToolStripMenuItem
+        '
+        Me.IQToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.IQPerformanceReportToolStripMenuItem, Me.IQSummaryReportToolStripMenuItem})
+        Me.IQToolStripMenuItem.Name = "IQToolStripMenuItem"
+        Me.IQToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.IQToolStripMenuItem.Text = "IQ"
+        '
+        'IQPerformanceReportToolStripMenuItem
+        '
+        Me.IQPerformanceReportToolStripMenuItem.Name = "IQPerformanceReportToolStripMenuItem"
+        Me.IQPerformanceReportToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
+        Me.IQPerformanceReportToolStripMenuItem.Text = "IQ Performance Report"
+        '
+        'IQSummaryReportToolStripMenuItem
+        '
+        Me.IQSummaryReportToolStripMenuItem.Name = "IQSummaryReportToolStripMenuItem"
+        Me.IQSummaryReportToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
+        Me.IQSummaryReportToolStripMenuItem.Text = "IQ Summary Report"
+        '
+        'NonPerformanceToolStripMenuItem
+        '
+        Me.NonPerformanceToolStripMenuItem.Name = "NonPerformanceToolStripMenuItem"
+        Me.NonPerformanceToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.NonPerformanceToolStripMenuItem.Text = "Non Performance Cabinet Report"
+        '
+        'NetIncreaseReportToolStripMenuItem
+        '
+        Me.NetIncreaseReportToolStripMenuItem.Name = "NetIncreaseReportToolStripMenuItem"
+        Me.NetIncreaseReportToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.NetIncreaseReportToolStripMenuItem.Text = "Net Increase Report"
+        '
+        'OutletStoreClassReportToolStripMenuItem
+        '
+        Me.OutletStoreClassReportToolStripMenuItem.Name = "OutletStoreClassReportToolStripMenuItem"
+        Me.OutletStoreClassReportToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.OutletStoreClassReportToolStripMenuItem.Text = "Outlet Store Class Report"
+        '
         'ReportGeneratorToolStripMenuItem
         '
         Me.ReportGeneratorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AchievementByOutletToolStripMenuItem})
@@ -228,30 +311,11 @@ Partial Class frmMain
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
-        'IceCreamToolStripMenuItem
+        'ThroughPutCabinetReportToolStripMenuItem
         '
-        Me.IceCreamToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AnalysisBackupToolStripMenuItem, Me.BEPThroughputToolStripMenuItem, Me.CabinetNetIncreaseReportToolStripMenuItem})
-        Me.IceCreamToolStripMenuItem.Name = "IceCreamToolStripMenuItem"
-        Me.IceCreamToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.IceCreamToolStripMenuItem.Text = "Ice Cream"
-        '
-        'AnalysisBackupToolStripMenuItem
-        '
-        Me.AnalysisBackupToolStripMenuItem.Name = "AnalysisBackupToolStripMenuItem"
-        Me.AnalysisBackupToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.AnalysisBackupToolStripMenuItem.Text = "Analysis Backup Report"
-        '
-        'BEPThroughputToolStripMenuItem
-        '
-        Me.BEPThroughputToolStripMenuItem.Name = "BEPThroughputToolStripMenuItem"
-        Me.BEPThroughputToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.BEPThroughputToolStripMenuItem.Text = "BEP Throughput Report"
-        '
-        'CabinetNetIncreaseReportToolStripMenuItem
-        '
-        Me.CabinetNetIncreaseReportToolStripMenuItem.Name = "CabinetNetIncreaseReportToolStripMenuItem"
-        Me.CabinetNetIncreaseReportToolStripMenuItem.Size = New System.Drawing.Size(227, 22)
-        Me.CabinetNetIncreaseReportToolStripMenuItem.Text = "Cabinet Net Increase Report"
+        Me.ThroughPutCabinetReportToolStripMenuItem.Name = "ThroughPutCabinetReportToolStripMenuItem"
+        Me.ThroughPutCabinetReportToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.ThroughPutCabinetReportToolStripMenuItem.Text = "ThroughPut Cabinet Report"
         '
         'frmMain
         '
@@ -304,5 +368,14 @@ Partial Class frmMain
     Friend WithEvents AnalysisBackupToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BEPThroughputToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CabinetNetIncreaseReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CustomerVisitReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DistributorDriveReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents IQToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents IQPerformanceReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents IQSummaryReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents NonPerformanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents NetIncreaseReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OutletStoreClassReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ThroughPutCabinetReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

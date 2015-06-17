@@ -131,6 +131,18 @@
     <Compile Include="frmCNI_IC.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmCV_IC.Designer.vb">
+      <DependentUpon>frmCV_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCV_IC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDD_IC.Designer.vb">
+      <DependentUpon>frmDD_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDD_IC.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDSM.Designer.vb">
       <DependentUpon>frmDSM.vb</DependentUpon>
     </Compile>
@@ -153,6 +165,18 @@
       <DependentUpon>frmDSS.vb</DependentUpon>
     </Compile>
     <Compile Include="frmDSS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIQP_IC.Designer.vb">
+      <DependentUpon>frmIQP_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmIQP_IC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIQS_IC.Designer.vb">
+      <DependentUpon>frmIQS_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmIQS_IC.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLIR.Designer.vb">
@@ -184,6 +208,24 @@
     </Compile>
     <Compile Include="frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmONI_IC.Designer.vb">
+      <DependentUpon>frmONI_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmONI_IC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNPC_IC.Designer.vb">
+      <DependentUpon>frmNPC_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNPC_IC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOSC_IC.Designer.vb">
+      <DependentUpon>frmOSC_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmOSC_IC.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmOutMas.Designer.vb">
@@ -226,6 +268,12 @@
       <DependentUpon>frmSPR.vb</DependentUpon>
     </Compile>
     <Compile Include="frmSPR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTCR_IC.Designer.vb">
+      <DependentUpon>frmTCR_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTCR_IC.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmTOR.Designer.vb">
@@ -279,6 +327,12 @@
     <EmbeddedResource Include="frmCNI_IC.resx">
       <DependentUpon>frmCNI_IC.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCV_IC.resx">
+      <DependentUpon>frmCV_IC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDD_IC.resx">
+      <DependentUpon>frmDD_IC.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDSM.resx">
       <DependentUpon>frmDSM.vb</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +344,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDSS.resx">
       <DependentUpon>frmDSS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIQP_IC.resx">
+      <DependentUpon>frmIQP_IC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIQS_IC.resx">
+      <DependentUpon>frmIQS_IC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLIR.resx">
       <DependentUpon>frmLIR.vb</DependentUpon>
@@ -305,6 +365,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmONI_IC.resx">
+      <DependentUpon>frmONI_IC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNPC_IC.resx">
+      <DependentUpon>frmNPC_IC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOSC_IC.resx">
+      <DependentUpon>frmOSC_IC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOutMas.resx">
       <DependentUpon>frmOutMas.vb</DependentUpon>
@@ -326,6 +395,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSPR.resx">
       <DependentUpon>frmSPR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTCR_IC.resx">
+      <DependentUpon>frmTCR_IC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTOR.resx">
       <DependentUpon>frmTOR.vb</DependentUpon>

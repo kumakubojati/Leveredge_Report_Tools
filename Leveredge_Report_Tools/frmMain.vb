@@ -122,4 +122,36 @@ Public Class frmMain
     Private Sub CabinetNetIncreaseReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CabinetNetIncreaseReportToolStripMenuItem.Click
         frmCNI_IC.Show()
     End Sub
+
+    Private Sub CustomerVisitReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerVisitReportToolStripMenuItem.Click
+        frmCV_IC.Show()
+    End Sub
+
+    Private Sub DistributorDriveReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DistributorDriveReportToolStripMenuItem.Click
+        frmDD_IC.Show()
+    End Sub
+
+    Private Sub IQPerformanceReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IQPerformanceReportToolStripMenuItem.Click
+        frmIQP_IC.Show()
+    End Sub
+
+    Private Sub IQSummaryReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IQSummaryReportToolStripMenuItem.Click
+        frmIQS_IC.Show()
+    End Sub
+
+    Private Sub NonPerformanceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NonPerformanceToolStripMenuItem.Click
+        frmNPC_IC.Show()
+    End Sub
+
+    Private Sub NetIncreaseReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NetIncreaseReportToolStripMenuItem.Click
+        frmONI_IC.Show()
+    End Sub
+
+    Private Sub OutletStoreClassReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OutletStoreClassReportToolStripMenuItem.Click
+        frmOSC_IC.Show()
+    End Sub
+
+    Private Sub ThroughPutCabinetReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ThroughPutCabinetReportToolStripMenuItem.Click
+        frmTCR_IC.Show()
+    End Sub
 End Class
