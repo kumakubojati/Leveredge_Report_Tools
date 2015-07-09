@@ -154,4 +154,16 @@ Public Class frmMain
     Private Sub ThroughPutCabinetReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ThroughPutCabinetReportToolStripMenuItem.Click
         frmTCR_IC.Show()
     End Sub
+
+    Private Sub TroughutOutletReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TroughutOutletReportToolStripMenuItem.Click
+        frmTPO_IC.Show()
+    End Sub
+
+    Private Sub WaiveStoreReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WaiveStoreReportToolStripMenuItem.Click
+        frmWSR_IC.Show()
+    End Sub
+
+    Private Sub ProductSalesByCaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductSalesByCaseToolStripMenuItem.Click
+        frmPSCW_IC.Show()
+    End Sub
 End Class

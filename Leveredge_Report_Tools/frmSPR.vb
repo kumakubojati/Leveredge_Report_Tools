@@ -333,7 +333,7 @@ Public Class frmSPR
                                 rn.Merge()
                                 rn.HorizontalAlignment = Excel.Constants.xlCenter
                                 lasval = xlWsheetSPR.Cells(7, lastcol).Value
-                                y = y + 2
+                                y = y + 3
                             Loop
 
                             'Dim lastcol2 As Long = xlWsheetSPR.Cells(7, xlWsheetSPR.Columns.Count).End(Excel.XlDirection.xlToRight).Column

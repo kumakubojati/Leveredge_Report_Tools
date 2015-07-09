@@ -240,6 +240,12 @@
     <Compile Include="frmProdMas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmPSCW_IC.Designer.vb">
+      <DependentUpon>frmPSCW_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPSCW_IC.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmRepABP.Designer.vb">
       <DependentUpon>frmRepABP.vb</DependentUpon>
     </Compile>
@@ -280,6 +286,18 @@
       <DependentUpon>frmTOR.vb</DependentUpon>
     </Compile>
     <Compile Include="frmTOR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTPO_IC.Designer.vb">
+      <DependentUpon>frmTPO_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTPO_IC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWSR_IC.Designer.vb">
+      <DependentUpon>frmWSR_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmWSR_IC.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -381,6 +399,9 @@
     <EmbeddedResource Include="frmProdMas.resx">
       <DependentUpon>frmProdMas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPSCW_IC.resx">
+      <DependentUpon>frmPSCW_IC.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRepABP.resx">
       <DependentUpon>frmRepABP.vb</DependentUpon>
     </EmbeddedResource>
@@ -401,6 +422,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTOR.resx">
       <DependentUpon>frmTOR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTPO_IC.resx">
+      <DependentUpon>frmTPO_IC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWSR_IC.resx">
+      <DependentUpon>frmWSR_IC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
