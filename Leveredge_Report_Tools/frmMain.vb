@@ -34,10 +34,6 @@ Public Class frmMain
         frmListPro.Show()
     End Sub
 
-    Private Sub AchievementByOutletToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AchievementByOutletToolStripMenuItem.Click
-        frmABP.Show()
-    End Sub
-
     Private Sub ARReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ARReportToolStripMenuItem.Click
         frmAR.Show()
     End Sub
@@ -165,5 +161,17 @@ Public Class frmMain
 
     Private Sub ProductSalesByCaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductSalesByCaseToolStripMenuItem.Click
         frmPSCW_IC.Show()
+    End Sub
+
+    Private Sub SalesReturnToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesReturnToolStripMenuItem.Click
+        frmSRDR.Show()
+    End Sub
+
+    Private Sub ProductSalesByVolumeWeeklyReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductSalesByVolumeWeeklyReportToolStripMenuItem.Click
+        frmPSVW_IC.Show()
+    End Sub
+
+    Private Sub AchievementByProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AchievementByProductToolStripMenuItem.Click
+        frmABP.Show()
     End Sub
 End Class

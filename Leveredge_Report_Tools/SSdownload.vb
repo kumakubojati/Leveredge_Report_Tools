@@ -66,7 +66,7 @@ Public NotInheritable Class SSdownload
     End Sub
 
     Private Sub bwdown_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwdown.RunWorkerCompleted
-        MsgBox("Download Complete")
+        MsgBox("Download Complete, Please Extract and Replace The Old Release Folder with the new release folder")
         Application.Exit()
     End Sub
 

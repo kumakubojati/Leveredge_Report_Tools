@@ -33,6 +33,7 @@ Partial Class frmABP
         Me.dtpfrom_ABP = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.gbRepCond.SuspendLayout()
         CType(Me.dgridSKU, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -132,12 +133,24 @@ Partial Class frmABP
         Me.Label1.TabIndex = 14
         Me.Label1.Text = "Date From"
         '
+        'Label4
+        '
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Red
+        Me.Label4.Location = New System.Drawing.Point(187, 78)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(374, 32)
+        Me.Label4.TabIndex = 22
+        Me.Label4.Text = "PERHATIAN!! Cek Koneksi DATABASE pada file Config apakah sudah sesuai dengan DATA" & _
+    "BASE tujuan"
+        '
         'frmABP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(570, 333)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.btnPrevRep)
         Me.Controls.Add(Me.gbRepCond)
         Me.Controls.Add(Me.Label3)
@@ -166,4 +179,5 @@ Partial Class frmABP
     Friend WithEvents dtpfrom_ABP As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class

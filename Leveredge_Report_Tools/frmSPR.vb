@@ -409,7 +409,7 @@ Public Class frmSPR
                             xlfunc = xlAppSPR.WorksheetFunction
                             Dim lnCol As Long
                             Dim i, j As Long
-                            Dim rnarea As Excel.Range = xlWsheetSPR.UsedRange
+                            Dim rnarea As Object = xlWsheetSPR.UsedRange
 
                             lnCol = rnarea.Columns.Count
                             For i = lnCol To 1 Step -1
@@ -593,7 +593,7 @@ Public Class frmSPR
                             xlfunc = xlAppSPR.WorksheetFunction
                             Dim lnCol As Long
                             Dim i, j As Long
-                            Dim rnarea As Excel.Range = xlWsheetSPR.UsedRange
+                            Dim rnarea As Object = xlWsheetSPR.UsedRange
 
                             lnCol = rnarea.Columns.Count
                             For i = lnCol To 1 Step -1

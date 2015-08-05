@@ -246,6 +246,12 @@
     <Compile Include="frmPSCW_IC.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmPSVW_IC.Designer.vb">
+      <DependentUpon>frmPSVW_IC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPSVW_IC.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmRepABP.Designer.vb">
       <DependentUpon>frmRepABP.vb</DependentUpon>
     </Compile>
@@ -274,6 +280,12 @@
       <DependentUpon>frmSPR.vb</DependentUpon>
     </Compile>
     <Compile Include="frmSPR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSRDR.Designer.vb">
+      <DependentUpon>frmSRDR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSRDR.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmTCR_IC.Designer.vb">
@@ -402,6 +414,9 @@
     <EmbeddedResource Include="frmPSCW_IC.resx">
       <DependentUpon>frmPSCW_IC.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPSVW_IC.resx">
+      <DependentUpon>frmPSVW_IC.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRepABP.resx">
       <DependentUpon>frmRepABP.vb</DependentUpon>
     </EmbeddedResource>
@@ -416,6 +431,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSPR.resx">
       <DependentUpon>frmSPR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSRDR.resx">
+      <DependentUpon>frmSRDR.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTCR_IC.resx">
       <DependentUpon>frmTCR_IC.vb</DependentUpon>
