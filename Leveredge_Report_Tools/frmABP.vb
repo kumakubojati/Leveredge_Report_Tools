@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
 Imports System.Data.SqlClient
+Imports System.IO.File
 
 Public Class frmABP
     Dim sqlcon As New SqlClient.SqlConnection
@@ -8,8 +9,7 @@ Public Class frmABP
 
     Private Sub Get_dbCon()
         Dim strfile As String = My.Application.Info.DirectoryPath & "\Conf.ini"
-        Dim sr As New StreamReader(strfile)
-        readdata = sr.ReadToEnd
+        readdata = ReadAllLines(strfile)(1)
         Dim constring As String
         constring = readdata
         sqlcon.ConnectionString = constring
@@ -50,11 +50,12 @@ Public Class frmABP
             dgridSKU.Columns(2).DefaultCellStyle.NullValue = "0"
             dgridSKU.Columns(3).Name = "PC"
             dgridSKU.Columns(3).DefaultCellStyle.NullValue = "0"
-
+            sqlcon.Close()
         Catch ex As Exception
             MessageBox.Show("Error On Init dgridSKU = " & ex.Message.ToString, "Error Init", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            sqlcon.Close()
         End Try
-        sqlcon.Close()
+
     End Sub
     Private Sub frmABP_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         init_dgridSKU()
@@ -226,21 +227,21 @@ Public Class frmABP
                     Dim split = r1.Split("-")
                     'QTY1
                     If dgridSKU.Rows(0).Cells(1).Value > 0 Then
-                        qty1 = ">=" & dgridSKU.Rows(0).Cells(1).Value
+                        qty1 = dgridSKU.Rows(0).Cells(1).Value
                     Else
-                        qty1 = "= 0"
+                        qty1 = "0"
                     End If
                     'QTY2
                     If dgridSKU.Rows(0).Cells(2).Value > 0 Then
                         qty2 = ">=" & dgridSKU.Rows(0).Cells(2).Value
                     Else
-                        qty2 = "= 0"
+                        qty2 = "0"
                     End If
                     'QTY3
                     If dgridSKU.Rows(0).Cells(3).Value > 0 Then
-                        qty3 = ">= " & dgridSKU.Rows(0).Cells(3).Value
+                        qty3 = dgridSKU.Rows(0).Cells(3).Value
                     Else
-                        qty3 = "= 0"
+                        qty3 = "0"
                     End If
                     sku = "'" & split(0).ToString() & "'"
                     Dim min_qty_com, min_qty As String
@@ -282,7 +283,7 @@ Public Class frmABP
                         frmRepABP.dtHeadRepBindingSource.DataSource = dsHeadRep
 
                         Dim dsRep As New DataSet
-                        Dim sComRep As New SqlCommand(com3, sqlcon)
+                        Dim sComRep As New SqlCommand(comfinal, sqlcon)
                         Dim saRep As New SqlDataAdapter(sComRep)
                         saRep.Fill(dsRep)
                         dsRep.Tables(0).TableName = "dtRep"
@@ -414,21 +415,21 @@ Public Class frmABP
                     Dim split = r1.Split("-")
                     'QTY1
                     If dgridSKU.Rows(0).Cells(1).Value > 0 Then
-                        qty1 = ">=" & dgridSKU.Rows(0).Cells(1).Value
+                        qty1 = dgridSKU.Rows(0).Cells(1).Value
                     Else
-                        qty1 = "= 0"
+                        qty1 = "0"
                     End If
                     'QTY2
                     If dgridSKU.Rows(0).Cells(2).Value > 0 Then
-                        qty2 = ">=" & dgridSKU.Rows(0).Cells(2).Value
+                        qty2 = dgridSKU.Rows(0).Cells(2).Value
                     Else
-                        qty2 = "= 0"
+                        qty2 = "0"
                     End If
                     'QTY3
                     If dgridSKU.Rows(0).Cells(3).Value > 0 Then
-                        qty3 = ">= " & dgridSKU.Rows(0).Cells(3).Value
+                        qty3 = dgridSKU.Rows(0).Cells(3).Value
                     Else
-                        qty3 = "= 0"
+                        qty3 = "0"
                     End If
                     sku = "'" & split(0).ToString() & "'"
                     Dim min_qty_com, min_qty As String
@@ -470,7 +471,7 @@ Public Class frmABP
                         frmRepABP.dtHeadRepBindingSource.DataSource = dsHeadRep
 
                         Dim dsRep As New DataSet
-                        Dim sComRep As New SqlCommand(com3, sqlcon)
+                        Dim sComRep As New SqlCommand(comfinal, sqlcon)
                         Dim saRep As New SqlDataAdapter(sComRep)
                         saRep.Fill(dsRep)
                         dsRep.Tables(0).TableName = "dtRep"
@@ -485,15 +486,17 @@ Public Class frmABP
         End Select
         sqlcon.Close()
     End Sub
-    Dim combogrid As ComboBox
-    Private Sub dgridSKU_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) Handles dgridSKU.EditingControlShowing
-        combogrid = CType(e.Control, ComboBox)
-        If dgridSKU.CurrentCellAddress.X > 0 Then
-            Exit Sub
-        End If
-        If combogrid IsNot Nothing Then
-            combogrid.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-            combogrid.AutoCompleteSource = AutoCompleteSource.ListItems
-        End If
-    End Sub
+    'Dim combogrid As ComboBox
+    'Private Sub dgridSKU_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) Handles dgridSKU.EditingControlShowing
+    '    '-----Error Right Here (Failed to convert from text to combobox)----------------
+    '    combogrid = CType(e.Control, ComboBox)
+    '    '-------------------------------------
+    '    If dgridSKU.CurrentCellAddress.X > 0 Then
+    '        Exit Sub
+    '    End If
+    '    If combogrid IsNot Nothing Then
+    '        combogrid.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+    '        combogrid.AutoCompleteSource = AutoCompleteSource.ListItems
+    '    End If
+    'End Sub
 End Class

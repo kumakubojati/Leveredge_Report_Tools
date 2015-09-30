@@ -72,6 +72,22 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\ReportViewer\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\Microsoft SQL Server\110\SDK\Assemblies\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\Microsoft SQL Server\110\SDK\Assemblies\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\Microsoft SQL Server\110\SDK\Assemblies\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\Microsoft SQL Server\110\SDK\Assemblies\Microsoft.SqlServer.SqlEnum.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -100,6 +116,38 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsRep.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FCS\dsFCSRep.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsFCSRep.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FCS\dsFCSRep.vb">
+      <DependentUpon>dsFCSRep.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FCS\frmFCS_Rep.Designer.vb">
+      <DependentUpon>frmFCS_Rep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FCS\frmFCS_Rep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCS\frmFCS_RepViewer.Designer.vb">
+      <DependentUpon>frmFCS_RepViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FCS\frmFCS_RepViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCS\frmInitDB.Designer.vb">
+      <DependentUpon>frmInitDB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FCS\frmInitDB.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCS\frmTarget.Designer.vb">
+      <DependentUpon>frmTarget.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FCS\frmTarget.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmABP.Designer.vb">
       <DependentUpon>frmABP.vb</DependentUpon>
@@ -333,6 +381,12 @@
     <Compile Include="SSdownload.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SSInitApps.Designer.vb">
+      <DependentUpon>SSInitApps.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SSInitApps.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SSLoading.Designer.vb">
       <DependentUpon>SSLoading.vb</DependentUpon>
     </Compile>
@@ -342,6 +396,19 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="bin\Debug\AchievementByProduct.rdlc" />
+    <EmbeddedResource Include="FCS\frmFCS_Rep.resx">
+      <DependentUpon>frmFCS_Rep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FCS\frmFCS_RepViewer.resx">
+      <DependentUpon>frmFCS_RepViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FCS\frmInitDB.resx">
+      <DependentUpon>frmInitDB.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FCS\frmTarget.resx">
+      <DependentUpon>frmTarget.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\FCSRep_New.rdlc" />
     <EmbeddedResource Include="frmABP.resx">
       <DependentUpon>frmABP.vb</DependentUpon>
     </EmbeddedResource>
@@ -456,6 +523,9 @@
     <EmbeddedResource Include="SSdownload.resx">
       <DependentUpon>SSdownload.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SSInitApps.resx">
+      <DependentUpon>SSInitApps.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SSLoading.resx">
       <DependentUpon>SSLoading.vb</DependentUpon>
     </EmbeddedResource>
@@ -473,11 +543,23 @@
     <None Include="dsRep.xss">
       <DependentUpon>dsRep.xsd</DependentUpon>
     </None>
+    <None Include="FCS\dsFCSRep.xsc">
+      <DependentUpon>dsFCSRep.xsd</DependentUpon>
+    </None>
+    <None Include="FCS\dsFCSRep.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsFCSRep.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="FCS\dsFCSRep.xss">
+      <DependentUpon>dsFCSRep.xsd</DependentUpon>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\dsFCSRep.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -488,7 +570,7 @@
     <Content Include="Leveredge_Icon2.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="My Project\DataSources\" />
+    <Folder Include="Picture\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Office">

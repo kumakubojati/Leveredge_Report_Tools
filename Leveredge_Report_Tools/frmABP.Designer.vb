@@ -34,8 +34,10 @@ Partial Class frmABP
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.DsRep1 = New Leveredge_Report_Tools.dsRep()
         Me.gbRepCond.SuspendLayout()
         CType(Me.dgridSKU, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsRep1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnPrevRep
@@ -144,6 +146,11 @@ Partial Class frmABP
         Me.Label4.Text = "PERHATIAN!! Cek Koneksi DATABASE pada file Config apakah sudah sesuai dengan DATA" & _
     "BASE tujuan"
         '
+        'DsRep1
+        '
+        Me.DsRep1.DataSetName = "dsRep"
+        Me.DsRep1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'frmABP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -165,6 +172,7 @@ Partial Class frmABP
         Me.gbRepCond.ResumeLayout(False)
         Me.gbRepCond.PerformLayout()
         CType(Me.dgridSKU, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsRep1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -180,4 +188,5 @@ Partial Class frmABP
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents DsRep1 As Leveredge_Report_Tools.dsRep
 End Class

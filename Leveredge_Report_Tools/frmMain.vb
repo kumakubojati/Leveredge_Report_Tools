@@ -1,5 +1,8 @@
 ﻿Imports System.Net
 Imports System.IO
+Imports System.Data
+Imports System.Data.SqlClient
+Imports System.IO.File
 Public Class frmMain
 
     Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem.Click
@@ -85,16 +88,126 @@ Public Class frmMain
         End Try
     End Function
     Public newversion As String
-    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If IsInternetAvailable() = True Then
-            Dim request As HttpWebRequest = HttpWebRequest.Create("Http://182.253.21.82:8020/LastVersion.txt")
-            Dim response As HttpWebResponse = request.GetResponse()
-            Dim sr As StreamReader = New StreamReader(response.GetResponseStream())
-            newversion = sr.ReadToEnd()
-            Dim currentverison As String = Application.ProductVersion
-            If newversion.Contains(currentverison) Then
-                Exit Sub
+    Dim sqlconSA As New SqlConnection
+    Dim constrSA As String
+    Public cekDBResult As String
+    Private Sub saDBCon()
+        Dim strfile As String = My.Application.Info.DirectoryPath & "\Conf.ini"
+        constrSA = ReadAllLines(strfile)(5)
+        sqlconSA.ConnectionString = constrSA
+    End Sub
+    Public Sub CheckDB()
+        Dim comstr As String
+        comstr = "SELECT CASE WHEN EXISTS(SELECT 1 FROM sys.databases WHERE Name='FCS_REPORT') THEN 1 ELSE 0 END AS DbExisting"
+        Dim cmdcek As New SqlCommand(comstr, sqlconSA)
+        Try
+            saDBCon()
+            sqlconSA.Open()
+            cekDBResult = cmdcek.ExecuteScalar()
+            sqlconSA.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error on Checking DB, with messag : " & ex.Message.ToString, "ERROR!!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            sqlconSA.Close()
+        End Try
+    End Sub
+
+    Private Sub RestoreNewDB()
+        Dim comstr As String
+        comstr = "USE MASTER RESTORE DATABASE [FCS_REPORT] FROM DISK = N'" & My.Application.Info.DirectoryPath & "\BlankDB.bak' " _
+            & "WITH REPLACE"
+        Dim cmdNewrestore As New SqlCommand(comstr, sqlconSA)
+        Try
+            saDBCon()
+            sqlconSA.Open()
+            cmdNewrestore.CommandTimeout = 600
+            cmdNewrestore.ExecuteNonQuery()
+            sqlconSA.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error when restoring DB with message: " & ex.Message.ToString, "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            sqlconSA.Close()
+        End Try
+    End Sub
+
+    Public Sub FCSDB()
+        Dim comstr As String = "SELECT (SELECT CASE WHEN (SELECT COUNT(*) FROM CASHMEMO) > 0 THEN 'TRUE' ELSE 'FALSE' END) AS DB_EXISITING"
+        Dim strfile As String = My.Application.Info.DirectoryPath & "\Conf.ini"
+        Dim constr As String
+        constr = ReadAllLines(strfile)(3)
+        Dim sqlcon As New SqlConnection
+        sqlcon.ConnectionString = constr
+        Try
+            Dim cmdcek As New SqlCommand(comstr, sqlcon)
+            sqlcon.Open()
+            Dim cekresult As String
+            cekresult = cmdcek.ExecuteScalar
+            If cekresult = "TRUE" Then
+                FCSRepMenuItem.Enabled = True
+                TargetMenuItem.Enabled = True
             Else
+                Exit Try
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error on Checking Data FCS_REPORT, with message: " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            sqlcon.Close()
+        End Try
+        sqlcon.Close()
+    End Sub
+    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CheckDB()
+        If cekDBResult = "1" Then
+            GoTo LineMain1
+        ElseIf cekDBResult = "0" Then
+            RestoreNewDB()
+            Dim comstr_CreateUser, comstr_SetSA As String
+            comstr_CreateUser = "IF NOT EXISTS (SELECT * FROM sys.server_principals WHERE name=N'FCSREP') " _
+                & "CREATE LOGIN [FCSREP] WITH PASSWORD=N'unilever123', DEFAULT_LANGUAGE=[British],DEFAULT_DATABASE=[FCS_REPORT], " _
+                & "CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF"
+            comstr_SetSA = "EXEC sp_addsrvrolemember @loginame = N'FCSREP', @rolename = N'sysadmin'"
+            Dim cmd_CreateUser As New SqlCommand(comstr_CreateUser, sqlconSA)
+            Dim cmd_SetSA As New SqlCommand(comstr_SetSA, sqlconSA)
+            Try
+                saDBCon()
+                sqlconSA.Open()
+                cmd_CreateUser.ExecuteNonQuery()
+                cmd_SetSA.ExecuteNonQuery()
+                sqlconSA.Close()
+            Catch ex As Exception
+                MessageBox.Show("Error on creating DB, with message: " & ex.Message.ToString, "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                sqlconSA.Close()
+            End Try
+        End If
+LineMain1: FCSDB()
+        If IsInternetAvailable() = True Then
+            Try
+                Dim request As HttpWebRequest = HttpWebRequest.Create("Http://182.253.21.82:8020/LastVersion.txt")
+                Dim response As HttpWebResponse = request.GetResponse()
+                Dim sr As StreamReader = New StreamReader(response.GetResponseStream())
+                newversion = sr.ReadToEnd()
+            Catch ex As Exception
+                MessageBox.Show("No Connection Update Server, with  message: " & ex.Message.ToString, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Exit Sub
+            End Try
+            Dim currentverison As String = Application.ProductVersion
+            Dim splitcurver = currentverison.Split(".")
+            Dim splitnewver = newversion.Split(".")
+            Dim joincurver As String = splitcurver(0) & splitcurver(1) & splitcurver(2) & splitcurver(3)
+            Dim joinnewver As String = splitnewver(0) & splitnewver(1) & splitnewver(2) & splitnewver(3)
+            Dim rescurver As Integer = Convert.ToInt32(joincurver)
+            Dim resnewver As Integer = Convert.ToInt32(joinnewver)
+            'If newversion.Contains(currentverison) Then
+            '    Exit Sub
+            'Else
+            '    Dim update As Integer = MessageBox.Show("New version (ver " & newversion & ") are available, proceed to download? ", "New Version", MessageBoxButtons.YesNo)
+            '    If update = DialogResult.Yes Then
+            '        SSdownload.Show()
+            '    ElseIf update = DialogResult.No Then
+            '        Exit Sub
+            '    End If
+            'End If
+
+            If resnewver <= rescurver Then
+                Exit Sub
+            ElseIf resnewver > rescurver Then
                 Dim update As Integer = MessageBox.Show("New version (ver " & newversion & ") are available, proceed to download? ", "New Version", MessageBoxButtons.YesNo)
                 If update = DialogResult.Yes Then
                     SSdownload.Show()
@@ -171,7 +284,19 @@ Public Class frmMain
         frmPSVW_IC.Show()
     End Sub
 
-    Private Sub AchievementByProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AchievementByProductToolStripMenuItem.Click
+    Private Sub AchievementByProductToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AchievementByProductToolStripMenuItem1.Click
         frmABP.Show()
+    End Sub
+
+    Private Sub TargetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TargetMenuItem.Click
+        frmTarget.Show()
+    End Sub
+
+    Private Sub InitDBMenuItem_Click(sender As Object, e As EventArgs) Handles InitDBMenuItem.Click
+        frmInitDB.Show()
+    End Sub
+
+    Private Sub FCSRepMenuItem_Click(sender As Object, e As EventArgs) Handles FCSRepMenuItem.Click
+        frmFCS_Rep.Show()
     End Sub
 End Class
