@@ -13,6 +13,25 @@ Public Class frmFCS_Rep
         sqlcon.ConnectionString = constr
     End Sub
 
+    '--------------------------------------------------------- INIT DB -------------------------------------------------------
+    Dim checktarget_result As String
+    Public Sub CheckDataTarget()
+        Dim comstr As String
+        comstr = "SELECT(SELECT CASE WHEN (SELECT COUNT(*) FROM TARGET_BYDSR) > 0 THEN 'TRUE' ELSE 'FALSE' END) AS TARGET_CHECK"
+        Dim cmdstr As New SqlCommand(comstr, sqlcon)
+        Try
+            GetDBCOn()
+            sqlcon.Open()
+            checktarget_result = cmdstr.ExecuteScalar()
+            sqlcon.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error on checking target data, with message: " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            sqlcon.Close()
+        End Try
+    End Sub
+
+    '-------------------------------------------------------------------------------------------------------------------------
+
     Public Sub loadclbDSR()
         Dim comstr As String = "SELECT DSR + ' - ' + NAME AS DSR FROM DSR"
         Dim da As New SqlDataAdapter(comstr, sqlcon)
@@ -33,26 +52,18 @@ Public Class frmFCS_Rep
     End Sub
 
     Public Sub Year()
-        Dim comstr As String = "select DISTINCT(DATEPART(YYYY,DOC_DATE)) as DataYear from CASHMEMO " _
-                               & "GROUP BY DOC_DATE"
-        Dim comstr2 As String = "select DISTINCT(DATEPART(YYYY,DOC_DATE)) as DataYear from CASHMEMO " _
-                               & "GROUP BY DOC_DATE"
+        Dim comstr As String = "SELECT DISTINCT TARGET_YEAR FROM TARGET_BYDSR GROUP BY TARGET_YEAR " _
+                               & "ORDER BY TARGET_YEAR ASC"
         Try
             GetDBCon()
             sqlcon.Open()
-            Dim cmdcek As New SqlCommand(comstr, sqlcon)
-            Dim result As String = cmdcek.ExecuteScalar
-            If String.IsNullOrEmpty(result) OrElse IsDBNull(result) Then
-                cbYear.Items.Add("")
-            Else
-                Dim da As New SqlDataAdapter(comstr2, sqlcon)
-                Dim ds As New DataSet
-                da.Fill(ds)
-                'cbYear.Items.Clear()
-                cbYear.DataSource = ds.Tables(0)
-                cbYear.ValueMember = "DataYear"
-                cbYear.DisplayMember = "DataYear"
-            End If
+            Dim da As New SqlDataAdapter(comstr, sqlcon)
+            Dim ds As New DataSet
+            da.Fill(ds)
+            'cbYear.Items.Clear()
+            cbYear.DataSource = ds.Tables(0)
+            cbYear.ValueMember = "TARGET_YEAR"
+            cbYear.DisplayMember = "TARGET_YEAR"
             sqlcon.Close()
         Catch ex As Exception
             MessageBox.Show("Error on getting year data, with message: " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -60,18 +71,30 @@ Public Class frmFCS_Rep
         End Try
     End Sub
 
+    Dim year1 As String
+
     Public Sub period()
-        Dim comstr As String = "SELECT DISTINCT JCNO FROM JC_WEEK ORDER BY JCNO"
+        year1 = cbYear.SelectedValue.ToString
+        Dim comstr As String = "SELECT DISTINCT JC_TARGET FROM TARGET_BYDSR WHERE TARGET_YEAR ='" & year1 _
+                               & "' GROUP BY JC_TARGET ORDER BY JC_TARGET ASC"
         Dim da As New SqlDataAdapter(comstr, sqlcon)
         Dim ds As New DataSet
         Try
-            GetDBCon()
-            sqlcon.Open()
-            da.Fill(ds, "JC_WEEK")
-            cbPeriod.DataSource = ds.Tables(0)
-            cbPeriod.ValueMember = "JCNO"
-            cbPeriod.DisplayMember = "JCNO"
-            sqlcon.Close()
+            If sqlcon.State = ConnectionState.Open Then
+                da.Fill(ds, "TARGET_BYDSR")
+                cbPeriod.DataSource = ds.Tables(0)
+                cbPeriod.ValueMember = "JC_TARGET"
+                cbPeriod.DisplayMember = "JC_TARGET"
+                sqlcon.Close()
+            ElseIf sqlcon.State = ConnectionState.Closed Then
+                GetDBCon()
+                sqlcon.Open()
+                da.Fill(ds, "TARGET_BYDSR")
+                cbPeriod.DataSource = ds.Tables(0)
+                cbPeriod.ValueMember = "JC_TARGET"
+                cbPeriod.DisplayMember = "JC_TARGET"
+                sqlcon.Close()
+            End If
         Catch ex As Exception
             MessageBox.Show("Error on getting period data, with message: " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             sqlcon.Close()
@@ -79,9 +102,20 @@ Public Class frmFCS_Rep
     End Sub
 
     Public Sub frmFCS_Rep_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Year()
-        period()
-        loadclbDSR()
+        System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = False
+
+        CheckDataTarget()
+        If checktarget_result = "TRUE" Then
+            Year()
+            loadclbDSR()
+            period()
+            AddHandler cbYear.SelectedIndexChanged, AddressOf cbYear_SelIndChanged
+        Else
+            Dim result As DialogResult = MessageBox.Show("No FCS Target, please setup the FCS target on OSDP side", "No FCS Target", MessageBoxButtons.OK)
+            If result = Windows.Forms.DialogResult.OK Then
+                Me.Close()
+            End If
+        End If
     End Sub
 
     Private Sub clbDSR_ItemCheck(sender As Object, e As ItemCheckEventArgs) Handles clbDSR.ItemCheck
@@ -113,12 +147,17 @@ Public Class frmFCS_Rep
                     ListDSR.Add(split(0))
                 End If
             Next
-            SelectedItem = String.Join("; ", TryCast(ListHeadDSR.ToArray(GetType(String)), String()))
+            Dim lengthHeadDSR As Integer = ListHeadDSR.Count
+            If lengthHeadDSR >= 2 Then
+                SelectedItem = "Multiple"
+            Else
+                SelectedItem = String.Join("; ", TryCast(ListHeadDSR.ToArray(GetType(String)), String()))
+            End If
             DSRlist = String.Join("','", TryCast(ListDSR.ToArray(GetType(String)), String()))
         Catch ex As Exception
             MessageBox.Show("Error on getting DSR, With message: " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-        
+
     End Sub
     Public Sub GetDataHead()
         Dim comhead As String
@@ -328,7 +367,16 @@ Public Class frmFCS_Rep
     End Sub
 
     Private Sub btnViewRep_Click(sender As Object, e As EventArgs) Handles btnViewRep.Click
-        SSLoading.Show()
+        SSUpdateDB.Show()
         frmFCS_RepViewer.Show()
+    End Sub
+
+    Private Sub cbYear_SelIndChanged(sender As Object, e As EventArgs)
+        If cbYear.Items.Count > 0 Then
+            sqlcon.Close()
+            period()
+        Else
+            Exit Sub
+        End If
     End Sub
 End Class

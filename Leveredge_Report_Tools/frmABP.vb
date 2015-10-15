@@ -76,7 +76,7 @@ Public Class frmABP
             MessageBox.Show("Minimum SKU Harus Di Isi", "STOP", MessageBoxButtons.OK, MessageBoxIcon.Stop)
             Exit Sub
         Else
-            SSloading.Show()
+            SSUpdateDB.Show()
             frmRepABP.Show()
         End If
     End Sub

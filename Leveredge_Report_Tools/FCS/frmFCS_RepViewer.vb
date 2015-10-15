@@ -10,7 +10,7 @@
         'frmFCS_Rep.GetBPSchPRod()
         'frmFCS_Rep.GetLPPC()
         frmFCS_Rep.GetFCSData()
-        SSLoading.Close()
+        SSUpdateDB.Close()
         Me.rvFCS_New.RefreshReport()
     End Sub
 End Class

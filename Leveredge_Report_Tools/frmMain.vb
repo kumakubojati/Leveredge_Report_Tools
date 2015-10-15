@@ -297,6 +297,6 @@ LineMain1: FCSDB()
     End Sub
 
     Private Sub FCSRepMenuItem_Click(sender As Object, e As EventArgs) Handles FCSRepMenuItem.Click
-        frmFCS_Rep.Show()
+        SSUploadDB.Show()
     End Sub
 End Class

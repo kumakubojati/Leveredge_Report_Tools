@@ -92,7 +92,7 @@ Public Class frmInitDB
             cmd_SPP.ExecuteNonQuery()
             cmd_spbd.ExecuteNonQuery()
             cmd_SRdet.ExecuteNonQuery()
-            cmd_trgt.ExecuteNonQuery()
+            'cmd_trgt.ExecuteNonQuery()
             cmd_Dsit.ExecuteNonQuery()
             sqlcon.Close()
         Catch ex As Exception

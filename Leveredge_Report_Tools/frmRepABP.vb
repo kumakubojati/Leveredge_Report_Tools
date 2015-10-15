@@ -63,6 +63,6 @@ Public Class frmRepABP
         frmABP.GetDataABP()
         dgvTods(frmABP.dgridSKU)
         Me.rvABP.RefreshReport()
-        SSloading.Close()
+        SSUpdateDB.Close()
     End Sub
 End Class

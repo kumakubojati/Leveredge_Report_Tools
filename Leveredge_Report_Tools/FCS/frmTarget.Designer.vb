@@ -40,6 +40,7 @@ Partial Class frmTarget
         Me.txtBP = New System.Windows.Forms.TextBox()
         Me.txtLPPC = New System.Windows.Forms.TextBox()
         Me.btnForAll = New System.Windows.Forms.Button()
+        Me.btnCleanTrgt = New System.Windows.Forms.Button()
         CType(Me.dgDetailTarget, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -193,12 +194,23 @@ Partial Class frmTarget
         Me.btnForAll.TabIndex = 16
         Me.btnForAll.UseVisualStyleBackColor = False
         '
+        'btnCleanTrgt
+        '
+        Me.btnCleanTrgt.Enabled = False
+        Me.btnCleanTrgt.Location = New System.Drawing.Point(315, 344)
+        Me.btnCleanTrgt.Name = "btnCleanTrgt"
+        Me.btnCleanTrgt.Size = New System.Drawing.Size(83, 23)
+        Me.btnCleanTrgt.TabIndex = 17
+        Me.btnCleanTrgt.Text = "Clean All Data"
+        Me.btnCleanTrgt.UseVisualStyleBackColor = True
+        '
         'frmTarget
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(410, 379)
+        Me.Controls.Add(Me.btnCleanTrgt)
         Me.Controls.Add(Me.btnForAll)
         Me.Controls.Add(Me.txtLPPC)
         Me.Controls.Add(Me.txtBP)
@@ -242,4 +254,5 @@ Partial Class frmTarget
     Friend WithEvents txtBP As System.Windows.Forms.TextBox
     Friend WithEvents txtLPPC As System.Windows.Forms.TextBox
     Friend WithEvents btnForAll As System.Windows.Forms.Button
+    Friend WithEvents btnCleanTrgt As System.Windows.Forms.Button
 End Class

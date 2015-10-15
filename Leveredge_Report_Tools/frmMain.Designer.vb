@@ -358,17 +358,19 @@ Partial Class frmMain
         Me.InitDBMenuItem.Name = "InitDBMenuItem"
         Me.InitDBMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.InitDBMenuItem.Text = "Initialize DB"
+        Me.InitDBMenuItem.Visible = False
         '
         'TargetMenuItem
         '
         Me.TargetMenuItem.Enabled = False
         Me.TargetMenuItem.Name = "TargetMenuItem"
+        Me.TargetMenuItem.ShowShortcutKeys = False
         Me.TargetMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.TargetMenuItem.Text = "Target"
+        Me.TargetMenuItem.Visible = False
         '
         'FCSRepMenuItem
         '
-        Me.FCSRepMenuItem.Enabled = False
         Me.FCSRepMenuItem.Name = "FCSRepMenuItem"
         Me.FCSRepMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.FCSRepMenuItem.Text = "FCS Report"

@@ -13,6 +13,7 @@ Public Class frmTarget
         readconnection = ReadAllLines(strfile)(3)
         sqlcon.ConnectionString = readconnection
     End Sub
+    
 
     Public Sub InitdgDetailTarget()
         Dim year As String = cbYear.SelectedValue.ToString
@@ -82,6 +83,12 @@ Public Class frmTarget
     End Sub
     Private Sub frmTarget_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GetCBYearPeriod()
+        'CheckDataTarget()
+        'If checktarget_result = "TRUE" Then
+        '    btnCleanTrgt.Enabled = True
+        'Else
+        '    btnCleanTrgt.Enabled = False
+        'End If
     End Sub
 
     Private Sub btnFetchData_Click(sender As Object, e As EventArgs) Handles btnFetchData.Click
@@ -231,5 +238,19 @@ Public Class frmTarget
         btnSave.Enabled = False
         btnUpdate.Enabled = False
         btnDelete.Enabled = False
+    End Sub
+
+    Private Sub btnCleanTrgt_Click(sender As Object, e As EventArgs) Handles btnCleanTrgt.Click
+        Dim comstr As String = "TRUNCATE TABLE TARGET_BYDSR"
+        Dim cmdstr As New SqlCommand(comstr, sqlcon)
+        Try
+            GetDBCOn()
+            sqlcon.Open()
+            cmdstr.ExecuteNonQuery()
+            sqlcon.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error on Clean all data, with message: " & ex.Message.ToString, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            sqlcon.Close()
+        End Try
     End Sub
 End Class

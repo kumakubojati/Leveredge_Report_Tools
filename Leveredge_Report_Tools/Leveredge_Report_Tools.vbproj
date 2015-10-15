@@ -149,6 +149,12 @@
     <Compile Include="FCS\frmTarget.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FCS\SSUploadDB.Designer.vb">
+      <DependentUpon>SSUploadDB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FCS\SSUploadDB.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmABP.Designer.vb">
       <DependentUpon>frmABP.vb</DependentUpon>
     </Compile>
@@ -409,6 +415,9 @@
       <DependentUpon>frmTarget.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="bin\Debug\FCSRep_New.rdlc" />
+    <EmbeddedResource Include="FCS\SSUploadDB.resx">
+      <DependentUpon>SSUploadDB.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmABP.resx">
       <DependentUpon>frmABP.vb</DependentUpon>
     </EmbeddedResource>
