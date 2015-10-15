@@ -30,6 +30,7 @@ Partial Class frmFCS_Rep
         Me.cbPeriod = New System.Windows.Forms.ComboBox()
         Me.btnViewRep = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.BWUpdateDB = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'clbDSR
@@ -62,7 +63,6 @@ Partial Class frmFCS_Rep
         '
         'cbYear
         '
-        Me.cbYear.Enabled = False
         Me.cbYear.FormattingEnabled = True
         Me.cbYear.Location = New System.Drawing.Point(66, 10)
         Me.cbYear.Name = "cbYear"
@@ -123,4 +123,5 @@ Partial Class frmFCS_Rep
     Friend WithEvents btnViewRep As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents clbDSR As System.Windows.Forms.CheckedListBox
+    Friend WithEvents BWUpdateDB As System.ComponentModel.BackgroundWorker
 End Class
