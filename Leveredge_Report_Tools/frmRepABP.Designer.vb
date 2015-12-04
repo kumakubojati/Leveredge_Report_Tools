@@ -23,49 +23,30 @@ Partial Class frmRepABP
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ReportDataSource4 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Dim ReportDataSource5 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Dim ReportDataSource6 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource3 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRepABP))
-        Me.rvABP = New Microsoft.Reporting.WinForms.ReportViewer()
-        Me.dsRep = New Leveredge_Report_Tools.dsRep()
         Me.dtRepBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.dsRep = New Leveredge_Report_Tools.dsRep()
         Me.dtHeadRepBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.dtHeadRep2BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        CType(Me.dsRep, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.rvABP = New Microsoft.Reporting.WinForms.ReportViewer()
         CType(Me.dtRepBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dsRep, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtHeadRepBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtHeadRep2BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'rvABP
-        '
-        Me.rvABP.AutoSize = True
-        Me.rvABP.Dock = System.Windows.Forms.DockStyle.Fill
-        ReportDataSource4.Name = "dsAchByProd"
-        ReportDataSource4.Value = Me.dtRepBindingSource
-        ReportDataSource5.Name = "dsHeadRep"
-        ReportDataSource5.Value = Me.dtHeadRepBindingSource
-        ReportDataSource6.Name = "dsHeadRep2"
-        ReportDataSource6.Value = Me.dtHeadRep2BindingSource
-        Me.rvABP.LocalReport.DataSources.Add(ReportDataSource4)
-        Me.rvABP.LocalReport.DataSources.Add(ReportDataSource5)
-        Me.rvABP.LocalReport.DataSources.Add(ReportDataSource6)
-        Me.rvABP.LocalReport.ReportEmbeddedResource = "Leveredge_Report_Tools.AchievementByProduct.rdlc"
-        Me.rvABP.Location = New System.Drawing.Point(0, 0)
-        Me.rvABP.Name = "rvABP"
-        Me.rvABP.Size = New System.Drawing.Size(766, 430)
-        Me.rvABP.TabIndex = 0
-        '
-        'dsRep
-        '
-        Me.dsRep.DataSetName = "dsRep"
-        Me.dsRep.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'dtRepBindingSource
         '
         Me.dtRepBindingSource.DataMember = "dtRep"
         Me.dtRepBindingSource.DataSource = Me.dsRep
+        '
+        'dsRep
+        '
+        Me.dsRep.DataSetName = "dsRep"
+        Me.dsRep.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'dtHeadRepBindingSource
         '
@@ -77,18 +58,37 @@ Partial Class frmRepABP
         Me.dtHeadRep2BindingSource.DataMember = "dtHeadRep2"
         Me.dtHeadRep2BindingSource.DataSource = Me.dsRep
         '
+        'rvABP
+        '
+        Me.rvABP.AutoSize = True
+        Me.rvABP.Dock = System.Windows.Forms.DockStyle.Fill
+        ReportDataSource1.Name = "dsAchByProd"
+        ReportDataSource1.Value = Me.dtRepBindingSource
+        ReportDataSource2.Name = "dsHeadRep"
+        ReportDataSource2.Value = Me.dtHeadRepBindingSource
+        ReportDataSource3.Name = "dsHeadRep2"
+        ReportDataSource3.Value = Me.dtHeadRep2BindingSource
+        Me.rvABP.LocalReport.DataSources.Add(ReportDataSource1)
+        Me.rvABP.LocalReport.DataSources.Add(ReportDataSource2)
+        Me.rvABP.LocalReport.DataSources.Add(ReportDataSource3)
+        Me.rvABP.LocalReport.ReportEmbeddedResource = "Leveredge_Report_Tools.AchievementByProduct.rdlc"
+        Me.rvABP.Location = New System.Drawing.Point(0, 0)
+        Me.rvABP.Name = "rvABP"
+        Me.rvABP.Size = New System.Drawing.Size(841, 741)
+        Me.rvABP.TabIndex = 0
+        '
         'frmRepABP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(766, 430)
+        Me.ClientSize = New System.Drawing.Size(841, 741)
         Me.Controls.Add(Me.rvABP)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmRepABP"
         Me.Text = "Achievement By Product"
-        CType(Me.dsRep, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtRepBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dsRep, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtHeadRepBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtHeadRep2BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

@@ -9,9 +9,9 @@ Public Class frmInitDB
     Dim constr As String
 
     Private Sub GetDBCon()
-        Dim strfile As String = My.Application.Info.DirectoryPath & "\Conf.ini"
-        constr = ReadAllLines(strfile)(3)
-        sqlcon.ConnectionString = constr
+        Dim strfile As String = My.Settings("FCSDBCon").ToString
+        'constr = ReadAllLines(strfile)(3)
+        sqlcon.ConnectionString = strfile
     End Sub
 
     Private Sub GetYearData()

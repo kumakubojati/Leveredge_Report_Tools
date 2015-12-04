@@ -1,7 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" UseMySettingsClassName="true">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="MasterDBCon" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=.\SQLEXPRESS; Database=master; User Id=sa; Password=unilever1;</Value>
+    </Setting>
+    <Setting Name="FCSDBCon" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=.\SQLEXPRESS; Database=FCS_REPORT; User Id=FCSREP; Password=unilever123;</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

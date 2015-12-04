@@ -3,10 +3,13 @@ Imports System.IO
 Imports System.Data
 Imports System.Data.SqlClient
 Imports System.IO.File
+Imports System.Globalization
+Imports System.Windows.Forms
+Imports System.Xml
 Public Class frmMain
 
     Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem.Click
-        frmOutMas.Show()
+        frmOutMas_New.Show()
     End Sub
 
     Private Sub ProductMasterReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductMasterReportToolStripMenuItem.Click
@@ -69,32 +72,32 @@ Public Class frmMain
         frmLPU.Show()
     End Sub
 
-    Public Function IsInternetAvailable() As Boolean
-        Dim objUrl As New System.Uri("http://www.Google.com")
-        Dim objWebReq As WebRequest
-        objWebReq = WebRequest.Create(objUrl)
-        Dim objresp As WebResponse
+    'Public Function IsInternetAvailable() As Boolean
+    '    Dim objUrl As New System.Uri("http://www.Google.com")
+    '    Dim objWebReq As WebRequest
+    '    objWebReq = WebRequest.Create(objUrl)
+    '    Dim objresp As WebResponse
 
-        Try
-            objresp = objWebReq.GetResponse
-            objresp.Close()
-            objresp = Nothing
-            Return True
+    '    Try
+    '        objresp = objWebReq.GetResponse
+    '        objresp.Close()
+    '        objresp = Nothing
+    '        Return True
 
-        Catch ex As Exception
-            objresp = Nothing
-            objWebReq = Nothing
-            Return False
-        End Try
-    End Function
+    '    Catch ex As Exception
+    '        objresp = Nothing
+    '        objWebReq = Nothing
+    '        Return False
+    '    End Try
+    'End Function
     Public newversion As String
     Dim sqlconSA As New SqlConnection
     Dim constrSA As String
     Public cekDBResult As String
     Private Sub saDBCon()
-        Dim strfile As String = My.Application.Info.DirectoryPath & "\Conf.ini"
-        constrSA = ReadAllLines(strfile)(5)
-        sqlconSA.ConnectionString = constrSA
+        Dim strfile As String = My.Settings("MasterDBCon").ToString
+        'constrSA = ReadAllLines(strfile)(5)
+        sqlconSA.ConnectionString = strfile
     End Sub
     Public Sub CheckDB()
         Dim comstr As String
@@ -130,11 +133,11 @@ Public Class frmMain
 
     Public Sub FCSDB()
         Dim comstr As String = "SELECT (SELECT CASE WHEN (SELECT COUNT(*) FROM CASHMEMO) > 0 THEN 'TRUE' ELSE 'FALSE' END) AS DB_EXISITING"
-        Dim strfile As String = My.Application.Info.DirectoryPath & "\Conf.ini"
-        Dim constr As String
-        constr = ReadAllLines(strfile)(3)
+        Dim strfile As String = My.Settings("FCSDBCon").ToString
+        'Dim constr As String
+        'constr = ReadAllLines(strfile)(3)
         Dim sqlcon As New SqlConnection
-        sqlcon.ConnectionString = constr
+        sqlcon.ConnectionString = strfile
         Try
             Dim cmdcek As New SqlCommand(comstr, sqlcon)
             sqlcon.Open()
@@ -153,6 +156,7 @@ Public Class frmMain
         sqlcon.Close()
     End Sub
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CheckVersion()
         CheckDB()
         If cekDBResult = "1" Then
             GoTo LineMain1
@@ -177,47 +181,49 @@ Public Class frmMain
             End Try
         End If
 LineMain1: FCSDB()
-        If IsInternetAvailable() = True Then
-            Try
-                Dim request As HttpWebRequest = HttpWebRequest.Create("Http://182.253.21.82:8020/LastVersion.txt")
-                Dim response As HttpWebResponse = request.GetResponse()
-                Dim sr As StreamReader = New StreamReader(response.GetResponseStream())
-                newversion = sr.ReadToEnd()
-            Catch ex As Exception
-                MessageBox.Show("No Connection Update Server, with  message: " & ex.Message.ToString, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Exit Sub
-            End Try
-            Dim currentverison As String = Application.ProductVersion
-            Dim splitcurver = currentverison.Split(".")
-            Dim splitnewver = newversion.Split(".")
-            Dim joincurver As String = splitcurver(0) & splitcurver(1) & splitcurver(2) & splitcurver(3)
-            Dim joinnewver As String = splitnewver(0) & splitnewver(1) & splitnewver(2) & splitnewver(3)
-            Dim rescurver As Integer = Convert.ToInt32(joincurver)
-            Dim resnewver As Integer = Convert.ToInt32(joinnewver)
-            'If newversion.Contains(currentverison) Then
-            '    Exit Sub
-            'Else
-            '    Dim update As Integer = MessageBox.Show("New version (ver " & newversion & ") are available, proceed to download? ", "New Version", MessageBoxButtons.YesNo)
-            '    If update = DialogResult.Yes Then
-            '        SSdownload.Show()
-            '    ElseIf update = DialogResult.No Then
-            '        Exit Sub
-            '    End If
-            'End If
+        'If IsInternetAvailable() = True Then
+        '    Try
+        '        Dim request As HttpWebRequest = HttpWebRequest.Create("Http://182.253.21.82:8020/LastVersion.txt")
+        '        Dim response As HttpWebResponse = request.GetResponse()
+        '        Dim sr As StreamReader = New StreamReader(response.GetResponseStream())
+        '        newversion = sr.ReadToEnd()
+        '    Catch ex As Exception
+        '        MessageBox.Show("No Connection Update Server, with  message: " & ex.Message.ToString, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        '        Exit Sub
+        '    End Try
+        '    Dim currentverison As String = Application.ProductVersion
+        '    Dim splitcurver = currentverison.Split(".")
+        '    Dim splitnewver = newversion.Split(".")
+        '    Dim joincurver As String = splitcurver(0) & splitcurver(1) & splitcurver(2) & splitcurver(3)
+        '    Dim joinnewver As String = splitnewver(0) & splitnewver(1) & splitnewver(2) & splitnewver(3)
+        '    Dim rescurver As Integer = Convert.ToInt32(joincurver)
+        '    Dim resnewver As Integer = Convert.ToInt32(joinnewver)
+        '    'If newversion.Contains(currentverison) Then
+        '    '    Exit Sub
+        '    'Else
+        '    '    Dim update As Integer = MessageBox.Show("New version (ver " & newversion & ") are available, proceed to download? ", "New Version", MessageBoxButtons.YesNo)
+        '    '    If update = DialogResult.Yes Then
+        '    '        SSdownload.Show()
+        '    '    ElseIf update = DialogResult.No Then
+        '    '        Exit Sub
+        '    '    End If
+        '    'End If
 
-            If resnewver <= rescurver Then
-                Exit Sub
-            ElseIf resnewver > rescurver Then
-                Dim update As Integer = MessageBox.Show("New version (ver " & newversion & ") are available, proceed to download? ", "New Version", MessageBoxButtons.YesNo)
-                If update = DialogResult.Yes Then
-                    SSdownload.Show()
-                ElseIf update = DialogResult.No Then
-                    Exit Sub
-                End If
-            End If
-        Else
-            MessageBox.Show("No Internet Connection")
-        End If
+        '    If resnewver <= rescurver Then
+        '        Exit Sub
+        '    ElseIf resnewver > rescurver Then
+        '        Dim update As Integer = MessageBox.Show("New version (ver " & newversion & ") are available, proceed to download? ", "New Version", MessageBoxButtons.YesNo)
+        '        If update = DialogResult.Yes Then
+        '            SSdownload.Show()
+        '        ElseIf update = DialogResult.No Then
+        '            Exit Sub
+        '        End If
+        '    End If
+        'Else
+        '    MessageBox.Show("No Internet Connection")
+        'End If
+
+        
     End Sub
 
     Private Sub AnalysisBackupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnalysisBackupToolStripMenuItem.Click
@@ -298,5 +304,42 @@ LineMain1: FCSDB()
 
     Private Sub FCSRepMenuItem_Click(sender As Object, e As EventArgs) Handles FCSRepMenuItem.Click
         SSUploadDB.Show()
+    End Sub
+
+    Private Sub EvoucherToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EvoucherToolStripMenuItem.Click
+        frmEvoucherRep.Show()
+    End Sub
+
+    Private Sub DBConnectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DBConnectionToolStripMenuItem.Click
+        frmDBConPass.Show()
+    End Sub
+    Public NewVers, CurrVers As String
+    Private Sub CheckVersion()
+        ' Delete all file in Download folder
+        For Each f As String In Directory.GetFiles("D:\Unilever Indonesia\Leveredge Report Tools\Downloaded")
+            File.Delete(f)
+        Next f
+        'Read xml current and new version
+        Const xmlAddress As String = "http://www.uid-leveredge.cf/LRT/AppCast.xml"
+        Dim xmlReader As New XmlDocument
+        Dim current_xmlAddress As String = My.Application.Info.DirectoryPath & "\AppCast.xml"
+        Dim xmlReader_version As New XmlDocument
+        xmlReader_version.Load(current_xmlAddress)
+        xmlReader.Load(xmlAddress)
+        Dim Curr_Vers = xmlReader_version.GetElementsByTagName("version")
+        For Each Curr_Ver As XmlElement In Curr_Vers
+            CurrVers = Curr_Ver.InnerText
+            CurrVers = CurrVers.Replace(".", "")
+        Next
+        Dim New_Vers = xmlReader.GetElementsByTagName("version")
+        For Each NewVer As XmlElement In New_Vers
+            NewVers = NewVer.InnerText
+            NewVers = NewVers.Replace(".", "")
+        Next
+        If NewVers > CurrVers Then
+            Process.Start(My.Application.Info.DirectoryPath + "\Updater.exe")
+        Else
+            Exit Sub
+        End If
     End Sub
 End Class

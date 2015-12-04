@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_EV" targetNamespace="http://tempuri.org/DS_EV.xsd" xmlns:mstns="http://tempuri.org/DS_EV.xsd" xmlns="http://tempuri.org/DS_EV.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_EV" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_EV" msprop:Generator_UserDSName="DS_EV">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EV_REP" msprop:Generator_TableClassName="EV_REPDataTable" msprop:Generator_TableVarName="tableEV_REP" msprop:Generator_TablePropName="EV_REP" msprop:Generator_RowDeletingName="EV_REPRowDeleting" msprop:Generator_RowChangingName="EV_REPRowChanging" msprop:Generator_RowEvHandlerName="EV_REPRowChangeEventHandler" msprop:Generator_RowDeletedName="EV_REPRowDeleted" msprop:Generator_UserTableName="EV_REP" msprop:Generator_RowChangedName="EV_REPRowChanged" msprop:Generator_RowEvArgName="EV_REPRowChangeEvent" msprop:Generator_RowClassName="EV_REPRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EVOUCHER_CATEGORY" msprop:Generator_ColumnVarNameInTable="columnEVOUCHER_CATEGORY" msprop:Generator_ColumnPropNameInRow="EVOUCHER_CATEGORY" msprop:Generator_ColumnPropNameInTable="EVOUCHER_CATEGORYColumn" msprop:Generator_UserColumnName="EVOUCHER_CATEGORY" type="xs:string" minOccurs="0" />
+              <xs:element name="EVOUCHER_CATEGORY_DESC" msprop:Generator_ColumnVarNameInTable="columnEVOUCHER_CATEGORY_DESC" msprop:Generator_ColumnPropNameInRow="EVOUCHER_CATEGORY_DESC" msprop:Generator_ColumnPropNameInTable="EVOUCHER_CATEGORY_DESCColumn" msprop:Generator_UserColumnName="EVOUCHER_CATEGORY_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="EVOUCHER_MASTER" msprop:Generator_ColumnVarNameInTable="columnEVOUCHER_MASTER" msprop:Generator_ColumnPropNameInRow="EVOUCHER_MASTER" msprop:Generator_ColumnPropNameInTable="EVOUCHER_MASTERColumn" msprop:Generator_UserColumnName="EVOUCHER_MASTER" type="xs:string" minOccurs="0" />
+              <xs:element name="EVOUCHER_MASTER_DESC" msprop:Generator_ColumnVarNameInTable="columnEVOUCHER_MASTER_DESC" msprop:Generator_ColumnPropNameInRow="EVOUCHER_MASTER_DESC" msprop:Generator_ColumnPropNameInTable="EVOUCHER_MASTER_DESCColumn" msprop:Generator_UserColumnName="EVOUCHER_MASTER_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="FROM_DATE" msprop:Generator_ColumnVarNameInTable="columnFROM_DATE" msprop:Generator_ColumnPropNameInRow="FROM_DATE" msprop:Generator_ColumnPropNameInTable="FROM_DATEColumn" msprop:Generator_UserColumnName="FROM_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="END_DATE" msprop:Generator_ColumnVarNameInTable="columnEND_DATE" msprop:Generator_ColumnPropNameInRow="END_DATE" msprop:Generator_ColumnPropNameInTable="END_DATEColumn" msprop:Generator_UserColumnName="END_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="POP_CODE" msprop:Generator_ColumnVarNameInTable="columnPOP_CODE" msprop:Generator_ColumnPropNameInRow="POP_CODE" msprop:Generator_ColumnPropNameInTable="POP_CODEColumn" msprop:Generator_UserColumnName="POP_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="POP_NAME" msprop:Generator_ColumnVarNameInTable="columnPOP_NAME" msprop:Generator_ColumnPropNameInRow="POP_NAME" msprop:Generator_ColumnPropNameInTable="POP_NAMEColumn" msprop:Generator_UserColumnName="POP_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="LAST_13_WEEK_SALE" msprop:Generator_ColumnVarNameInTable="columnLAST_13_WEEK_SALE" msprop:Generator_ColumnPropNameInRow="LAST_13_WEEK_SALE" msprop:Generator_ColumnPropNameInTable="LAST_13_WEEK_SALEColumn" msprop:Generator_UserColumnName="LAST_13_WEEK_SALE" type="xs:string" minOccurs="0" />
+              <xs:element name="REF_DOC_NO" msprop:Generator_ColumnVarNameInTable="columnREF_DOC_NO" msprop:Generator_ColumnPropNameInRow="REF_DOC_NO" msprop:Generator_ColumnPropNameInTable="REF_DOC_NOColumn" msprop:Generator_UserColumnName="REF_DOC_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="STATUS_ASSESMENT" msprop:Generator_ColumnVarNameInTable="columnSTATUS_ASSESMENT" msprop:Generator_ColumnPropNameInRow="STATUS_ASSESMENT" msprop:Generator_ColumnPropNameInTable="STATUS_ASSESMENTColumn" msprop:Generator_UserColumnName="STATUS_ASSESMENT" type="xs:string" minOccurs="0" />
+              <xs:element name="INVOICE_NO_INFO" msprop:Generator_ColumnVarNameInTable="columnINVOICE_NO_INFO" msprop:Generator_ColumnPropNameInRow="INVOICE_NO_INFO" msprop:Generator_ColumnPropNameInTable="INVOICE_NO_INFOColumn" msprop:Generator_UserColumnName="INVOICE_NO_INFO" type="xs:string" minOccurs="0" />
+              <xs:element name="INVOICE_NUMBER_EVOUCHER" msprop:Generator_ColumnVarNameInTable="columnINVOICE_NUMBER_EVOUCHER" msprop:Generator_ColumnPropNameInRow="INVOICE_NUMBER_EVOUCHER" msprop:Generator_ColumnPropNameInTable="INVOICE_NUMBER_EVOUCHERColumn" msprop:Generator_UserColumnName="INVOICE_NUMBER_EVOUCHER" type="xs:string" minOccurs="0" />
+              <xs:element name="VOUCHER_VALUE1" msprop:Generator_ColumnVarNameInTable="columnVOUCHER_VALUE1" msprop:Generator_ColumnPropNameInRow="VOUCHER_VALUE1" msprop:Generator_ColumnPropNameInTable="VOUCHER_VALUE1Column" msprop:Generator_UserColumnName="VOUCHER_VALUE1" type="xs:string" minOccurs="0" />
+              <xs:element name="VOUCHER_VALUE2" msprop:Generator_ColumnVarNameInTable="columnVOUCHER_VALUE2" msprop:Generator_ColumnPropNameInRow="VOUCHER_VALUE2" msprop:Generator_ColumnPropNameInTable="VOUCHER_VALUE2Column" msprop:Generator_UserColumnName="VOUCHER_VALUE2" type="xs:string" minOccurs="0" />
+              <xs:element name="BUDGET_ALLOCATED" msprop:Generator_ColumnVarNameInTable="columnBUDGET_ALLOCATED" msprop:Generator_ColumnPropNameInRow="BUDGET_ALLOCATED" msprop:Generator_ColumnPropNameInTable="BUDGET_ALLOCATEDColumn" msprop:Generator_UserColumnName="BUDGET_ALLOCATED" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtHeader_EV" msprop:Generator_TableClassName="dtHeader_EVDataTable" msprop:Generator_TableVarName="tabledtHeader_EV" msprop:Generator_RowChangedName="dtHeader_EVRowChanged" msprop:Generator_TablePropName="dtHeader_EV" msprop:Generator_RowDeletingName="dtHeader_EVRowDeleting" msprop:Generator_RowChangingName="dtHeader_EVRowChanging" msprop:Generator_RowEvHandlerName="dtHeader_EVRowChangeEventHandler" msprop:Generator_RowDeletedName="dtHeader_EVRowDeleted" msprop:Generator_RowClassName="dtHeader_EVRow" msprop:Generator_UserTableName="dtHeader_EV" msprop:Generator_RowEvArgName="dtHeader_EVRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DTCODE" msprop:Generator_ColumnVarNameInTable="columnDTCODE" msprop:Generator_ColumnPropNameInRow="DTCODE" msprop:Generator_ColumnPropNameInTable="DTCODEColumn" msprop:Generator_UserColumnName="DTCODE" type="xs:string" minOccurs="0" />
+              <xs:element name="DTNAME" msprop:Generator_ColumnVarNameInTable="columnDTNAME" msprop:Generator_ColumnPropNameInRow="DTNAME" msprop:Generator_ColumnPropNameInTable="DTNAMEColumn" msprop:Generator_UserColumnName="DTNAME" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EV_PARTI" msprop:Generator_TableClassName="EV_PARTIDataTable" msprop:Generator_TableVarName="tableEV_PARTI" msprop:Generator_TablePropName="EV_PARTI" msprop:Generator_RowDeletingName="EV_PARTIRowDeleting" msprop:Generator_RowChangingName="EV_PARTIRowChanging" msprop:Generator_RowEvHandlerName="EV_PARTIRowChangeEventHandler" msprop:Generator_RowDeletedName="EV_PARTIRowDeleted" msprop:Generator_UserTableName="EV_PARTI" msprop:Generator_RowChangedName="EV_PARTIRowChanged" msprop:Generator_RowEvArgName="EV_PARTIRowChangeEvent" msprop:Generator_RowClassName="EV_PARTIRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EVOUCHER_MASTER" msprop:Generator_ColumnVarNameInTable="columnEVOUCHER_MASTER" msprop:Generator_ColumnPropNameInRow="EVOUCHER_MASTER" msprop:Generator_ColumnPropNameInTable="EVOUCHER_MASTERColumn" msprop:Generator_UserColumnName="EVOUCHER_MASTER" type="xs:string" minOccurs="0" />
+              <xs:element name="CAT_DESC" msprop:Generator_ColumnVarNameInTable="columnCAT_DESC" msprop:Generator_ColumnPropNameInRow="CAT_DESC" msprop:Generator_ColumnPropNameInTable="CAT_DESCColumn" msprop:Generator_UserColumnName="CAT_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="EVOUCHER_CATEGORY" msprop:Generator_ColumnVarNameInTable="columnEVOUCHER_CATEGORY" msprop:Generator_ColumnPropNameInRow="EVOUCHER_CATEGORY" msprop:Generator_ColumnPropNameInTable="EVOUCHER_CATEGORYColumn" msprop:Generator_UserColumnName="EVOUCHER_CATEGORY" type="xs:string" minOccurs="0" />
+              <xs:element name="MAS_DESC" msprop:Generator_ColumnVarNameInTable="columnMAS_DESC" msprop:Generator_ColumnPropNameInRow="MAS_DESC" msprop:Generator_ColumnPropNameInTable="MAS_DESCColumn" msprop:Generator_UserColumnName="MAS_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="FROM_DATE" msprop:Generator_ColumnVarNameInTable="columnFROM_DATE" msprop:Generator_ColumnPropNameInRow="FROM_DATE" msprop:Generator_ColumnPropNameInTable="FROM_DATEColumn" msprop:Generator_UserColumnName="FROM_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="END_DATE" msprop:Generator_ColumnVarNameInTable="columnEND_DATE" msprop:Generator_ColumnPropNameInRow="END_DATE" msprop:Generator_ColumnPropNameInTable="END_DATEColumn" msprop:Generator_UserColumnName="END_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="VOUCHER_VALUE" msprop:Generator_ColumnVarNameInTable="columnVOUCHER_VALUE" msprop:Generator_ColumnPropNameInRow="VOUCHER_VALUE" msprop:Generator_ColumnPropNameInTable="VOUCHER_VALUEColumn" msprop:Generator_UserColumnName="VOUCHER_VALUE" type="xs:string" minOccurs="0" />
+              <xs:element name="POP_CODE" msprop:Generator_ColumnVarNameInTable="columnPOP_CODE" msprop:Generator_ColumnPropNameInRow="POP_CODE" msprop:Generator_ColumnPropNameInTable="POP_CODEColumn" msprop:Generator_UserColumnName="POP_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="POP_NAME" msprop:Generator_ColumnVarNameInTable="columnPOP_NAME" msprop:Generator_ColumnPropNameInRow="POP_NAME" msprop:Generator_ColumnPropNameInTable="POP_NAMEColumn" msprop:Generator_UserColumnName="POP_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="POP_TYPE_DESC" msprop:Generator_ColumnVarNameInTable="columnPOP_TYPE_DESC" msprop:Generator_ColumnPropNameInRow="POP_TYPE_DESC" msprop:Generator_ColumnPropNameInTable="POP_TYPE_DESCColumn" msprop:Generator_UserColumnName="POP_TYPE_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="ALLOCATED_BUDGET" msprop:Generator_ColumnVarNameInTable="columnALLOCATED_BUDGET" msprop:Generator_ColumnPropNameInRow="ALLOCATED_BUDGET" msprop:Generator_ColumnPropNameInTable="ALLOCATED_BUDGETColumn" msprop:Generator_UserColumnName="ALLOCATED_BUDGET" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

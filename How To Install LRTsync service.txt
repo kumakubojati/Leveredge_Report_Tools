@@ -1,0 +1,27 @@
+Install Service
+1. Pastikan Prompt location ada pada Lokasi dibawah
+C:\Windows\Microsoft.NET\Framework\v4.0.30319>
+
+2. Ketik InstallUtil
+InstallUtil 
+
+3. Kemudian ketik lokasi LRTUpdater.exe disertai kutip dua apabila ada spasi pada nama folder
+"C:\Users\Jati\Documents\Visual Studio 2013\Projects\Leveredge\LRTUpdater\LRTUpdater\bin\Debug\LRTUpdater.exe"
+
+Contoh tampilan:
+C:\Windows\Microsoft.NET\Framework\v4.0.30319>InstallUtil "C:\Users\Jati\Documents\Visual Studio 2013\Projects\Leveredge\LRTUpdater\LRTUpdater\bin\Debug\LRTUpdater.exe"
+
+
+Uninstall Service
+1. Pastikan Prompt location ada pada Lokasi dibawah
+C:\Windows\Microsoft.NET\Framework\v4.0.30319>
+
+2. Ketik InstallUtil /U
+InstallUtil /U
+
+3. Kemudian ketik lokasi LRTUpdater.exe disertai kutip dua apabila ada spasi pada nama folder
+"C:\Users\Jati\Documents\Visual Studio 2013\Projects\Leveredge\LRTUpdater\LRTUpdater\bin\Debug\LRTUpdater.exe"
+
+Contoh Tampilan:
+Contoh tampilan:
+C:\Windows\Microsoft.NET\Framework\v4.0.30319>InstallUtil /U "C:\Users\Jati\Documents\Visual Studio 2013\Projects\Leveredge\LRTUpdater\LRTUpdater\bin\Debug\LRTUpdater.exe"

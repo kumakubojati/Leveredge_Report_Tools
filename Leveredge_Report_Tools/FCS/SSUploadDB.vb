@@ -10,9 +10,9 @@ Public NotInheritable Class SSUploadDB
     Dim constr As String
 
     Public Sub GetDBCon()
-        Dim strfile As String = My.Application.Info.DirectoryPath & "\Conf.ini"
-        constr = ReadAllLines(strfile)(3)
-        sqlcon.ConnectionString = constr
+        Dim strfile As String = My.Settings("FCSDBCon").ToString
+        'constr = ReadAllLines(strfile)(3)
+        sqlcon.ConnectionString = strfile
     End Sub
 
     Private Sub SSUploadDB_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -130,6 +130,7 @@ Public NotInheritable Class SSUploadDB
             GetDBCon()
             sqlcon.Open()
             cmdstr1.ExecuteNonQuery()
+            cmdstr2.CommandTimeout = 600
             cmdstr2.ExecuteNonQuery()
             sqlcon.Close()
         Catch ex As Exception
@@ -141,17 +142,18 @@ Public NotInheritable Class SSUploadDB
     Public Sub UpdateDSR()
         Dim comstr As String
         comstr = "MERGE FCS_REPORT.dbo.DSR AS TARGET USING " _
-            & "(SELECT A.DSR,A.NAME,B.SELL_CATEGORY AS SELLCAT,C.SDESC AS SELLCAT_DESC,A.JOB_TYPE " _
+            & "(SELECT B.PJP,A.DSR,B.LDESC,B.SELL_CATEGORY AS SELLCAT,C.SDESC AS SELLCAT_DESC,A.JOB_TYPE " _
             & "FROM Centegy_SnDPro_UID.dbo.DSR A INNER JOIN Centegy_SnDPro_UID.dbo.PJP_HEAD B ON A.DSR=B.DSR " _
             & "INNER JOIN Centegy_SnDPro_UID.dbo.SELLING_CATEGORY C ON B.SELL_CATEGORY=C.SELL_CATEGORY " _
-            & "WHERE A.JOB_TYPE IN ('01','03')) AS SOURCE ON (TARGET.DSR = SOURCE.DSR) " _
-            & "WHEN MATCHED AND TARGET.DSR <> SOURCE.DSR OR TARGET.NAME <> SOURCE.NAME OR " _
+            & "WHERE A.JOB_TYPE IN ('01','03')) AS SOURCE ON (TARGET.PJP = SOURCE.PJP) " _
+            & "WHEN MATCHED AND TARGET.PJP <> SOURCE.PJP OR " _
+            & "TARGET.DSR <> SOURCE.DSR OR TARGET.LDESC <> SOURCE.LDESC OR " _
             & "TARGET.SELLCAT <> SOURCE.SELLCAT OR " _
             & "TARGET.SELLCAT_DESC <> SOURCE.SELLCAT_DESC OR TARGET.JOB_TYPE <> SOURCE.JOB_TYPE THEN " _
-            & "UPDATE SET TARGET.DSR=SOURCE.DSR,TARGET.NAME=SOURCE.NAME," _
+            & "UPDATE SET TARGET.PJP=SOURCE.PJP,TARGET.DSR=SOURCE.DSR,TARGET.LDESC=SOURCE.LDESC," _
             & "TARGET.SELLCAT=SOURCE.SELLCAT,TARGET.SELLCAT_DESC=SOURCE.SELLCAT_DESC,TARGET.JOB_TYPE=SOURCE.JOB_TYPE " _
-            & "WHEN NOT MATCHED BY TARGET THEN INSERT(DSR,NAME,SELLCAT,SELLCAT_DESC,JOB_TYPE)" _
-            & "VALUES(SOURCE.DSR,SOURCE.NAME,SOURCE.SELLCAT,SOURCE.SELLCAT_DESC,SOURCE.JOB_TYPE);"
+            & "WHEN NOT MATCHED BY TARGET THEN INSERT(PJP,DSR,LDESC,SELLCAT,SELLCAT_DESC,JOB_TYPE)" _
+            & "VALUES(SOURCE.PJP,SOURCE.DSR,SOURCE.LDESC,SOURCE.SELLCAT,SOURCE.SELLCAT_DESC,SOURCE.JOB_TYPE);"
         Dim cmdstr As New SqlCommand(comstr, sqlcon)
         Try
             GetDBCon()
@@ -252,6 +254,7 @@ Public NotInheritable Class SSUploadDB
             GetDBCon()
             sqlcon.Open()
             cmdstr1.ExecuteNonQuery()
+            cmdstr2.CommandTimeout = 600
             cmdstr2.ExecuteNonQuery()
             sqlcon.Close()
         Catch ex As Exception
@@ -273,6 +276,7 @@ Public NotInheritable Class SSUploadDB
             GetDBCon()
             sqlcon.Open()
             cmdstr1.ExecuteNonQuery()
+            cmdstr2.CommandTimeout = 600
             cmdstr2.ExecuteNonQuery()
             sqlcon.Close()
         Catch ex As Exception
@@ -284,15 +288,15 @@ Public NotInheritable Class SSUploadDB
     Public Sub UpdateSPBD()
         Dim comstr1, comstr2 As String
         comstr1 = "TRUNCATE TABLE FCS_REPORT.dbo.SECTION_PRMNT_BYDATE"
-        comstr2 = "insert into SECTION_PRMNT_BYDATE(DATE,PJP,DSR,DSR_NAME,SECTION,WEEK_NO,JCNO,DAY_VISIT,POP) " _
-            & "SELECT F.Date,E.PJP,E.DSR,E.DSR_NAME,E.SECTION,E.WEEK_NO,G.JCNO,E.DAY_VISIT,E.POP FROM " _
-            & "(select D.PJP,D.DSR,D.DSR_NAME,D.SECTION,D.WEEK_NO, DAY_VISIT= CASE D.DAY when '1000000' then 'Saturday' " _
+        comstr2 = "insert into SECTION_PRMNT_BYDATE(DATE,PJP,DSR,LDESC,SECTION,WEEK_NO,JCNO,DAY_VISIT,POP) " _
+            & "SELECT F.Date,E.PJP,E.DSR,E.PJP_NAME,E.SECTION,E.WEEK_NO,G.JCNO,E.DAY_VISIT,E.POP FROM " _
+            & "(select D.PJP,D.DSR,D.PJP_NAME,D.SECTION,D.WEEK_NO, DAY_VISIT= CASE D.DAY when '1000000' then 'Saturday' " _
             & "when '0100000' then 'Sunday' when '0010000' then 'Monday' when '0001000' then 'Tuesday' when '0000100' then 'Wednesday' " _
             & "when '0000010' then 'Thursday' when '0000001' then 'Friday' ELSE 'N/A' END, D.POP FROM " _
             & "(select A.PJP,A.SECTION,B.WEEK_NO, cast(B.SAT as varchar(2))+cast(B.SUN as varchar(2))+" _
             & "cast(B.MON as varchar(2))+cast(B.TUE as varchar(2))+cast(B.WED as varchar(2))+cast(B.THU as varchar(2))+" _
-            & "cast(B.FRI as varchar(2)) as DAY,A.POP,B.DSR,C.NAME AS DSR_NAME from SECTION_POP_PERMANENT A " _
-            & "inner join PJP B on a.PJP=b.PJP and A.SECTION=b.SECTION inner join DSR C on B.DSR=C.DSR) D) E " _
+            & "cast(B.FRI as varchar(2)) as DAY,A.POP,B.DSR,C.LDESC AS PJP_NAME from SECTION_POP_PERMANENT A " _
+            & "inner join PJP B on a.PJP=b.PJP and A.SECTION=b.SECTION inner join DSR C on B.PJP=C.PJP) D) E " _
             & "Inner Join Calendar F ON E.WEEK_NO = F.WEEK_NO AND E.DAY_VISIT=F.DAY_NAME LEFT OUTER join JC_WEEK G on F.WEEK_NO = G.WEEK_NO Order by F.Date ASC"
         Dim cmdstr1 As New SqlCommand(comstr1, sqlcon)
         Dim cmdstr2 As New SqlCommand(comstr2, sqlcon)
@@ -300,6 +304,7 @@ Public NotInheritable Class SSUploadDB
             GetDBCon()
             sqlcon.Open()
             cmdstr1.ExecuteNonQuery()
+            cmdstr2.CommandTimeout = 600
             cmdstr2.ExecuteNonQuery()
             sqlcon.Close()
         Catch ex As Exception
@@ -311,34 +316,37 @@ Public NotInheritable Class SSUploadDB
     Public Sub UpdateTarget()
         Dim comstr1, comstr2 As String
         comstr1 = "TRUNCATE TABLE FCS_REPORT.dbo.TARGET_BYDSR"
-        comstr2 = "INSERT INTO FCS_REPORT.dbo.TARGET_BYDSR(TARGET_CODE,TARGET_YEAR,JC_TARGET,DSR,ECO_TARGET,BP_TARGET,LPPC_TARGET) " _
-            & "select eco.REF_POLICY_ID,eco.YEAR,eco.JCNO,pjp.DSR ,eco.range_from target_eco ,bp.RANGE_FROM target_bp, LPPC.RANGE_FROM target_lppc " _
+        comstr2 = "INSERT INTO FCS_REPORT.dbo.TARGET_BYDSR(TARGET_CODE,TARGET_YEAR,JC_TARGET,PJP,ECO_TARGET,BP_TARGET,LPPC_TARGET) " _
+            & "select eco.REF_POLICY_ID,eco.YEAR,eco.JCNO,pjp.PJP ," _
+            & "case when eco.range_from is null then 0 else eco.range_from end as target_eco ," _
+            & "case when bp.RANGE_FROM is null then 0 else bp.RANGE_FROM end as target_bp," _
+            & "case when LPPC.RANGE_FROM is null then 0 else LPPC.RANGE_FROM end as target_lppc " _
             & "from (select a.VALUE_COMB_FROM,b.RANGE_FROM ,c.JCNO,c.YEAR , d.REF_POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL a " _
             & "left join Centegy_SnDPro_UID.dbo.POLICY_SLAB b on a.POLICY_ID = b.POLICY_ID left join (select policy_id," _
             & "LEFT(value_comb_from,4) as YEAR , RIGHT(value_comb_from,2) as JCNO from Centegy_SnDPro_UID.dbo.POLICY_DETAIL WHERE FIELD_COMB = 'YEAR~JCNO') c " _
             & "on a.POLICY_ID = c.POLICY_ID left join Centegy_SnDPro_UID.dbo.POLICY d on a.POLICY_ID = d.POLICY_ID where a.POLICY_ID in (" _
             & "select POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL where  VALUE_COMB_FROM = '4111') " _
-            & "and FIELD_COMB = 'pjp' and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') " _
+            & "and FIELD_COMB = 'pjp' and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') and d.STATUS='1' " _
             & "and c.YEAR IN (SELECT DISTINCT DATENAME(YEAR,DOC_DATE) AS YEAR FROM Centegy_SnDPro_UID.dbo.CASHMEMO " _
-            & "GROUP BY DOC_DATE) and d.REF_POLICY_ID in (select MAX( d.REF_POLICY_ID) from Centegy_SnDPro_UID.dbo.POLICY_DETAIL a " _
+            & "GROUP BY DOC_DATE) and d.REF_POLICY_ID in (select d.REF_POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL a " _
             & "left join Centegy_SnDPro_UID.dbo.POLICY_SLAB b on a.POLICY_ID = b.POLICY_ID left join (select policy_id," _
             & "LEFT(value_comb_from,4) as YEAR , RIGHT(value_comb_from,2) as JCNO from Centegy_SnDPro_UID.dbo.POLICY_DETAIL WHERE FIELD_COMB = 'YEAR~JCNO') c " _
             & "on a.POLICY_ID = c.POLICY_ID left join Centegy_SnDPro_UID.dbo.POLICY d on a.POLICY_ID = d.POLICY_ID where a.POLICY_ID in (" _
             & "select POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL where  VALUE_COMB_FROM = '4111') and FIELD_COMB = 'pjp' " _
-            & "and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') and c.YEAR IN " _
+            & "and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') and d.STATUS='1' and c.YEAR IN " _
             & "(SELECT DISTINCT DATENAME(YEAR,DOC_DATE) AS YEAR FROM Centegy_SnDPro_UID.dbo.CASHMEMO GROUP BY DOC_DATE) " _
             & ")) eco left join (select a.VALUE_COMB_FROM,b.RANGE_FROM ,c.JCNO,c.YEAR , d.REF_POLICY_ID " _
             & "from Centegy_SnDPro_UID.dbo.POLICY_DETAIL a left join Centegy_SnDPro_UID.dbo.POLICY_SLAB b on a.POLICY_ID = b.POLICY_ID " _
             & "left join (select policy_id,LEFT(value_comb_from,4) as YEAR , RIGHT(value_comb_from,2) as JCNO from Centegy_SnDPro_UID.dbo.POLICY_DETAIL WHERE FIELD_COMB = 'YEAR~JCNO') c " _
             & "on a.POLICY_ID = c.POLICY_ID left join Centegy_SnDPro_UID.dbo.POLICY d on a.POLICY_ID = d.POLICY_ID where a.POLICY_ID in ( " _
             & "select POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL where  VALUE_COMB_FROM = '4121') and FIELD_COMB = 'pjp' " _
-            & "and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') and c.YEAR IN " _
+            & "and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') and d.STATUS='1' and c.YEAR IN " _
             & "(SELECT DISTINCT DATENAME(YEAR,DOC_DATE) AS YEAR FROM Centegy_SnDPro_UID.dbo.CASHMEMO GROUP BY DOC_DATE) and d.REF_POLICY_ID in " _
-            & "(select MAX( d.REF_POLICY_ID) from Centegy_SnDPro_UID.dbo.POLICY_DETAIL a left join Centegy_SnDPro_UID.dbo.POLICY_SLAB b on a.POLICY_ID = b.POLICY_ID " _
+            & "(select d.REF_POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL a left join Centegy_SnDPro_UID.dbo.POLICY_SLAB b on a.POLICY_ID = b.POLICY_ID " _
             & "left join (select policy_id,LEFT(value_comb_from,4) as YEAR , RIGHT(value_comb_from,2) as JCNO from Centegy_SnDPro_UID.dbo.POLICY_DETAIL WHERE FIELD_COMB = 'YEAR~JCNO') c " _
             & "on a.POLICY_ID = c.POLICY_ID left join Centegy_SnDPro_UID.dbo.POLICY d on a.POLICY_ID = d.POLICY_ID where a.POLICY_ID in (" _
             & "select POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL where  VALUE_COMB_FROM = '4121') and FIELD_COMB = 'pjp' " _
-            & "and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') and c.YEAR IN " _
+            & "and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') and d.STATUS='1' and c.YEAR IN " _
             & "(SELECT DISTINCT DATENAME(YEAR,DOC_DATE) AS YEAR FROM Centegy_SnDPro_UID.dbo.CASHMEMO GROUP BY DOC_DATE))) bp " _
             & "on eco.JCNO=bp.JCNO and eco.YEAR=bp.YEAR and eco.VALUE_COMB_FROM = bp.VALUE_COMB_FROM left join (" _
             & "select a.VALUE_COMB_FROM,b.RANGE_FROM ,c.JCNO,c.YEAR , d.REF_POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL a " _
@@ -346,31 +354,32 @@ Public NotInheritable Class SSUploadDB
             & "select policy_id,LEFT(value_comb_from,4) as YEAR , RIGHT(value_comb_from,2) as JCNO from Centegy_SnDPro_UID.dbo.POLICY_DETAIL WHERE FIELD_COMB = 'YEAR~JCNO') c " _
             & "on a.POLICY_ID = c.POLICY_ID left join Centegy_SnDPro_UID.dbo.POLICY d on a.POLICY_ID = d.POLICY_ID where a.POLICY_ID in (" _
             & "select POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL where  VALUE_COMB_FROM = '4131') and FIELD_COMB = 'pjp' " _
-            & "and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') and c.YEAR IN " _
+            & "and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') and d.STATUS='1' and c.YEAR IN " _
             & "(SELECT DISTINCT DATENAME(YEAR,DOC_DATE) AS YEAR FROM Centegy_SnDPro_UID.dbo.CASHMEMO GROUP BY DOC_DATE) " _
-            & "and d.REF_POLICY_ID in (select MAX( d.REF_POLICY_ID) from Centegy_SnDPro_UID.dbo.POLICY_DETAIL a " _
+            & "and d.REF_POLICY_ID in (select d.REF_POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL a " _
             & "left join Centegy_SnDPro_UID.dbo.POLICY_SLAB b on a.POLICY_ID = b.POLICY_ID left join (select policy_id," _
             & "LEFT(value_comb_from,4) as YEAR , RIGHT(value_comb_from,2) as JCNO from Centegy_SnDPro_UID.dbo.POLICY_DETAIL WHERE FIELD_COMB = 'YEAR~JCNO') c " _
             & "on a.POLICY_ID = c.POLICY_ID left join Centegy_SnDPro_UID.dbo.POLICY d on a.POLICY_ID = d.POLICY_ID where a.POLICY_ID in ( " _
             & "select POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL where  VALUE_COMB_FROM = '4131') and FIELD_COMB = 'pjp' " _
-            & "and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') and c.YEAR IN " _
+            & "and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') and d.STATUS='1' and c.YEAR IN " _
             & "(SELECT DISTINCT DATENAME(YEAR,DOC_DATE) AS YEAR FROM Centegy_SnDPro_UID.dbo.CASHMEMO GROUP BY DOC_DATE)" _
             & ")) LPPC on eco.JCNO = LPPC.JCNO and eco.YEAR=LPPC.YEAR and eco.VALUE_COMB_FROM=LPPC.VALUE_COMB_FROM " _
             & "left join Centegy_SnDPro_UID.dbo.PJP_HEAD pjp on eco.VALUE_COMB_FROM = pjp.pjp where eco.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') " _
             & "and eco.YEAR IN (SELECT DISTINCT DATENAME(YEAR,DOC_DATE) AS YEAR FROM Centegy_SnDPro_UID.dbo.CASHMEMO GROUP BY DOC_DATE) " _
-            & "and eco.REF_POLICY_ID in (select MAX( d.REF_POLICY_ID) from Centegy_SnDPro_UID.dbo.POLICY_DETAIL a " _
+            & "and eco.REF_POLICY_ID in (select d.REF_POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL a " _
             & "left join Centegy_SnDPro_UID.dbo.POLICY_SLAB b on a.POLICY_ID = b.POLICY_ID left join (select policy_id," _
             & "LEFT(value_comb_from,4) as YEAR , RIGHT(value_comb_from,2) as JCNO from Centegy_SnDPro_UID.dbo.POLICY_DETAIL WHERE FIELD_COMB = 'YEAR~JCNO') c " _
             & "on a.POLICY_ID = c.POLICY_ID left join Centegy_SnDPro_UID.dbo.POLICY d on a.POLICY_ID = d.POLICY_ID " _
             & "where a.POLICY_ID in (select POLICY_ID from Centegy_SnDPro_UID.dbo.POLICY_DETAIL where  VALUE_COMB_FROM = '4111') " _
             & "and FIELD_COMB = 'pjp' and c.JCNO IN('01','02','03','04','05','06','07','08','09','10','11','12') " _
-            & "and c.YEAR IN (SELECT DISTINCT DATENAME(YEAR,DOC_DATE) AS YEAR FROM Centegy_SnDPro_UID.dbo.CASHMEMO GROUP BY DOC_DATE))"
+            & "and d.STATUS='1' and c.YEAR IN (SELECT DISTINCT DATENAME(YEAR,DOC_DATE) AS YEAR FROM Centegy_SnDPro_UID.dbo.CASHMEMO GROUP BY DOC_DATE))"
         Dim cmdstr1 As New SqlCommand(comstr1, sqlcon)
         Dim cmdstr2 As New SqlCommand(comstr2, sqlcon)
         Try
             GetDBCon()
             sqlcon.Open()
             cmdstr1.ExecuteNonQuery()
+            cmdstr2.CommandTimeout = 600
             cmdstr2.ExecuteNonQuery()
             sqlcon.Close()
         Catch ex As Exception
@@ -421,7 +430,7 @@ Public NotInheritable Class SSUploadDB
             newtxt = "Checking and Updating Section POP Permanent By Date"
             Me.Invoke(UpdatelblProgDel, newtxt)
             UpdateSPBD()
-            newtxt = "Checking and Updatin FCS Target By DSR"
+            newtxt = "Checking and Updating FCS Target By DSR"
             Me.Invoke(UpdatelblProgDel, newtxt)
             UpdateTarget()
         Catch ex As Exception
