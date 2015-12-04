@@ -289,6 +289,12 @@
     <Compile Include="frmIQS_IC.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmISRD_IQ.Designer.vb">
+      <DependentUpon>frmISRD_IQ.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmISRD_IQ.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmLIR.Designer.vb">
       <DependentUpon>frmLIR.vb</DependentUpon>
     </Compile>
@@ -529,6 +535,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmIQS_IC.resx">
       <DependentUpon>frmIQS_IC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmISRD_IQ.resx">
+      <DependentUpon>frmISRD_IQ.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLIR.resx">
       <DependentUpon>frmLIR.vb</DependentUpon>

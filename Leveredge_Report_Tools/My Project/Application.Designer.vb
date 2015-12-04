@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Leveredge_Report_Tools.frmMain
+            Me.MainForm = Global.Leveredge_Report_Tools.frmISRD_IQ
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _

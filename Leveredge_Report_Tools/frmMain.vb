@@ -342,4 +342,8 @@ LineMain1: FCSDB()
             Exit Sub
         End If
     End Sub
+
+    Private Sub SummaryReportForDSRToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SummaryReportForDSRToolStripMenuItem.Click
+        frmISRD_IQ.Show()
+    End Sub
 End Class
