@@ -91,9 +91,9 @@ Partial Class frmFCS_Rep
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(204, 10)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(30, 13)
+        Me.Label3.Size = New System.Drawing.Size(26, 13)
         Me.Label3.TabIndex = 6
-        Me.Label3.Text = "DSR"
+        Me.Label3.Text = "PJP"
         '
         'frmFCS_Rep
         '

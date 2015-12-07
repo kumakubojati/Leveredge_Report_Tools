@@ -18,7 +18,7 @@
               <xs:element name="YEAR" msprop:Generator_ColumnVarNameInTable="columnYEAR" msprop:Generator_ColumnPropNameInRow="YEAR" msprop:Generator_ColumnPropNameInTable="YEARColumn" msprop:Generator_UserColumnName="YEAR" type="xs:string" minOccurs="0" />
               <xs:element name="PERIOD" msprop:Generator_ColumnVarNameInTable="columnPERIOD" msprop:Generator_ColumnPropNameInRow="PERIOD" msprop:Generator_ColumnPropNameInTable="PERIODColumn" msprop:Generator_UserColumnName="PERIOD" type="xs:string" minOccurs="0" />
               <xs:element name="DTNAME" msprop:Generator_ColumnVarNameInTable="columnDTNAME" msprop:Generator_ColumnPropNameInRow="DTNAME" msprop:Generator_ColumnPropNameInTable="DTNAMEColumn" msprop:Generator_UserColumnName="DTNAME" type="xs:string" minOccurs="0" />
-              <xs:element name="DSR_LIST" msprop:Generator_ColumnVarNameInTable="columnDSR_LIST" msprop:Generator_ColumnPropNameInRow="DSR_LIST" msprop:Generator_ColumnPropNameInTable="DSR_LISTColumn" msprop:Generator_UserColumnName="DSR_LIST" type="xs:string" minOccurs="0" />
+              <xs:element name="PJP_LIST" msprop:Generator_ColumnVarNameInTable="columnPJP_LIST" msprop:Generator_ColumnPropNameInRow="PJP_LIST" msprop:Generator_ColumnPropNameInTable="PJP_LISTColumn" msprop:Generator_UserColumnName="PJP_LIST" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -56,8 +56,8 @@
         <xs:element name="dtFCS" msprop:Generator_TableClassName="dtFCSDataTable" msprop:Generator_TableVarName="tabledtFCS" msprop:Generator_TablePropName="dtFCS" msprop:Generator_RowDeletingName="dtFCSRowDeleting" msprop:Generator_RowChangingName="dtFCSRowChanging" msprop:Generator_RowEvHandlerName="dtFCSRowChangeEventHandler" msprop:Generator_RowDeletedName="dtFCSRowDeleted" msprop:Generator_UserTableName="dtFCS" msprop:Generator_RowChangedName="dtFCSRowChanged" msprop:Generator_RowEvArgName="dtFCSRowChangeEvent" msprop:Generator_RowClassName="dtFCSRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="DSR" msprop:Generator_ColumnVarNameInTable="columnDSR" msprop:Generator_ColumnPropNameInRow="DSR" msprop:Generator_ColumnPropNameInTable="DSRColumn" msprop:Generator_UserColumnName="DSR" type="xs:string" minOccurs="0" />
-              <xs:element name="NAME" msprop:Generator_ColumnVarNameInTable="columnNAME" msprop:Generator_ColumnPropNameInRow="NAME" msprop:Generator_ColumnPropNameInTable="NAMEColumn" msprop:Generator_UserColumnName="NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="PJP" msprop:Generator_ColumnVarNameInTable="columnPJP" msprop:Generator_ColumnPropNameInRow="PJP" msprop:Generator_ColumnPropNameInTable="PJPColumn" msprop:Generator_UserColumnName="PJP" type="xs:string" minOccurs="0" />
+              <xs:element name="LDESC" msprop:Generator_ColumnVarNameInTable="columnLDESC" msprop:Generator_ColumnPropNameInRow="LDESC" msprop:Generator_ColumnPropNameInTable="LDESCColumn" msprop:Generator_UserColumnName="LDESC" type="xs:string" minOccurs="0" />
               <xs:element name="UNIQSCH" msprop:Generator_ColumnVarNameInTable="columnUNIQSCH" msprop:Generator_ColumnPropNameInRow="UNIQSCH" msprop:Generator_ColumnPropNameInTable="UNIQSCHColumn" msprop:Generator_UserColumnName="UNIQSCH" type="xs:string" minOccurs="0" />
               <xs:element name="UNIQPROD" msprop:Generator_ColumnVarNameInTable="columnUNIQPROD" msprop:Generator_ColumnPropNameInRow="UNIQPROD" msprop:Generator_ColumnPropNameInTable="UNIQPRODColumn" msprop:Generator_UserColumnName="UNIQPROD" type="xs:string" minOccurs="0" />
               <xs:element name="ECO_TARGET" msprop:Generator_ColumnVarNameInTable="columnECO_TARGET" msprop:Generator_ColumnPropNameInRow="ECO_TARGET" msprop:Generator_ColumnPropNameInTable="ECO_TARGETColumn" msprop:Generator_UserColumnName="ECO_TARGET" type="xs:string" minOccurs="0" />

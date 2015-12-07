@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="PicBar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="PicBar_OutMas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhUABQAMYAADxi9JSy/GSK/NTa/ISa9LS+/FR29HSa/OTu/LzO/FyC/HSK9ISm/KS+/Exu9KSy
         9GR+9PT6/Nzm/LTG/Fx+9HSS9JSm9Exq9MzW/ERq9GyS/ISi/Fx29PTy/MTW/GyG9MTK/HyS9Jy6/GyK
@@ -618,7 +618,7 @@
         Yjf40b92tUBxaAYULjBHBx5YwfmthQUb7GAFZSHCEprwhChMoQpXyMIWuvCFMIyhDPESCAA7
 </value>
   </data>
-  <data name="btnBrow_OutMasDes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnBrow_OutMas_dest.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAAAJ9JREFUOE9joBiY2vuZmNv7LDCz910Cw+b2vjFQacLA1MFnub29PQeUCwZAQ1bY
@@ -627,7 +627,7 @@
         CAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnNeuOutMas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnNeu_OutMas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAASmSURBVFhHxZfLT1tHFMavuq1UtWqqql1FikSlStlW
@@ -653,7 +653,7 @@
         O/yeO/xXcEp66s9Gu7HD/0C39jc6G4MciQG1fwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnbrow_outmassrc.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnBrow_OutMas_src.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAAAJ9JREFUOE9joBiY2vuZmNv7LDCz910Cw+b2vjFQacLA1MFnub29PQeUCwZAQ1bY
@@ -662,14 +662,14 @@
         CAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="OFD_OutMas.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="BWOUTMAS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>19, 14</value>
   </metadata>
-  <metadata name="SFD_OutMas.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>161, 17</value>
+  <metadata name="OFD_OUTMAS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>115, 14</value>
   </metadata>
-  <metadata name="BWOutMas.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>282, 17</value>
+  <metadata name="SFD_OUTMAS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>233, 14</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

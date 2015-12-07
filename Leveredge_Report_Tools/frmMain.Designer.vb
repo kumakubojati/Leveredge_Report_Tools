@@ -70,6 +70,7 @@ Partial Class frmMain
         Me.InitDBMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TargetMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FCSRepMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EvoucherToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MSMain.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -335,7 +336,7 @@ Partial Class frmMain
         '
         'ReportGeneratorToolStripMenuItem
         '
-        Me.ReportGeneratorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AchievementByProductToolStripMenuItem1, Me.FCSReportToolStripMenuItem})
+        Me.ReportGeneratorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AchievementByProductToolStripMenuItem1, Me.FCSReportToolStripMenuItem, Me.EvoucherToolStripMenuItem})
         Me.ReportGeneratorToolStripMenuItem.Name = "ReportGeneratorToolStripMenuItem"
         Me.ReportGeneratorToolStripMenuItem.Size = New System.Drawing.Size(113, 20)
         Me.ReportGeneratorToolStripMenuItem.Text = "Report Generator"
@@ -356,7 +357,7 @@ Partial Class frmMain
         'InitDBMenuItem
         '
         Me.InitDBMenuItem.Name = "InitDBMenuItem"
-        Me.InitDBMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.InitDBMenuItem.Size = New System.Drawing.Size(141, 22)
         Me.InitDBMenuItem.Text = "Initialize DB"
         Me.InitDBMenuItem.Visible = False
         '
@@ -365,15 +366,21 @@ Partial Class frmMain
         Me.TargetMenuItem.Enabled = False
         Me.TargetMenuItem.Name = "TargetMenuItem"
         Me.TargetMenuItem.ShowShortcutKeys = False
-        Me.TargetMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TargetMenuItem.Size = New System.Drawing.Size(141, 22)
         Me.TargetMenuItem.Text = "Target"
         Me.TargetMenuItem.Visible = False
         '
         'FCSRepMenuItem
         '
         Me.FCSRepMenuItem.Name = "FCSRepMenuItem"
-        Me.FCSRepMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.FCSRepMenuItem.Size = New System.Drawing.Size(141, 22)
         Me.FCSRepMenuItem.Text = "FCS Report"
+        '
+        'EvoucherToolStripMenuItem
+        '
+        Me.EvoucherToolStripMenuItem.Name = "EvoucherToolStripMenuItem"
+        Me.EvoucherToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.EvoucherToolStripMenuItem.Text = "E-Voucher"
         '
         'PictureBox1
         '
@@ -454,5 +461,6 @@ Partial Class frmMain
     Friend WithEvents TargetMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents InitDBMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FCSRepMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents EvoucherToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

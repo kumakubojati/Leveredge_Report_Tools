@@ -20,16 +20,16 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("dsRep"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("DS_EV"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class dsRep
+Partial Public Class DS_EV
     Inherits Global.System.Data.DataSet
     
-    Private tabledtHeadRep As dtHeadRepDataTable
-    
-    Private tabledtHeadRep2 As dtHeadRep2DataTable
+    Private tableEV_REP As EV_REPDataTable
 
-    Private tabledtRep As dtRepDataTable
+    Private tabledtHeader_EV As dtHeader_EVDataTable
+
+    Private tableEV_PARTI As EV_PARTIDataTable
 
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
 
@@ -60,14 +60,14 @@ Partial Public Class dsRep
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("dtHeadRep")) Is Nothing) Then
-                MyBase.Tables.Add(New dtHeadRepDataTable(ds.Tables("dtHeadRep")))
+            If (Not (ds.Tables("EV_REP")) Is Nothing) Then
+                MyBase.Tables.Add(New EV_REPDataTable(ds.Tables("EV_REP")))
             End If
-            If (Not (ds.Tables("dtHeadRep2")) Is Nothing) Then
-                MyBase.Tables.Add(New dtHeadRep2DataTable(ds.Tables("dtHeadRep2")))
+            If (Not (ds.Tables("dtHeader_EV")) Is Nothing) Then
+                MyBase.Tables.Add(New dtHeader_EVDataTable(ds.Tables("dtHeader_EV")))
             End If
-            If (Not (ds.Tables("dtRep")) Is Nothing) Then
-                MyBase.Tables.Add(New dtRepDataTable(ds.Tables("dtRep")))
+            If (Not (ds.Tables("EV_PARTI")) Is Nothing) Then
+                MyBase.Tables.Add(New EV_PARTIDataTable(ds.Tables("EV_PARTI")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -90,9 +90,9 @@ Partial Public Class dsRep
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
      Global.System.ComponentModel.Browsable(False), _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)> _
-    Public ReadOnly Property dtHeadRep() As dtHeadRepDataTable
+    Public ReadOnly Property EV_REP() As EV_REPDataTable
         Get
-            Return Me.tabledtHeadRep
+            Return Me.tableEV_REP
         End Get
     End Property
 
@@ -100,9 +100,9 @@ Partial Public Class dsRep
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
      Global.System.ComponentModel.Browsable(False), _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)> _
-    Public ReadOnly Property dtHeadRep2() As dtHeadRep2DataTable
+    Public ReadOnly Property dtHeader_EV() As dtHeader_EVDataTable
         Get
-            Return Me.tabledtHeadRep2
+            Return Me.tabledtHeader_EV
         End Get
     End Property
 
@@ -110,9 +110,9 @@ Partial Public Class dsRep
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
      Global.System.ComponentModel.Browsable(False), _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)> _
-    Public ReadOnly Property dtRep() As dtRepDataTable
+    Public ReadOnly Property EV_PARTI() As EV_PARTIDataTable
         Get
-            Return Me.tabledtRep
+            Return Me.tableEV_PARTI
         End Get
     End Property
 
@@ -158,7 +158,7 @@ Partial Public Class dsRep
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As dsRep = CType(MyBase.Clone, dsRep)
+        Dim cln As DS_EV = CType(MyBase.Clone, DS_EV)
         cln.InitVars()
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -183,14 +183,14 @@ Partial Public Class dsRep
             Me.Reset()
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("dtHeadRep")) Is Nothing) Then
-                MyBase.Tables.Add(New dtHeadRepDataTable(ds.Tables("dtHeadRep")))
+            If (Not (ds.Tables("EV_REP")) Is Nothing) Then
+                MyBase.Tables.Add(New EV_REPDataTable(ds.Tables("EV_REP")))
             End If
-            If (Not (ds.Tables("dtHeadRep2")) Is Nothing) Then
-                MyBase.Tables.Add(New dtHeadRep2DataTable(ds.Tables("dtHeadRep2")))
+            If (Not (ds.Tables("dtHeader_EV")) Is Nothing) Then
+                MyBase.Tables.Add(New dtHeader_EVDataTable(ds.Tables("dtHeader_EV")))
             End If
-            If (Not (ds.Tables("dtRep")) Is Nothing) Then
-                MyBase.Tables.Add(New dtRepDataTable(ds.Tables("dtRep")))
+            If (Not (ds.Tables("EV_PARTI")) Is Nothing) Then
+                MyBase.Tables.Add(New EV_PARTIDataTable(ds.Tables("EV_PARTI")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -224,22 +224,22 @@ Partial Public Class dsRep
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tabledtHeadRep = CType(MyBase.Tables("dtHeadRep"), dtHeadRepDataTable)
+        Me.tableEV_REP = CType(MyBase.Tables("EV_REP"), EV_REPDataTable)
         If (initTable = True) Then
-            If (Not (Me.tabledtHeadRep) Is Nothing) Then
-                Me.tabledtHeadRep.InitVars()
+            If (Not (Me.tableEV_REP) Is Nothing) Then
+                Me.tableEV_REP.InitVars()
             End If
         End If
-        Me.tabledtHeadRep2 = CType(MyBase.Tables("dtHeadRep2"), dtHeadRep2DataTable)
+        Me.tabledtHeader_EV = CType(MyBase.Tables("dtHeader_EV"), dtHeader_EVDataTable)
         If (initTable = True) Then
-            If (Not (Me.tabledtHeadRep2) Is Nothing) Then
-                Me.tabledtHeadRep2.InitVars()
+            If (Not (Me.tabledtHeader_EV) Is Nothing) Then
+                Me.tabledtHeader_EV.InitVars()
             End If
         End If
-        Me.tabledtRep = CType(MyBase.Tables("dtRep"), dtRepDataTable)
+        Me.tableEV_PARTI = CType(MyBase.Tables("EV_PARTI"), EV_PARTIDataTable)
         If (initTable = True) Then
-            If (Not (Me.tabledtRep) Is Nothing) Then
-                Me.tabledtRep.InitVars()
+            If (Not (Me.tableEV_PARTI) Is Nothing) Then
+                Me.tableEV_PARTI.InitVars()
             End If
         End If
     End Sub
@@ -247,34 +247,34 @@ Partial Public Class dsRep
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
     Private Sub InitClass()
-        Me.DataSetName = "dsRep"
+        Me.DataSetName = "DS_EV"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/dsRep.xsd"
+        Me.Namespace = "http://tempuri.org/DS_EV.xsd"
         Me.EnforceConstraints = True
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tabledtHeadRep = New dtHeadRepDataTable()
-        MyBase.Tables.Add(Me.tabledtHeadRep)
-        Me.tabledtHeadRep2 = New dtHeadRep2DataTable()
-        MyBase.Tables.Add(Me.tabledtHeadRep2)
-        Me.tabledtRep = New dtRepDataTable()
-        MyBase.Tables.Add(Me.tabledtRep)
+        Me.tableEV_REP = New EV_REPDataTable()
+        MyBase.Tables.Add(Me.tableEV_REP)
+        Me.tabledtHeader_EV = New dtHeader_EVDataTable()
+        MyBase.Tables.Add(Me.tabledtHeader_EV)
+        Me.tableEV_PARTI = New EV_PARTIDataTable()
+        MyBase.Tables.Add(Me.tableEV_PARTI)
     End Sub
 
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-    Private Function ShouldSerializedtHeadRep() As Boolean
+    Private Function ShouldSerializeEV_REP() As Boolean
         Return False
     End Function
 
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-    Private Function ShouldSerializedtHeadRep2() As Boolean
+    Private Function ShouldSerializedtHeader_EV() As Boolean
         Return False
     End Function
 
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-    Private Function ShouldSerializedtRep() As Boolean
+    Private Function ShouldSerializeEV_PARTI() As Boolean
         Return False
     End Function
 
@@ -289,7 +289,7 @@ Partial Public Class dsRep
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As dsRep = New dsRep()
+        Dim ds As DS_EV = New DS_EV()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -337,35 +337,59 @@ Partial Public Class dsRep
     End Function
 
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-    Public Delegate Sub dtHeadRepRowChangeEventHandler(ByVal sender As Object, ByVal e As dtHeadRepRowChangeEvent)
+    Public Delegate Sub EV_REPRowChangeEventHandler(ByVal sender As Object, ByVal e As EV_REPRowChangeEvent)
 
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-    Public Delegate Sub dtHeadRep2RowChangeEventHandler(ByVal sender As Object, ByVal e As dtHeadRep2RowChangeEvent)
+    Public Delegate Sub dtHeader_EVRowChangeEventHandler(ByVal sender As Object, ByVal e As dtHeader_EVRowChangeEvent)
 
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-    Public Delegate Sub dtRepRowChangeEventHandler(ByVal sender As Object, ByVal e As dtRepRowChangeEvent)
+    Public Delegate Sub EV_PARTIRowChangeEventHandler(ByVal sender As Object, ByVal e As EV_PARTIRowChangeEvent)
 
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
     <Global.System.Serializable(), _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")> _
-    Partial Public Class dtHeadRepDataTable
-        Inherits Global.System.Data.TypedTableBase(Of dtHeadRepRow)
+    Partial Public Class EV_REPDataTable
+        Inherits Global.System.Data.TypedTableBase(Of EV_REPRow)
 
-        Private columnName As Global.System.Data.DataColumn
+        Private columnEVOUCHER_CATEGORY As Global.System.Data.DataColumn
 
-        Private columnrepname As Global.System.Data.DataColumn
+        Private columnEVOUCHER_CATEGORY_DESC As Global.System.Data.DataColumn
 
-        Private columncondmin As Global.System.Data.DataColumn
+        Private columnEVOUCHER_MASTER As Global.System.Data.DataColumn
 
-        Private columnTanggal As Global.System.Data.DataColumn
+        Private columnEVOUCHER_MASTER_DESC As Global.System.Data.DataColumn
+
+        Private columnFROM_DATE As Global.System.Data.DataColumn
+
+        Private columnEND_DATE As Global.System.Data.DataColumn
+
+        Private columnPOP_CODE As Global.System.Data.DataColumn
+
+        Private columnPOP_NAME As Global.System.Data.DataColumn
+
+        Private columnLAST_13_WEEK_SALE As Global.System.Data.DataColumn
+
+        Private columnREF_DOC_NO As Global.System.Data.DataColumn
+
+        Private columnSTATUS_ASSESMENT As Global.System.Data.DataColumn
+
+        Private columnINVOICE_NO_INFO As Global.System.Data.DataColumn
+
+        Private columnINVOICE_NUMBER_EVOUCHER As Global.System.Data.DataColumn
+
+        Private columnVOUCHER_VALUE1 As Global.System.Data.DataColumn
+
+        Private columnVOUCHER_VALUE2 As Global.System.Data.DataColumn
+
+        Private columnBUDGET_ALLOCATED As Global.System.Data.DataColumn
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Sub New()
             MyBase.New()
-            Me.TableName = "dtHeadRep"
+            Me.TableName = "EV_REP"
             Me.BeginInit()
             Me.InitClass()
             Me.EndInit()
@@ -398,33 +422,129 @@ Partial Public Class dsRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property NameColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property EVOUCHER_CATEGORYColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnName
+                Return Me.columnEVOUCHER_CATEGORY
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property repnameColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property EVOUCHER_CATEGORY_DESCColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnrepname
+                Return Me.columnEVOUCHER_CATEGORY_DESC
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property condminColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property EVOUCHER_MASTERColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columncondmin
+                Return Me.columnEVOUCHER_MASTER
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property TanggalColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property EVOUCHER_MASTER_DESCColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnTanggal
+                Return Me.columnEVOUCHER_MASTER_DESC
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property FROM_DATEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFROM_DATE
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property END_DATEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEND_DATE
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property POP_CODEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPOP_CODE
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property POP_NAMEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPOP_NAME
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property LAST_13_WEEK_SALEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLAST_13_WEEK_SALE
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property REF_DOC_NOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnREF_DOC_NO
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property STATUS_ASSESMENTColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSTATUS_ASSESMENT
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property INVOICE_NO_INFOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnINVOICE_NO_INFO
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property INVOICE_NUMBER_EVOUCHERColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnINVOICE_NUMBER_EVOUCHER
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property VOUCHER_VALUE1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnVOUCHER_VALUE1
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property VOUCHER_VALUE2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnVOUCHER_VALUE2
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property BUDGET_ALLOCATEDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBUDGET_ALLOCATED
             End Get
         End Property
 
@@ -439,44 +559,60 @@ Partial Public Class dsRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Default Public ReadOnly Property Item(ByVal index As Integer) As dtHeadRepRow
+        Default Public ReadOnly Property Item(ByVal index As Integer) As EV_REPRow
             Get
-                Return CType(Me.Rows(index), dtHeadRepRow)
+                Return CType(Me.Rows(index), EV_REPRow)
             End Get
         End Property
 
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Event dtHeadRepRowChanging As dtHeadRepRowChangeEventHandler
+        Public Event EV_REPRowChanging As EV_REPRowChangeEventHandler
 
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Event dtHeadRepRowChanged As dtHeadRepRowChangeEventHandler
+        Public Event EV_REPRowChanged As EV_REPRowChangeEventHandler
 
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Event dtHeadRepRowDeleting As dtHeadRepRowChangeEventHandler
+        Public Event EV_REPRowDeleting As EV_REPRowChangeEventHandler
 
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Event dtHeadRepRowDeleted As dtHeadRepRowChangeEventHandler
+        Public Event EV_REPRowDeleted As EV_REPRowChangeEventHandler
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Overloads Sub AdddtHeadRepRow(ByVal row As dtHeadRepRow)
+        Public Overloads Sub AddEV_REPRow(ByVal row As EV_REPRow)
             Me.Rows.Add(row)
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Overloads Function AdddtHeadRepRow(ByVal Name As String, ByVal repname As String, ByVal condmin As String, ByVal Tanggal As String) As dtHeadRepRow
-            Dim rowdtHeadRepRow As dtHeadRepRow = CType(Me.NewRow, dtHeadRepRow)
-            Dim columnValuesArray() As Object = New Object() {Name, repname, condmin, Tanggal}
-            rowdtHeadRepRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowdtHeadRepRow)
-            Return rowdtHeadRepRow
+        Public Overloads Function AddEV_REPRow( _
+                    ByVal EVOUCHER_CATEGORY As String, _
+                    ByVal EVOUCHER_CATEGORY_DESC As String, _
+                    ByVal EVOUCHER_MASTER As String, _
+                    ByVal EVOUCHER_MASTER_DESC As String, _
+                    ByVal FROM_DATE As Date, _
+                    ByVal END_DATE As Date, _
+                    ByVal POP_CODE As String, _
+                    ByVal POP_NAME As String, _
+                    ByVal LAST_13_WEEK_SALE As String, _
+                    ByVal REF_DOC_NO As String, _
+                    ByVal STATUS_ASSESMENT As String, _
+                    ByVal INVOICE_NO_INFO As String, _
+                    ByVal INVOICE_NUMBER_EVOUCHER As String, _
+                    ByVal VOUCHER_VALUE1 As String, _
+                    ByVal VOUCHER_VALUE2 As String, _
+                    ByVal BUDGET_ALLOCATED As String) As EV_REPRow
+            Dim rowEV_REPRow As EV_REPRow = CType(Me.NewRow, EV_REPRow)
+            Dim columnValuesArray() As Object = New Object() {EVOUCHER_CATEGORY, EVOUCHER_CATEGORY_DESC, EVOUCHER_MASTER, EVOUCHER_MASTER_DESC, FROM_DATE, END_DATE, POP_CODE, POP_NAME, LAST_13_WEEK_SALE, REF_DOC_NO, STATUS_ASSESMENT, INVOICE_NO_INFO, INVOICE_NUMBER_EVOUCHER, VOUCHER_VALUE1, VOUCHER_VALUE2, BUDGET_ALLOCATED}
+            rowEV_REPRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowEV_REPRow)
+            Return rowEV_REPRow
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As dtHeadRepDataTable = CType(MyBase.Clone, dtHeadRepDataTable)
+            Dim cln As EV_REPDataTable = CType(MyBase.Clone, EV_REPDataTable)
             cln.InitVars()
             Return cln
         End Function
@@ -484,55 +620,91 @@ Partial Public Class dsRep
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New dtHeadRepDataTable()
+            Return New EV_REPDataTable()
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Friend Sub InitVars()
-            Me.columnName = MyBase.Columns("Name")
-            Me.columnrepname = MyBase.Columns("repname")
-            Me.columncondmin = MyBase.Columns("condmin")
-            Me.columnTanggal = MyBase.Columns("Tanggal")
+            Me.columnEVOUCHER_CATEGORY = MyBase.Columns("EVOUCHER_CATEGORY")
+            Me.columnEVOUCHER_CATEGORY_DESC = MyBase.Columns("EVOUCHER_CATEGORY_DESC")
+            Me.columnEVOUCHER_MASTER = MyBase.Columns("EVOUCHER_MASTER")
+            Me.columnEVOUCHER_MASTER_DESC = MyBase.Columns("EVOUCHER_MASTER_DESC")
+            Me.columnFROM_DATE = MyBase.Columns("FROM_DATE")
+            Me.columnEND_DATE = MyBase.Columns("END_DATE")
+            Me.columnPOP_CODE = MyBase.Columns("POP_CODE")
+            Me.columnPOP_NAME = MyBase.Columns("POP_NAME")
+            Me.columnLAST_13_WEEK_SALE = MyBase.Columns("LAST_13_WEEK_SALE")
+            Me.columnREF_DOC_NO = MyBase.Columns("REF_DOC_NO")
+            Me.columnSTATUS_ASSESMENT = MyBase.Columns("STATUS_ASSESMENT")
+            Me.columnINVOICE_NO_INFO = MyBase.Columns("INVOICE_NO_INFO")
+            Me.columnINVOICE_NUMBER_EVOUCHER = MyBase.Columns("INVOICE_NUMBER_EVOUCHER")
+            Me.columnVOUCHER_VALUE1 = MyBase.Columns("VOUCHER_VALUE1")
+            Me.columnVOUCHER_VALUE2 = MyBase.Columns("VOUCHER_VALUE2")
+            Me.columnBUDGET_ALLOCATED = MyBase.Columns("BUDGET_ALLOCATED")
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Private Sub InitClass()
-            Me.columnName = New Global.System.Data.DataColumn("Name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnName)
-            Me.columnrepname = New Global.System.Data.DataColumn("repname", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnrepname)
-            Me.columncondmin = New Global.System.Data.DataColumn("condmin", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columncondmin)
-            Me.columnTanggal = New Global.System.Data.DataColumn("Tanggal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTanggal)
+            Me.columnEVOUCHER_CATEGORY = New Global.System.Data.DataColumn("EVOUCHER_CATEGORY", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVOUCHER_CATEGORY)
+            Me.columnEVOUCHER_CATEGORY_DESC = New Global.System.Data.DataColumn("EVOUCHER_CATEGORY_DESC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVOUCHER_CATEGORY_DESC)
+            Me.columnEVOUCHER_MASTER = New Global.System.Data.DataColumn("EVOUCHER_MASTER", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVOUCHER_MASTER)
+            Me.columnEVOUCHER_MASTER_DESC = New Global.System.Data.DataColumn("EVOUCHER_MASTER_DESC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVOUCHER_MASTER_DESC)
+            Me.columnFROM_DATE = New Global.System.Data.DataColumn("FROM_DATE", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFROM_DATE)
+            Me.columnEND_DATE = New Global.System.Data.DataColumn("END_DATE", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEND_DATE)
+            Me.columnPOP_CODE = New Global.System.Data.DataColumn("POP_CODE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPOP_CODE)
+            Me.columnPOP_NAME = New Global.System.Data.DataColumn("POP_NAME", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPOP_NAME)
+            Me.columnLAST_13_WEEK_SALE = New Global.System.Data.DataColumn("LAST_13_WEEK_SALE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLAST_13_WEEK_SALE)
+            Me.columnREF_DOC_NO = New Global.System.Data.DataColumn("REF_DOC_NO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnREF_DOC_NO)
+            Me.columnSTATUS_ASSESMENT = New Global.System.Data.DataColumn("STATUS_ASSESMENT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSTATUS_ASSESMENT)
+            Me.columnINVOICE_NO_INFO = New Global.System.Data.DataColumn("INVOICE_NO_INFO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnINVOICE_NO_INFO)
+            Me.columnINVOICE_NUMBER_EVOUCHER = New Global.System.Data.DataColumn("INVOICE_NUMBER_EVOUCHER", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnINVOICE_NUMBER_EVOUCHER)
+            Me.columnVOUCHER_VALUE1 = New Global.System.Data.DataColumn("VOUCHER_VALUE1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVOUCHER_VALUE1)
+            Me.columnVOUCHER_VALUE2 = New Global.System.Data.DataColumn("VOUCHER_VALUE2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVOUCHER_VALUE2)
+            Me.columnBUDGET_ALLOCATED = New Global.System.Data.DataColumn("BUDGET_ALLOCATED", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBUDGET_ALLOCATED)
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function NewdtHeadRepRow() As dtHeadRepRow
-            Return CType(Me.NewRow, dtHeadRepRow)
+        Public Function NewEV_REPRow() As EV_REPRow
+            Return CType(Me.NewRow, EV_REPRow)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New dtHeadRepRow(builder)
+            Return New EV_REPRow(builder)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(dtHeadRepRow)
+            Return GetType(EV_REPRow)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.dtHeadRepRowChangedEvent) Is Nothing) Then
-                RaiseEvent dtHeadRepRowChanged(Me, New dtHeadRepRowChangeEvent(CType(e.Row, dtHeadRepRow), e.Action))
+            If (Not (Me.EV_REPRowChangedEvent) Is Nothing) Then
+                RaiseEvent EV_REPRowChanged(Me, New EV_REPRowChangeEvent(CType(e.Row, EV_REPRow), e.Action))
             End If
         End Sub
 
@@ -540,8 +712,8 @@ Partial Public Class dsRep
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.dtHeadRepRowChangingEvent) Is Nothing) Then
-                RaiseEvent dtHeadRepRowChanging(Me, New dtHeadRepRowChangeEvent(CType(e.Row, dtHeadRepRow), e.Action))
+            If (Not (Me.EV_REPRowChangingEvent) Is Nothing) Then
+                RaiseEvent EV_REPRowChanging(Me, New EV_REPRowChangeEvent(CType(e.Row, EV_REPRow), e.Action))
             End If
         End Sub
 
@@ -549,8 +721,8 @@ Partial Public Class dsRep
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.dtHeadRepRowDeletedEvent) Is Nothing) Then
-                RaiseEvent dtHeadRepRowDeleted(Me, New dtHeadRepRowChangeEvent(CType(e.Row, dtHeadRepRow), e.Action))
+            If (Not (Me.EV_REPRowDeletedEvent) Is Nothing) Then
+                RaiseEvent EV_REPRowDeleted(Me, New EV_REPRowChangeEvent(CType(e.Row, EV_REPRow), e.Action))
             End If
         End Sub
 
@@ -558,14 +730,14 @@ Partial Public Class dsRep
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.dtHeadRepRowDeletingEvent) Is Nothing) Then
-                RaiseEvent dtHeadRepRowDeleting(Me, New dtHeadRepRowChangeEvent(CType(e.Row, dtHeadRepRow), e.Action))
+            If (Not (Me.EV_REPRowDeletingEvent) Is Nothing) Then
+                RaiseEvent EV_REPRowDeleting(Me, New EV_REPRowChangeEvent(CType(e.Row, EV_REPRow), e.Action))
             End If
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub RemovedtHeadRepRow(ByVal row As dtHeadRepRow)
+        Public Sub RemoveEV_REPRow(ByVal row As EV_REPRow)
             Me.Rows.Remove(row)
         End Sub
 
@@ -574,7 +746,7 @@ Partial Public Class dsRep
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As dsRep = New dsRep()
+            Dim ds As DS_EV = New DS_EV()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -592,7 +764,7 @@ Partial Public Class dsRep
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "dtHeadRepDataTable"
+            attribute2.FixedValue = "EV_REPDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -641,22 +813,18 @@ Partial Public Class dsRep
     '''</summary>
     <Global.System.Serializable(), _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")> _
-    Partial Public Class dtHeadRep2DataTable
-        Inherits Global.System.Data.TypedTableBase(Of dtHeadRep2Row)
+    Partial Public Class dtHeader_EVDataTable
+        Inherits Global.System.Data.TypedTableBase(Of dtHeader_EVRow)
 
-        Private columnSKU As Global.System.Data.DataColumn
+        Private columnDTCODE As Global.System.Data.DataColumn
 
-        Private columnCS As Global.System.Data.DataColumn
-
-        Private columnDZ As Global.System.Data.DataColumn
-
-        Private columnPC As Global.System.Data.DataColumn
+        Private columnDTNAME As Global.System.Data.DataColumn
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Sub New()
             MyBase.New()
-            Me.TableName = "dtHeadRep2"
+            Me.TableName = "dtHeader_EV"
             Me.BeginInit()
             Me.InitClass()
             Me.EndInit()
@@ -689,33 +857,17 @@ Partial Public Class dsRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property SKUColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property DTCODEColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnSKU
+                Return Me.columnDTCODE
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property CSColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property DTNAMEColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnCS
-            End Get
-        End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property DZColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDZ
-            End Get
-        End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property PCColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPC
+                Return Me.columnDTNAME
             End Get
         End Property
 
@@ -730,44 +882,44 @@ Partial Public Class dsRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Default Public ReadOnly Property Item(ByVal index As Integer) As dtHeadRep2Row
+        Default Public ReadOnly Property Item(ByVal index As Integer) As dtHeader_EVRow
             Get
-                Return CType(Me.Rows(index), dtHeadRep2Row)
+                Return CType(Me.Rows(index), dtHeader_EVRow)
             End Get
         End Property
 
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Event dtHeadRep2RowChanging As dtHeadRep2RowChangeEventHandler
+        Public Event dtHeader_EVRowChanging As dtHeader_EVRowChangeEventHandler
 
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Event dtHeadRep2RowChanged As dtHeadRep2RowChangeEventHandler
+        Public Event dtHeader_EVRowChanged As dtHeader_EVRowChangeEventHandler
 
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Event dtHeadRep2RowDeleting As dtHeadRep2RowChangeEventHandler
+        Public Event dtHeader_EVRowDeleting As dtHeader_EVRowChangeEventHandler
 
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Event dtHeadRep2RowDeleted As dtHeadRep2RowChangeEventHandler
+        Public Event dtHeader_EVRowDeleted As dtHeader_EVRowChangeEventHandler
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Overloads Sub AdddtHeadRep2Row(ByVal row As dtHeadRep2Row)
+        Public Overloads Sub AdddtHeader_EVRow(ByVal row As dtHeader_EVRow)
             Me.Rows.Add(row)
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Overloads Function AdddtHeadRep2Row(ByVal SKU As String, ByVal CS As String, ByVal DZ As String, ByVal PC As String) As dtHeadRep2Row
-            Dim rowdtHeadRep2Row As dtHeadRep2Row = CType(Me.NewRow, dtHeadRep2Row)
-            Dim columnValuesArray() As Object = New Object() {SKU, CS, DZ, PC}
-            rowdtHeadRep2Row.ItemArray = columnValuesArray
-            Me.Rows.Add(rowdtHeadRep2Row)
-            Return rowdtHeadRep2Row
+        Public Overloads Function AdddtHeader_EVRow(ByVal DTCODE As String, ByVal DTNAME As String) As dtHeader_EVRow
+            Dim rowdtHeader_EVRow As dtHeader_EVRow = CType(Me.NewRow, dtHeader_EVRow)
+            Dim columnValuesArray() As Object = New Object() {DTCODE, DTNAME}
+            rowdtHeader_EVRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowdtHeader_EVRow)
+            Return rowdtHeader_EVRow
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As dtHeadRep2DataTable = CType(MyBase.Clone, dtHeadRep2DataTable)
+            Dim cln As dtHeader_EVDataTable = CType(MyBase.Clone, dtHeader_EVDataTable)
             cln.InitVars()
             Return cln
         End Function
@@ -775,55 +927,49 @@ Partial Public Class dsRep
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New dtHeadRep2DataTable()
+            Return New dtHeader_EVDataTable()
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Friend Sub InitVars()
-            Me.columnSKU = MyBase.Columns("SKU")
-            Me.columnCS = MyBase.Columns("CS")
-            Me.columnDZ = MyBase.Columns("DZ")
-            Me.columnPC = MyBase.Columns("PC")
+            Me.columnDTCODE = MyBase.Columns("DTCODE")
+            Me.columnDTNAME = MyBase.Columns("DTNAME")
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Private Sub InitClass()
-            Me.columnSKU = New Global.System.Data.DataColumn("SKU", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSKU)
-            Me.columnCS = New Global.System.Data.DataColumn("CS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCS)
-            Me.columnDZ = New Global.System.Data.DataColumn("DZ", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDZ)
-            Me.columnPC = New Global.System.Data.DataColumn("PC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPC)
+            Me.columnDTCODE = New Global.System.Data.DataColumn("DTCODE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDTCODE)
+            Me.columnDTNAME = New Global.System.Data.DataColumn("DTNAME", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDTNAME)
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function NewdtHeadRep2Row() As dtHeadRep2Row
-            Return CType(Me.NewRow, dtHeadRep2Row)
+        Public Function NewdtHeader_EVRow() As dtHeader_EVRow
+            Return CType(Me.NewRow, dtHeader_EVRow)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New dtHeadRep2Row(builder)
+            Return New dtHeader_EVRow(builder)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(dtHeadRep2Row)
+            Return GetType(dtHeader_EVRow)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.dtHeadRep2RowChangedEvent) Is Nothing) Then
-                RaiseEvent dtHeadRep2RowChanged(Me, New dtHeadRep2RowChangeEvent(CType(e.Row, dtHeadRep2Row), e.Action))
+            If (Not (Me.dtHeader_EVRowChangedEvent) Is Nothing) Then
+                RaiseEvent dtHeader_EVRowChanged(Me, New dtHeader_EVRowChangeEvent(CType(e.Row, dtHeader_EVRow), e.Action))
             End If
         End Sub
 
@@ -831,8 +977,8 @@ Partial Public Class dsRep
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.dtHeadRep2RowChangingEvent) Is Nothing) Then
-                RaiseEvent dtHeadRep2RowChanging(Me, New dtHeadRep2RowChangeEvent(CType(e.Row, dtHeadRep2Row), e.Action))
+            If (Not (Me.dtHeader_EVRowChangingEvent) Is Nothing) Then
+                RaiseEvent dtHeader_EVRowChanging(Me, New dtHeader_EVRowChangeEvent(CType(e.Row, dtHeader_EVRow), e.Action))
             End If
         End Sub
 
@@ -840,8 +986,8 @@ Partial Public Class dsRep
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.dtHeadRep2RowDeletedEvent) Is Nothing) Then
-                RaiseEvent dtHeadRep2RowDeleted(Me, New dtHeadRep2RowChangeEvent(CType(e.Row, dtHeadRep2Row), e.Action))
+            If (Not (Me.dtHeader_EVRowDeletedEvent) Is Nothing) Then
+                RaiseEvent dtHeader_EVRowDeleted(Me, New dtHeader_EVRowChangeEvent(CType(e.Row, dtHeader_EVRow), e.Action))
             End If
         End Sub
 
@@ -849,14 +995,14 @@ Partial Public Class dsRep
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.dtHeadRep2RowDeletingEvent) Is Nothing) Then
-                RaiseEvent dtHeadRep2RowDeleting(Me, New dtHeadRep2RowChangeEvent(CType(e.Row, dtHeadRep2Row), e.Action))
+            If (Not (Me.dtHeader_EVRowDeletingEvent) Is Nothing) Then
+                RaiseEvent dtHeader_EVRowDeleting(Me, New dtHeader_EVRowChangeEvent(CType(e.Row, dtHeader_EVRow), e.Action))
             End If
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub RemovedtHeadRep2Row(ByVal row As dtHeadRep2Row)
+        Public Sub RemovedtHeader_EVRow(ByVal row As dtHeader_EVRow)
             Me.Rows.Remove(row)
         End Sub
 
@@ -865,7 +1011,7 @@ Partial Public Class dsRep
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As dsRep = New dsRep()
+            Dim ds As DS_EV = New DS_EV()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -883,7 +1029,7 @@ Partial Public Class dsRep
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "dtHeadRep2DataTable"
+            attribute2.FixedValue = "dtHeader_EVDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -932,32 +1078,36 @@ Partial Public Class dsRep
     '''</summary>
     <Global.System.Serializable(), _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")> _
-    Partial Public Class dtRepDataTable
-        Inherits Global.System.Data.TypedTableBase(Of dtRepRow)
+    Partial Public Class EV_PARTIDataTable
+        Inherits Global.System.Data.TypedTableBase(Of EV_PARTIRow)
 
-        Private columnPJP As Global.System.Data.DataColumn
+        Private columnEVOUCHER_MASTER As Global.System.Data.DataColumn
 
-        Private columnDSR_NAME As Global.System.Data.DataColumn
+        Private columnCAT_DESC As Global.System.Data.DataColumn
 
-        Private columnSDESC As Global.System.Data.DataColumn
+        Private columnEVOUCHER_CATEGORY As Global.System.Data.DataColumn
 
-        Private columnJUMLAH_POP As Global.System.Data.DataColumn
+        Private columnMAS_DESC As Global.System.Data.DataColumn
 
-        Private columnACTIVE_POP As Global.System.Data.DataColumn
+        Private columnFROM_DATE As Global.System.Data.DataColumn
 
-        Private columnJUM_OUT_BELI As Global.System.Data.DataColumn
+        Private columnEND_DATE As Global.System.Data.DataColumn
 
-        Private columnJUM_OUT_ACHV As Global.System.Data.DataColumn
+        Private columnVOUCHER_VALUE As Global.System.Data.DataColumn
 
-        Private columnINVOICE As Global.System.Data.DataColumn
+        Private columnPOP_CODE As Global.System.Data.DataColumn
 
-        Private columnJUM_INV_ACHV As Global.System.Data.DataColumn
+        Private columnPOP_NAME As Global.System.Data.DataColumn
+
+        Private columnPOP_TYPE_DESC As Global.System.Data.DataColumn
+
+        Private columnALLOCATED_BUDGET As Global.System.Data.DataColumn
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Sub New()
             MyBase.New()
-            Me.TableName = "dtRep"
+            Me.TableName = "EV_PARTI"
             Me.BeginInit()
             Me.InitClass()
             Me.EndInit()
@@ -990,73 +1140,89 @@ Partial Public Class dsRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property PJPColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property EVOUCHER_MASTERColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnPJP
+                Return Me.columnEVOUCHER_MASTER
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property DSR_NAMEColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property CAT_DESCColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnDSR_NAME
+                Return Me.columnCAT_DESC
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property SDESCColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property EVOUCHER_CATEGORYColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnSDESC
+                Return Me.columnEVOUCHER_CATEGORY
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property JUMLAH_POPColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property MAS_DESCColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnJUMLAH_POP
+                Return Me.columnMAS_DESC
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property ACTIVE_POPColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property FROM_DATEColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnACTIVE_POP
+                Return Me.columnFROM_DATE
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property JUM_OUT_BELIColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property END_DATEColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnJUM_OUT_BELI
+                Return Me.columnEND_DATE
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property JUM_OUT_ACHVColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property VOUCHER_VALUEColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnJUM_OUT_ACHV
+                Return Me.columnVOUCHER_VALUE
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property INVOICEColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property POP_CODEColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnINVOICE
+                Return Me.columnPOP_CODE
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property JUM_INV_ACHVColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property POP_NAMEColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnJUM_INV_ACHV
+                Return Me.columnPOP_NAME
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property POP_TYPE_DESCColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPOP_TYPE_DESC
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property ALLOCATED_BUDGETColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnALLOCATED_BUDGET
             End Get
         End Property
 
@@ -1071,50 +1237,44 @@ Partial Public Class dsRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Default Public ReadOnly Property Item(ByVal index As Integer) As dtRepRow
+        Default Public ReadOnly Property Item(ByVal index As Integer) As EV_PARTIRow
             Get
-                Return CType(Me.Rows(index), dtRepRow)
+                Return CType(Me.Rows(index), EV_PARTIRow)
             End Get
         End Property
 
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Event dtRepRowChanging As dtRepRowChangeEventHandler
+        Public Event EV_PARTIRowChanging As EV_PARTIRowChangeEventHandler
 
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Event dtRepRowChanged As dtRepRowChangeEventHandler
+        Public Event EV_PARTIRowChanged As EV_PARTIRowChangeEventHandler
 
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Event dtRepRowDeleting As dtRepRowChangeEventHandler
+        Public Event EV_PARTIRowDeleting As EV_PARTIRowChangeEventHandler
 
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Event dtRepRowDeleted As dtRepRowChangeEventHandler
+        Public Event EV_PARTIRowDeleted As EV_PARTIRowChangeEventHandler
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Overloads Sub AdddtRepRow(ByVal row As dtRepRow)
+        Public Overloads Sub AddEV_PARTIRow(ByVal row As EV_PARTIRow)
             Me.Rows.Add(row)
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Overloads Function AdddtRepRow(ByVal PJP As String, ByVal DSR_NAME As String, ByVal SDESC As String, ByVal JUMLAH_POP As String, ByVal ACTIVE_POP As String, ByVal JUM_OUT_BELI As String, ByVal JUM_OUT_ACHV As String, ByVal INVOICE As String, ByVal JUM_INV_ACHV As String) As dtRepRow
-            Dim rowdtRepRow As dtRepRow = CType(Me.NewRow, dtRepRow)
-            Dim columnValuesArray() As Object = New Object() {PJP, DSR_NAME, SDESC, JUMLAH_POP, ACTIVE_POP, JUM_OUT_BELI, JUM_OUT_ACHV, INVOICE, JUM_INV_ACHV}
-            rowdtRepRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowdtRepRow)
-            Return rowdtRepRow
-        End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function FindByPJP(ByVal PJP As String) As dtRepRow
-            Return CType(Me.Rows.Find(New Object() {PJP}), dtRepRow)
+        Public Overloads Function AddEV_PARTIRow(ByVal EVOUCHER_MASTER As String, ByVal CAT_DESC As String, ByVal EVOUCHER_CATEGORY As String, ByVal MAS_DESC As String, ByVal FROM_DATE As Date, ByVal END_DATE As Date, ByVal VOUCHER_VALUE As String, ByVal POP_CODE As String, ByVal POP_NAME As String, ByVal POP_TYPE_DESC As String, ByVal ALLOCATED_BUDGET As String) As EV_PARTIRow
+            Dim rowEV_PARTIRow As EV_PARTIRow = CType(Me.NewRow, EV_PARTIRow)
+            Dim columnValuesArray() As Object = New Object() {EVOUCHER_MASTER, CAT_DESC, EVOUCHER_CATEGORY, MAS_DESC, FROM_DATE, END_DATE, VOUCHER_VALUE, POP_CODE, POP_NAME, POP_TYPE_DESC, ALLOCATED_BUDGET}
+            rowEV_PARTIRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowEV_PARTIRow)
+            Return rowEV_PARTIRow
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As dtRepDataTable = CType(MyBase.Clone, dtRepDataTable)
+            Dim cln As EV_PARTIDataTable = CType(MyBase.Clone, EV_PARTIDataTable)
             cln.InitVars()
             Return cln
         End Function
@@ -1122,73 +1282,76 @@ Partial Public Class dsRep
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New dtRepDataTable()
+            Return New EV_PARTIDataTable()
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Friend Sub InitVars()
-            Me.columnPJP = MyBase.Columns("PJP")
-            Me.columnDSR_NAME = MyBase.Columns("DSR_NAME")
-            Me.columnSDESC = MyBase.Columns("SDESC")
-            Me.columnJUMLAH_POP = MyBase.Columns("JUMLAH_POP")
-            Me.columnACTIVE_POP = MyBase.Columns("ACTIVE_POP")
-            Me.columnJUM_OUT_BELI = MyBase.Columns("JUM_OUT_BELI")
-            Me.columnJUM_OUT_ACHV = MyBase.Columns("JUM_OUT_ACHV")
-            Me.columnINVOICE = MyBase.Columns("INVOICE")
-            Me.columnJUM_INV_ACHV = MyBase.Columns("JUM_INV_ACHV")
+            Me.columnEVOUCHER_MASTER = MyBase.Columns("EVOUCHER_MASTER")
+            Me.columnCAT_DESC = MyBase.Columns("CAT_DESC")
+            Me.columnEVOUCHER_CATEGORY = MyBase.Columns("EVOUCHER_CATEGORY")
+            Me.columnMAS_DESC = MyBase.Columns("MAS_DESC")
+            Me.columnFROM_DATE = MyBase.Columns("FROM_DATE")
+            Me.columnEND_DATE = MyBase.Columns("END_DATE")
+            Me.columnVOUCHER_VALUE = MyBase.Columns("VOUCHER_VALUE")
+            Me.columnPOP_CODE = MyBase.Columns("POP_CODE")
+            Me.columnPOP_NAME = MyBase.Columns("POP_NAME")
+            Me.columnPOP_TYPE_DESC = MyBase.Columns("POP_TYPE_DESC")
+            Me.columnALLOCATED_BUDGET = MyBase.Columns("ALLOCATED_BUDGET")
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Private Sub InitClass()
-            Me.columnPJP = New Global.System.Data.DataColumn("PJP", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPJP)
-            Me.columnDSR_NAME = New Global.System.Data.DataColumn("DSR_NAME", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDSR_NAME)
-            Me.columnSDESC = New Global.System.Data.DataColumn("SDESC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSDESC)
-            Me.columnJUMLAH_POP = New Global.System.Data.DataColumn("JUMLAH_POP", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnJUMLAH_POP)
-            Me.columnACTIVE_POP = New Global.System.Data.DataColumn("ACTIVE_POP", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnACTIVE_POP)
-            Me.columnJUM_OUT_BELI = New Global.System.Data.DataColumn("JUM_OUT_BELI", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnJUM_OUT_BELI)
-            Me.columnJUM_OUT_ACHV = New Global.System.Data.DataColumn("JUM_OUT_ACHV", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnJUM_OUT_ACHV)
-            Me.columnINVOICE = New Global.System.Data.DataColumn("INVOICE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnINVOICE)
-            Me.columnJUM_INV_ACHV = New Global.System.Data.DataColumn("JUM_INV_ACHV", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnJUM_INV_ACHV)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnPJP}, True))
-            Me.columnPJP.AllowDBNull = False
-            Me.columnPJP.Unique = True
+            Me.columnEVOUCHER_MASTER = New Global.System.Data.DataColumn("EVOUCHER_MASTER", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVOUCHER_MASTER)
+            Me.columnCAT_DESC = New Global.System.Data.DataColumn("CAT_DESC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCAT_DESC)
+            Me.columnEVOUCHER_CATEGORY = New Global.System.Data.DataColumn("EVOUCHER_CATEGORY", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVOUCHER_CATEGORY)
+            Me.columnMAS_DESC = New Global.System.Data.DataColumn("MAS_DESC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMAS_DESC)
+            Me.columnFROM_DATE = New Global.System.Data.DataColumn("FROM_DATE", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFROM_DATE)
+            Me.columnEND_DATE = New Global.System.Data.DataColumn("END_DATE", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEND_DATE)
+            Me.columnVOUCHER_VALUE = New Global.System.Data.DataColumn("VOUCHER_VALUE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVOUCHER_VALUE)
+            Me.columnPOP_CODE = New Global.System.Data.DataColumn("POP_CODE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPOP_CODE)
+            Me.columnPOP_NAME = New Global.System.Data.DataColumn("POP_NAME", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPOP_NAME)
+            Me.columnPOP_TYPE_DESC = New Global.System.Data.DataColumn("POP_TYPE_DESC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPOP_TYPE_DESC)
+            Me.columnALLOCATED_BUDGET = New Global.System.Data.DataColumn("ALLOCATED_BUDGET", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnALLOCATED_BUDGET)
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function NewdtRepRow() As dtRepRow
-            Return CType(Me.NewRow, dtRepRow)
+        Public Function NewEV_PARTIRow() As EV_PARTIRow
+            Return CType(Me.NewRow, EV_PARTIRow)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New dtRepRow(builder)
+            Return New EV_PARTIRow(builder)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(dtRepRow)
+            Return GetType(EV_PARTIRow)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.dtRepRowChangedEvent) Is Nothing) Then
-                RaiseEvent dtRepRowChanged(Me, New dtRepRowChangeEvent(CType(e.Row, dtRepRow), e.Action))
+            If (Not (Me.EV_PARTIRowChangedEvent) Is Nothing) Then
+                RaiseEvent EV_PARTIRowChanged(Me, New EV_PARTIRowChangeEvent(CType(e.Row, EV_PARTIRow), e.Action))
             End If
         End Sub
 
@@ -1196,8 +1359,8 @@ Partial Public Class dsRep
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.dtRepRowChangingEvent) Is Nothing) Then
-                RaiseEvent dtRepRowChanging(Me, New dtRepRowChangeEvent(CType(e.Row, dtRepRow), e.Action))
+            If (Not (Me.EV_PARTIRowChangingEvent) Is Nothing) Then
+                RaiseEvent EV_PARTIRowChanging(Me, New EV_PARTIRowChangeEvent(CType(e.Row, EV_PARTIRow), e.Action))
             End If
         End Sub
 
@@ -1205,8 +1368,8 @@ Partial Public Class dsRep
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.dtRepRowDeletedEvent) Is Nothing) Then
-                RaiseEvent dtRepRowDeleted(Me, New dtRepRowChangeEvent(CType(e.Row, dtRepRow), e.Action))
+            If (Not (Me.EV_PARTIRowDeletedEvent) Is Nothing) Then
+                RaiseEvent EV_PARTIRowDeleted(Me, New EV_PARTIRowChangeEvent(CType(e.Row, EV_PARTIRow), e.Action))
             End If
         End Sub
 
@@ -1214,14 +1377,14 @@ Partial Public Class dsRep
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.dtRepRowDeletingEvent) Is Nothing) Then
-                RaiseEvent dtRepRowDeleting(Me, New dtRepRowChangeEvent(CType(e.Row, dtRepRow), e.Action))
+            If (Not (Me.EV_PARTIRowDeletingEvent) Is Nothing) Then
+                RaiseEvent EV_PARTIRowDeleting(Me, New EV_PARTIRowChangeEvent(CType(e.Row, EV_PARTIRow), e.Action))
             End If
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub RemovedtRepRow(ByVal row As dtRepRow)
+        Public Sub RemoveEV_PARTIRow(ByVal row As EV_PARTIRow)
             Me.Rows.Remove(row)
         End Sub
 
@@ -1230,7 +1393,7 @@ Partial Public Class dsRep
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As dsRep = New dsRep()
+            Dim ds As DS_EV = New DS_EV()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -1248,7 +1411,7 @@ Partial Public Class dsRep
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "dtRepDataTable"
+            attribute2.FixedValue = "EV_PARTIDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -1295,491 +1458,831 @@ Partial Public Class dsRep
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class dtHeadRepRow
+    Partial Public Class EV_REPRow
         Inherits Global.System.Data.DataRow
 
-        Private tabledtHeadRep As dtHeadRepDataTable
+        Private tableEV_REP As EV_REPDataTable
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tabledtHeadRep = CType(Me.Table, dtHeadRepDataTable)
+            Me.tableEV_REP = CType(Me.Table, EV_REPDataTable)
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property Name() As String
+        Public Property EVOUCHER_CATEGORY() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtHeadRep.NameColumn), String)
+                    Return CType(Me(Me.tableEV_REP.EVOUCHER_CATEGORYColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Name' in table 'dtHeadRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVOUCHER_CATEGORY' in table 'EV_REP' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtHeadRep.NameColumn) = value
+                Me(Me.tableEV_REP.EVOUCHER_CATEGORYColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property repname() As String
+        Public Property EVOUCHER_CATEGORY_DESC() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtHeadRep.repnameColumn), String)
+                    Return CType(Me(Me.tableEV_REP.EVOUCHER_CATEGORY_DESCColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'repname' in table 'dtHeadRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVOUCHER_CATEGORY_DESC' in table 'EV_REP' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtHeadRep.repnameColumn) = value
+                Me(Me.tableEV_REP.EVOUCHER_CATEGORY_DESCColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property condmin() As String
+        Public Property EVOUCHER_MASTER() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtHeadRep.condminColumn), String)
+                    Return CType(Me(Me.tableEV_REP.EVOUCHER_MASTERColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'condmin' in table 'dtHeadRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVOUCHER_MASTER' in table 'EV_REP' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtHeadRep.condminColumn) = value
+                Me(Me.tableEV_REP.EVOUCHER_MASTERColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property Tanggal() As String
+        Public Property EVOUCHER_MASTER_DESC() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtHeadRep.TanggalColumn), String)
+                    Return CType(Me(Me.tableEV_REP.EVOUCHER_MASTER_DESCColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Tanggal' in table 'dtHeadRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVOUCHER_MASTER_DESC' in table 'EV_REP' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtHeadRep.TanggalColumn) = value
+                Me(Me.tableEV_REP.EVOUCHER_MASTER_DESCColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsNameNull() As Boolean
-            Return Me.IsNull(Me.tabledtHeadRep.NameColumn)
+        Public Property FROM_DATE() As Date
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_REP.FROM_DATEColumn), Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'FROM_DATE' in table 'EV_REP' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As Date)
+                Me(Me.tableEV_REP.FROM_DATEColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property END_DATE() As Date
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_REP.END_DATEColumn), Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'END_DATE' in table 'EV_REP' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As Date)
+                Me(Me.tableEV_REP.END_DATEColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property POP_CODE() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_REP.POP_CODEColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'POP_CODE' in table 'EV_REP' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableEV_REP.POP_CODEColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property POP_NAME() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_REP.POP_NAMEColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'POP_NAME' in table 'EV_REP' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableEV_REP.POP_NAMEColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property LAST_13_WEEK_SALE() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_REP.LAST_13_WEEK_SALEColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LAST_13_WEEK_SALE' in table 'EV_REP' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableEV_REP.LAST_13_WEEK_SALEColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property REF_DOC_NO() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_REP.REF_DOC_NOColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'REF_DOC_NO' in table 'EV_REP' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableEV_REP.REF_DOC_NOColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property STATUS_ASSESMENT() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_REP.STATUS_ASSESMENTColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'STATUS_ASSESMENT' in table 'EV_REP' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableEV_REP.STATUS_ASSESMENTColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property INVOICE_NO_INFO() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_REP.INVOICE_NO_INFOColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'INVOICE_NO_INFO' in table 'EV_REP' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableEV_REP.INVOICE_NO_INFOColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property INVOICE_NUMBER_EVOUCHER() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_REP.INVOICE_NUMBER_EVOUCHERColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'INVOICE_NUMBER_EVOUCHER' in table 'EV_REP' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableEV_REP.INVOICE_NUMBER_EVOUCHERColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property VOUCHER_VALUE1() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_REP.VOUCHER_VALUE1Column), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'VOUCHER_VALUE1' in table 'EV_REP' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableEV_REP.VOUCHER_VALUE1Column) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property VOUCHER_VALUE2() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_REP.VOUCHER_VALUE2Column), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'VOUCHER_VALUE2' in table 'EV_REP' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableEV_REP.VOUCHER_VALUE2Column) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property BUDGET_ALLOCATED() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_REP.BUDGET_ALLOCATEDColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BUDGET_ALLOCATED' in table 'EV_REP' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableEV_REP.BUDGET_ALLOCATEDColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsEVOUCHER_CATEGORYNull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.EVOUCHER_CATEGORYColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetNameNull()
-            Me(Me.tabledtHeadRep.NameColumn) = Global.System.Convert.DBNull
+        Public Sub SetEVOUCHER_CATEGORYNull()
+            Me(Me.tableEV_REP.EVOUCHER_CATEGORYColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsrepnameNull() As Boolean
-            Return Me.IsNull(Me.tabledtHeadRep.repnameColumn)
+        Public Function IsEVOUCHER_CATEGORY_DESCNull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.EVOUCHER_CATEGORY_DESCColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetrepnameNull()
-            Me(Me.tabledtHeadRep.repnameColumn) = Global.System.Convert.DBNull
+        Public Sub SetEVOUCHER_CATEGORY_DESCNull()
+            Me(Me.tableEV_REP.EVOUCHER_CATEGORY_DESCColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IscondminNull() As Boolean
-            Return Me.IsNull(Me.tabledtHeadRep.condminColumn)
+        Public Function IsEVOUCHER_MASTERNull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.EVOUCHER_MASTERColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetcondminNull()
-            Me(Me.tabledtHeadRep.condminColumn) = Global.System.Convert.DBNull
+        Public Sub SetEVOUCHER_MASTERNull()
+            Me(Me.tableEV_REP.EVOUCHER_MASTERColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsTanggalNull() As Boolean
-            Return Me.IsNull(Me.tabledtHeadRep.TanggalColumn)
+        Public Function IsEVOUCHER_MASTER_DESCNull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.EVOUCHER_MASTER_DESCColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetTanggalNull()
-            Me(Me.tabledtHeadRep.TanggalColumn) = Global.System.Convert.DBNull
+        Public Sub SetEVOUCHER_MASTER_DESCNull()
+            Me(Me.tableEV_REP.EVOUCHER_MASTER_DESCColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsFROM_DATENull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.FROM_DATEColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetFROM_DATENull()
+            Me(Me.tableEV_REP.FROM_DATEColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsEND_DATENull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.END_DATEColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetEND_DATENull()
+            Me(Me.tableEV_REP.END_DATEColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsPOP_CODENull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.POP_CODEColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetPOP_CODENull()
+            Me(Me.tableEV_REP.POP_CODEColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsPOP_NAMENull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.POP_NAMEColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetPOP_NAMENull()
+            Me(Me.tableEV_REP.POP_NAMEColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsLAST_13_WEEK_SALENull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.LAST_13_WEEK_SALEColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetLAST_13_WEEK_SALENull()
+            Me(Me.tableEV_REP.LAST_13_WEEK_SALEColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsREF_DOC_NONull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.REF_DOC_NOColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetREF_DOC_NONull()
+            Me(Me.tableEV_REP.REF_DOC_NOColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsSTATUS_ASSESMENTNull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.STATUS_ASSESMENTColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetSTATUS_ASSESMENTNull()
+            Me(Me.tableEV_REP.STATUS_ASSESMENTColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsINVOICE_NO_INFONull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.INVOICE_NO_INFOColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetINVOICE_NO_INFONull()
+            Me(Me.tableEV_REP.INVOICE_NO_INFOColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsINVOICE_NUMBER_EVOUCHERNull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.INVOICE_NUMBER_EVOUCHERColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetINVOICE_NUMBER_EVOUCHERNull()
+            Me(Me.tableEV_REP.INVOICE_NUMBER_EVOUCHERColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsVOUCHER_VALUE1Null() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.VOUCHER_VALUE1Column)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetVOUCHER_VALUE1Null()
+            Me(Me.tableEV_REP.VOUCHER_VALUE1Column) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsVOUCHER_VALUE2Null() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.VOUCHER_VALUE2Column)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetVOUCHER_VALUE2Null()
+            Me(Me.tableEV_REP.VOUCHER_VALUE2Column) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsBUDGET_ALLOCATEDNull() As Boolean
+            Return Me.IsNull(Me.tableEV_REP.BUDGET_ALLOCATEDColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetBUDGET_ALLOCATEDNull()
+            Me(Me.tableEV_REP.BUDGET_ALLOCATEDColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
 
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class dtHeadRep2Row
+    Partial Public Class dtHeader_EVRow
         Inherits Global.System.Data.DataRow
 
-        Private tabledtHeadRep2 As dtHeadRep2DataTable
+        Private tabledtHeader_EV As dtHeader_EVDataTable
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tabledtHeadRep2 = CType(Me.Table, dtHeadRep2DataTable)
+            Me.tabledtHeader_EV = CType(Me.Table, dtHeader_EVDataTable)
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property SKU() As String
+        Public Property DTCODE() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtHeadRep2.SKUColumn), String)
+                    Return CType(Me(Me.tabledtHeader_EV.DTCODEColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'SKU' in table 'dtHeadRep2' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DTCODE' in table 'dtHeader_EV' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtHeadRep2.SKUColumn) = value
+                Me(Me.tabledtHeader_EV.DTCODEColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property CS() As String
+        Public Property DTNAME() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtHeadRep2.CSColumn), String)
+                    Return CType(Me(Me.tabledtHeader_EV.DTNAMEColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'CS' in table 'dtHeadRep2' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DTNAME' in table 'dtHeader_EV' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtHeadRep2.CSColumn) = value
+                Me(Me.tabledtHeader_EV.DTNAMEColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property DZ() As String
-            Get
-                Try
-                    Return CType(Me(Me.tabledtHeadRep2.DZColumn), String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DZ' in table 'dtHeadRep2' is DBNull.", e)
-                End Try
-            End Get
-            Set(value As String)
-                Me(Me.tabledtHeadRep2.DZColumn) = value
-            End Set
-        End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property PC() As String
-            Get
-                Try
-                    Return CType(Me(Me.tabledtHeadRep2.PCColumn), String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'PC' in table 'dtHeadRep2' is DBNull.", e)
-                End Try
-            End Get
-            Set(value As String)
-                Me(Me.tabledtHeadRep2.PCColumn) = value
-            End Set
-        End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsSKUNull() As Boolean
-            Return Me.IsNull(Me.tabledtHeadRep2.SKUColumn)
+        Public Function IsDTCODENull() As Boolean
+            Return Me.IsNull(Me.tabledtHeader_EV.DTCODEColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetSKUNull()
-            Me(Me.tabledtHeadRep2.SKUColumn) = Global.System.Convert.DBNull
+        Public Sub SetDTCODENull()
+            Me(Me.tabledtHeader_EV.DTCODEColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsCSNull() As Boolean
-            Return Me.IsNull(Me.tabledtHeadRep2.CSColumn)
+        Public Function IsDTNAMENull() As Boolean
+            Return Me.IsNull(Me.tabledtHeader_EV.DTNAMEColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetCSNull()
-            Me(Me.tabledtHeadRep2.CSColumn) = Global.System.Convert.DBNull
-        End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsDZNull() As Boolean
-            Return Me.IsNull(Me.tabledtHeadRep2.DZColumn)
-        End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetDZNull()
-            Me(Me.tabledtHeadRep2.DZColumn) = Global.System.Convert.DBNull
-        End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsPCNull() As Boolean
-            Return Me.IsNull(Me.tabledtHeadRep2.PCColumn)
-        End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetPCNull()
-            Me(Me.tabledtHeadRep2.PCColumn) = Global.System.Convert.DBNull
+        Public Sub SetDTNAMENull()
+            Me(Me.tabledtHeader_EV.DTNAMEColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
 
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class dtRepRow
+    Partial Public Class EV_PARTIRow
         Inherits Global.System.Data.DataRow
 
-        Private tabledtRep As dtRepDataTable
+        Private tableEV_PARTI As EV_PARTIDataTable
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tabledtRep = CType(Me.Table, dtRepDataTable)
+            Me.tableEV_PARTI = CType(Me.Table, EV_PARTIDataTable)
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property PJP() As String
-            Get
-                Return CType(Me(Me.tabledtRep.PJPColumn), String)
-            End Get
-            Set(value As String)
-                Me(Me.tabledtRep.PJPColumn) = value
-            End Set
-        End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property DSR_NAME() As String
+        Public Property EVOUCHER_MASTER() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtRep.DSR_NAMEColumn), String)
+                    Return CType(Me(Me.tableEV_PARTI.EVOUCHER_MASTERColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DSR_NAME' in table 'dtRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVOUCHER_MASTER' in table 'EV_PARTI' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtRep.DSR_NAMEColumn) = value
+                Me(Me.tableEV_PARTI.EVOUCHER_MASTERColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property SDESC() As String
+        Public Property CAT_DESC() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtRep.SDESCColumn), String)
+                    Return CType(Me(Me.tableEV_PARTI.CAT_DESCColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'SDESC' in table 'dtRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'CAT_DESC' in table 'EV_PARTI' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtRep.SDESCColumn) = value
+                Me(Me.tableEV_PARTI.CAT_DESCColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property JUMLAH_POP() As String
+        Public Property EVOUCHER_CATEGORY() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtRep.JUMLAH_POPColumn), String)
+                    Return CType(Me(Me.tableEV_PARTI.EVOUCHER_CATEGORYColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'JUMLAH_POP' in table 'dtRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVOUCHER_CATEGORY' in table 'EV_PARTI' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtRep.JUMLAH_POPColumn) = value
+                Me(Me.tableEV_PARTI.EVOUCHER_CATEGORYColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property ACTIVE_POP() As String
+        Public Property MAS_DESC() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtRep.ACTIVE_POPColumn), String)
+                    Return CType(Me(Me.tableEV_PARTI.MAS_DESCColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ACTIVE_POP' in table 'dtRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'MAS_DESC' in table 'EV_PARTI' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtRep.ACTIVE_POPColumn) = value
+                Me(Me.tableEV_PARTI.MAS_DESCColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property JUM_OUT_BELI() As String
+        Public Property FROM_DATE() As Date
             Get
                 Try
-                    Return CType(Me(Me.tabledtRep.JUM_OUT_BELIColumn), String)
+                    Return CType(Me(Me.tableEV_PARTI.FROM_DATEColumn), Date)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'JUM_OUT_BELI' in table 'dtRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'FROM_DATE' in table 'EV_PARTI' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As Date)
+                Me(Me.tableEV_PARTI.FROM_DATEColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property END_DATE() As Date
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_PARTI.END_DATEColumn), Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'END_DATE' in table 'EV_PARTI' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As Date)
+                Me(Me.tableEV_PARTI.END_DATEColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property VOUCHER_VALUE() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_PARTI.VOUCHER_VALUEColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'VOUCHER_VALUE' in table 'EV_PARTI' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtRep.JUM_OUT_BELIColumn) = value
+                Me(Me.tableEV_PARTI.VOUCHER_VALUEColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property JUM_OUT_ACHV() As String
+        Public Property POP_CODE() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtRep.JUM_OUT_ACHVColumn), String)
+                    Return CType(Me(Me.tableEV_PARTI.POP_CODEColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'JUM_OUT_ACHV' in table 'dtRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'POP_CODE' in table 'EV_PARTI' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtRep.JUM_OUT_ACHVColumn) = value
+                Me(Me.tableEV_PARTI.POP_CODEColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property INVOICE() As String
+        Public Property POP_NAME() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtRep.INVOICEColumn), String)
+                    Return CType(Me(Me.tableEV_PARTI.POP_NAMEColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'INVOICE' in table 'dtRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'POP_NAME' in table 'EV_PARTI' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtRep.INVOICEColumn) = value
+                Me(Me.tableEV_PARTI.POP_NAMEColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property JUM_INV_ACHV() As String
+        Public Property POP_TYPE_DESC() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtRep.JUM_INV_ACHVColumn), String)
+                    Return CType(Me(Me.tableEV_PARTI.POP_TYPE_DESCColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'JUM_INV_ACHV' in table 'dtRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'POP_TYPE_DESC' in table 'EV_PARTI' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtRep.JUM_INV_ACHVColumn) = value
+                Me(Me.tableEV_PARTI.POP_TYPE_DESCColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsDSR_NAMENull() As Boolean
-            Return Me.IsNull(Me.tabledtRep.DSR_NAMEColumn)
+        Public Property ALLOCATED_BUDGET() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableEV_PARTI.ALLOCATED_BUDGETColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ALLOCATED_BUDGET' in table 'EV_PARTI' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableEV_PARTI.ALLOCATED_BUDGETColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsEVOUCHER_MASTERNull() As Boolean
+            Return Me.IsNull(Me.tableEV_PARTI.EVOUCHER_MASTERColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetDSR_NAMENull()
-            Me(Me.tabledtRep.DSR_NAMEColumn) = Global.System.Convert.DBNull
+        Public Sub SetEVOUCHER_MASTERNull()
+            Me(Me.tableEV_PARTI.EVOUCHER_MASTERColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsSDESCNull() As Boolean
-            Return Me.IsNull(Me.tabledtRep.SDESCColumn)
+        Public Function IsCAT_DESCNull() As Boolean
+            Return Me.IsNull(Me.tableEV_PARTI.CAT_DESCColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetSDESCNull()
-            Me(Me.tabledtRep.SDESCColumn) = Global.System.Convert.DBNull
+        Public Sub SetCAT_DESCNull()
+            Me(Me.tableEV_PARTI.CAT_DESCColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsJUMLAH_POPNull() As Boolean
-            Return Me.IsNull(Me.tabledtRep.JUMLAH_POPColumn)
+        Public Function IsEVOUCHER_CATEGORYNull() As Boolean
+            Return Me.IsNull(Me.tableEV_PARTI.EVOUCHER_CATEGORYColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetJUMLAH_POPNull()
-            Me(Me.tabledtRep.JUMLAH_POPColumn) = Global.System.Convert.DBNull
+        Public Sub SetEVOUCHER_CATEGORYNull()
+            Me(Me.tableEV_PARTI.EVOUCHER_CATEGORYColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsACTIVE_POPNull() As Boolean
-            Return Me.IsNull(Me.tabledtRep.ACTIVE_POPColumn)
+        Public Function IsMAS_DESCNull() As Boolean
+            Return Me.IsNull(Me.tableEV_PARTI.MAS_DESCColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetACTIVE_POPNull()
-            Me(Me.tabledtRep.ACTIVE_POPColumn) = Global.System.Convert.DBNull
+        Public Sub SetMAS_DESCNull()
+            Me(Me.tableEV_PARTI.MAS_DESCColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsJUM_OUT_BELINull() As Boolean
-            Return Me.IsNull(Me.tabledtRep.JUM_OUT_BELIColumn)
+        Public Function IsFROM_DATENull() As Boolean
+            Return Me.IsNull(Me.tableEV_PARTI.FROM_DATEColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetJUM_OUT_BELINull()
-            Me(Me.tabledtRep.JUM_OUT_BELIColumn) = Global.System.Convert.DBNull
+        Public Sub SetFROM_DATENull()
+            Me(Me.tableEV_PARTI.FROM_DATEColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsJUM_OUT_ACHVNull() As Boolean
-            Return Me.IsNull(Me.tabledtRep.JUM_OUT_ACHVColumn)
+        Public Function IsEND_DATENull() As Boolean
+            Return Me.IsNull(Me.tableEV_PARTI.END_DATEColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetJUM_OUT_ACHVNull()
-            Me(Me.tabledtRep.JUM_OUT_ACHVColumn) = Global.System.Convert.DBNull
+        Public Sub SetEND_DATENull()
+            Me(Me.tableEV_PARTI.END_DATEColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsINVOICENull() As Boolean
-            Return Me.IsNull(Me.tabledtRep.INVOICEColumn)
+        Public Function IsVOUCHER_VALUENull() As Boolean
+            Return Me.IsNull(Me.tableEV_PARTI.VOUCHER_VALUEColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetINVOICENull()
-            Me(Me.tabledtRep.INVOICEColumn) = Global.System.Convert.DBNull
+        Public Sub SetVOUCHER_VALUENull()
+            Me(Me.tableEV_PARTI.VOUCHER_VALUEColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsJUM_INV_ACHVNull() As Boolean
-            Return Me.IsNull(Me.tabledtRep.JUM_INV_ACHVColumn)
+        Public Function IsPOP_CODENull() As Boolean
+            Return Me.IsNull(Me.tableEV_PARTI.POP_CODEColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetJUM_INV_ACHVNull()
-            Me(Me.tabledtRep.JUM_INV_ACHVColumn) = Global.System.Convert.DBNull
+        Public Sub SetPOP_CODENull()
+            Me(Me.tableEV_PARTI.POP_CODEColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsPOP_NAMENull() As Boolean
+            Return Me.IsNull(Me.tableEV_PARTI.POP_NAMEColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetPOP_NAMENull()
+            Me(Me.tableEV_PARTI.POP_NAMEColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsPOP_TYPE_DESCNull() As Boolean
+            Return Me.IsNull(Me.tableEV_PARTI.POP_TYPE_DESCColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetPOP_TYPE_DESCNull()
+            Me(Me.tableEV_PARTI.POP_TYPE_DESCColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsALLOCATED_BUDGETNull() As Boolean
+            Return Me.IsNull(Me.tableEV_PARTI.ALLOCATED_BUDGETColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetALLOCATED_BUDGETNull()
+            Me(Me.tableEV_PARTI.ALLOCATED_BUDGETColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
 
@@ -1787,16 +2290,16 @@ Partial Public Class dsRep
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-    Public Class dtHeadRepRowChangeEvent
+    Public Class EV_REPRowChangeEvent
         Inherits Global.System.EventArgs
 
-        Private eventRow As dtHeadRepRow
+        Private eventRow As EV_REPRow
 
         Private eventAction As Global.System.Data.DataRowAction
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub New(ByVal row As dtHeadRepRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As EV_REPRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New()
             Me.eventRow = row
             Me.eventAction = action
@@ -1804,7 +2307,7 @@ Partial Public Class dsRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property Row() As dtHeadRepRow
+        Public ReadOnly Property Row() As EV_REPRow
             Get
                 Return Me.eventRow
             End Get
@@ -1823,16 +2326,16 @@ Partial Public Class dsRep
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-    Public Class dtHeadRep2RowChangeEvent
+    Public Class dtHeader_EVRowChangeEvent
         Inherits Global.System.EventArgs
 
-        Private eventRow As dtHeadRep2Row
+        Private eventRow As dtHeader_EVRow
 
         Private eventAction As Global.System.Data.DataRowAction
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub New(ByVal row As dtHeadRep2Row, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As dtHeader_EVRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New()
             Me.eventRow = row
             Me.eventAction = action
@@ -1840,7 +2343,7 @@ Partial Public Class dsRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property Row() As dtHeadRep2Row
+        Public ReadOnly Property Row() As dtHeader_EVRow
             Get
                 Return Me.eventRow
             End Get
@@ -1859,16 +2362,16 @@ Partial Public Class dsRep
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-    Public Class dtRepRowChangeEvent
+    Public Class EV_PARTIRowChangeEvent
         Inherits Global.System.EventArgs
 
-        Private eventRow As dtRepRow
+        Private eventRow As EV_PARTIRow
 
         Private eventAction As Global.System.Data.DataRowAction
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub New(ByVal row As dtRepRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As EV_PARTIRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New()
             Me.eventRow = row
             Me.eventAction = action
@@ -1876,7 +2379,7 @@ Partial Public Class dsRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property Row() As dtRepRow
+        Public ReadOnly Property Row() As EV_PARTIRow
             Get
                 Return Me.eventRow
             End Get

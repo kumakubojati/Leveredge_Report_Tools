@@ -429,7 +429,7 @@ Partial Public Class dsFCSRep
 
         Private columnDTNAME As Global.System.Data.DataColumn
 
-        Private columnDSR_LIST As Global.System.Data.DataColumn
+        Private columnPJP_LIST As Global.System.Data.DataColumn
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
@@ -492,9 +492,9 @@ Partial Public Class dsFCSRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property DSR_LISTColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property PJP_LISTColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnDSR_LIST
+                Return Me.columnPJP_LIST
             End Get
         End Property
 
@@ -535,9 +535,9 @@ Partial Public Class dsFCSRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Overloads Function AdddtHeadRepRow(ByVal YEAR As String, ByVal PERIOD As String, ByVal DTNAME As String, ByVal DSR_LIST As String) As dtHeadRepRow
+        Public Overloads Function AdddtHeadRepRow(ByVal YEAR As String, ByVal PERIOD As String, ByVal DTNAME As String, ByVal PJP_LIST As String) As dtHeadRepRow
             Dim rowdtHeadRepRow As dtHeadRepRow = CType(Me.NewRow, dtHeadRepRow)
-            Dim columnValuesArray() As Object = New Object() {YEAR, PERIOD, DTNAME, DSR_LIST}
+            Dim columnValuesArray() As Object = New Object() {YEAR, PERIOD, DTNAME, PJP_LIST}
             rowdtHeadRepRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowdtHeadRepRow)
             Return rowdtHeadRepRow
@@ -563,7 +563,7 @@ Partial Public Class dsFCSRep
             Me.columnYEAR = MyBase.Columns("YEAR")
             Me.columnPERIOD = MyBase.Columns("PERIOD")
             Me.columnDTNAME = MyBase.Columns("DTNAME")
-            Me.columnDSR_LIST = MyBase.Columns("DSR_LIST")
+            Me.columnPJP_LIST = MyBase.Columns("PJP_LIST")
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
@@ -575,8 +575,8 @@ Partial Public Class dsFCSRep
             MyBase.Columns.Add(Me.columnPERIOD)
             Me.columnDTNAME = New Global.System.Data.DataColumn("DTNAME", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDTNAME)
-            Me.columnDSR_LIST = New Global.System.Data.DataColumn("DSR_LIST", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDSR_LIST)
+            Me.columnPJP_LIST = New Global.System.Data.DataColumn("PJP_LIST", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPJP_LIST)
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
@@ -1600,9 +1600,9 @@ Partial Public Class dsFCSRep
     Partial Public Class dtFCSDataTable
         Inherits Global.System.Data.TypedTableBase(Of dtFCSRow)
 
-        Private columnDSR As Global.System.Data.DataColumn
+        Private columnPJP As Global.System.Data.DataColumn
 
-        Private columnNAME As Global.System.Data.DataColumn
+        Private columnLDESC As Global.System.Data.DataColumn
 
         Private columnUNIQSCH As Global.System.Data.DataColumn
 
@@ -1659,17 +1659,17 @@ Partial Public Class dsFCSRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property DSRColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property PJPColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnDSR
+                Return Me.columnPJP
             End Get
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public ReadOnly Property NAMEColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property LDESCColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnNAME
+                Return Me.columnLDESC
             End Get
         End Property
 
@@ -1782,9 +1782,9 @@ Partial Public Class dsFCSRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Overloads Function AdddtFCSRow(ByVal DSR As String, ByVal NAME As String, ByVal UNIQSCH As String, ByVal UNIQPROD As String, ByVal ECO_TARGET As String, ByVal SCH As String, ByVal PROD As String, ByVal BP_TARGET As String, ByVal CM As String, ByVal SKU As String, ByVal LPPC_TARGET As String) As dtFCSRow
+        Public Overloads Function AdddtFCSRow(ByVal PJP As String, ByVal LDESC As String, ByVal UNIQSCH As String, ByVal UNIQPROD As String, ByVal ECO_TARGET As String, ByVal SCH As String, ByVal PROD As String, ByVal BP_TARGET As String, ByVal CM As String, ByVal SKU As String, ByVal LPPC_TARGET As String) As dtFCSRow
             Dim rowdtFCSRow As dtFCSRow = CType(Me.NewRow, dtFCSRow)
-            Dim columnValuesArray() As Object = New Object() {DSR, NAME, UNIQSCH, UNIQPROD, ECO_TARGET, SCH, PROD, BP_TARGET, CM, SKU, LPPC_TARGET}
+            Dim columnValuesArray() As Object = New Object() {PJP, LDESC, UNIQSCH, UNIQPROD, ECO_TARGET, SCH, PROD, BP_TARGET, CM, SKU, LPPC_TARGET}
             rowdtFCSRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowdtFCSRow)
             Return rowdtFCSRow
@@ -1807,8 +1807,8 @@ Partial Public Class dsFCSRep
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Friend Sub InitVars()
-            Me.columnDSR = MyBase.Columns("DSR")
-            Me.columnNAME = MyBase.Columns("NAME")
+            Me.columnPJP = MyBase.Columns("PJP")
+            Me.columnLDESC = MyBase.Columns("LDESC")
             Me.columnUNIQSCH = MyBase.Columns("UNIQSCH")
             Me.columnUNIQPROD = MyBase.Columns("UNIQPROD")
             Me.columnECO_TARGET = MyBase.Columns("ECO_TARGET")
@@ -1823,10 +1823,10 @@ Partial Public Class dsFCSRep
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Private Sub InitClass()
-            Me.columnDSR = New Global.System.Data.DataColumn("DSR", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDSR)
-            Me.columnNAME = New Global.System.Data.DataColumn("NAME", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNAME)
+            Me.columnPJP = New Global.System.Data.DataColumn("PJP", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPJP)
+            Me.columnLDESC = New Global.System.Data.DataColumn("LDESC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLDESC)
             Me.columnUNIQSCH = New Global.System.Data.DataColumn("UNIQSCH", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUNIQSCH)
             Me.columnUNIQPROD = New Global.System.Data.DataColumn("UNIQPROD", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -2036,16 +2036,16 @@ Partial Public Class dsFCSRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property DSR_LIST() As String
+        Public Property PJP_LIST() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtHeadRep.DSR_LISTColumn), String)
+                    Return CType(Me(Me.tabledtHeadRep.PJP_LISTColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DSR_LIST' in table 'dtHeadRep' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PJP_LIST' in table 'dtHeadRep' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtHeadRep.DSR_LISTColumn) = value
+                Me(Me.tabledtHeadRep.PJP_LISTColumn) = value
             End Set
         End Property
 
@@ -2087,14 +2087,14 @@ Partial Public Class dsFCSRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsDSR_LISTNull() As Boolean
-            Return Me.IsNull(Me.tabledtHeadRep.DSR_LISTColumn)
+        Public Function IsPJP_LISTNull() As Boolean
+            Return Me.IsNull(Me.tabledtHeadRep.PJP_LISTColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetDSR_LISTNull()
-            Me(Me.tabledtHeadRep.DSR_LISTColumn) = Global.System.Convert.DBNull
+        Public Sub SetPJP_LISTNull()
+            Me(Me.tabledtHeadRep.PJP_LISTColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
 
@@ -2514,31 +2514,31 @@ Partial Public Class dsFCSRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property DSR() As String
+        Public Property PJP() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtFCS.DSRColumn), String)
+                    Return CType(Me(Me.tabledtFCS.PJPColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DSR' in table 'dtFCS' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PJP' in table 'dtFCS' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtFCS.DSRColumn) = value
+                Me(Me.tabledtFCS.PJPColumn) = value
             End Set
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Property NAME() As String
+        Public Property LDESC() As String
             Get
                 Try
-                    Return CType(Me(Me.tabledtFCS.NAMEColumn), String)
+                    Return CType(Me(Me.tabledtFCS.LDESCColumn), String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'NAME' in table 'dtFCS' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LDESC' in table 'dtFCS' is DBNull.", e)
                 End Try
             End Get
             Set(value As String)
-                Me(Me.tabledtFCS.NAMEColumn) = value
+                Me(Me.tabledtFCS.LDESCColumn) = value
             End Set
         End Property
 
@@ -2679,26 +2679,26 @@ Partial Public Class dsFCSRep
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsDSRNull() As Boolean
-            Return Me.IsNull(Me.tabledtFCS.DSRColumn)
+        Public Function IsPJPNull() As Boolean
+            Return Me.IsNull(Me.tabledtFCS.PJPColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetDSRNull()
-            Me(Me.tabledtFCS.DSRColumn) = Global.System.Convert.DBNull
+        Public Sub SetPJPNull()
+            Me(Me.tabledtFCS.PJPColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Function IsNAMENull() As Boolean
-            Return Me.IsNull(Me.tabledtFCS.NAMEColumn)
+        Public Function IsLDESCNull() As Boolean
+            Return Me.IsNull(Me.tabledtFCS.LDESCColumn)
         End Function
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Sub SetNAMENull()
-            Me(Me.tabledtFCS.NAMEColumn) = Global.System.Convert.DBNull
+        Public Sub SetLDESCNull()
+            Me(Me.tabledtFCS.LDESCColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _

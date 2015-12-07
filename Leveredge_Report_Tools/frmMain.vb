@@ -6,7 +6,7 @@ Imports System.IO.File
 Public Class frmMain
 
     Private Sub ProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductToolStripMenuItem.Click
-        frmOutMas.Show()
+        frmOutMas_New.Show()
     End Sub
 
     Private Sub ProductMasterReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductMasterReportToolStripMenuItem.Click
@@ -298,5 +298,9 @@ LineMain1: FCSDB()
 
     Private Sub FCSRepMenuItem_Click(sender As Object, e As EventArgs) Handles FCSRepMenuItem.Click
         SSUploadDB.Show()
+    End Sub
+
+    Private Sub EvoucherToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EvoucherToolStripMenuItem.Click
+        frmEvoucherRep.Show()
     End Sub
 End Class

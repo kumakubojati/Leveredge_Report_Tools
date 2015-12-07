@@ -117,6 +117,35 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsRep.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsRep.vb">
+      <DependentUpon>dsRep.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Evoucher\DS_EV.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_EV.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Evoucher\DS_EV.vb">
+      <DependentUpon>DS_EV.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Evoucher\frmEvoucherRep.Designer.vb">
+      <DependentUpon>frmEvoucherRep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Evoucher\frmEvoucherRep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Evoucher\frmEV_RVClaim.Designer.vb">
+      <DependentUpon>frmEV_RVClaim.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Evoucher\frmEV_RVClaim.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Evoucher\frmEV_RVParticipant.Designer.vb">
+      <DependentUpon>frmEV_RVParticipant.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Evoucher\frmEV_RVParticipant.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FCS\dsFCSRep.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -282,10 +311,10 @@
     <Compile Include="frmOSC_IC.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmOutMas.Designer.vb">
-      <DependentUpon>frmOutMas.vb</DependentUpon>
+    <Compile Include="frmOutMas_New.Designer.vb">
+      <DependentUpon>frmOutMas_New.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmOutMas.vb">
+    <Compile Include="frmOutMas_New.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmProdMas.Designer.vb">
@@ -402,6 +431,17 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="bin\Debug\AchievementByProduct.rdlc" />
+    <EmbeddedResource Include="bin\Debug\EV_Participant.rdlc" />
+    <EmbeddedResource Include="Evoucher\frmEvoucherRep.resx">
+      <DependentUpon>frmEvoucherRep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Evoucher\frmEV_RVClaim.resx">
+      <DependentUpon>frmEV_RVClaim.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\EV_Claim.rdlc" />
+    <EmbeddedResource Include="Evoucher\frmEV_RVParticipant.resx">
+      <DependentUpon>frmEV_RVParticipant.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FCS\frmFCS_Rep.resx">
       <DependentUpon>frmFCS_Rep.vb</DependentUpon>
     </EmbeddedResource>
@@ -481,8 +521,8 @@
     <EmbeddedResource Include="frmOSC_IC.resx">
       <DependentUpon>frmOSC_IC.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmOutMas.resx">
-      <DependentUpon>frmOutMas.vb</DependentUpon>
+    <EmbeddedResource Include="frmOutMas_New.resx">
+      <DependentUpon>frmOutMas_New.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProdMas.resx">
       <DependentUpon>frmProdMas.vb</DependentUpon>
@@ -551,6 +591,17 @@
     </None>
     <None Include="dsRep.xss">
       <DependentUpon>dsRep.xsd</DependentUpon>
+    </None>
+    <None Include="Evoucher\DS_EV.xsc">
+      <DependentUpon>DS_EV.xsd</DependentUpon>
+    </None>
+    <None Include="Evoucher\DS_EV.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_EV.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Evoucher\DS_EV.xss">
+      <DependentUpon>DS_EV.xsd</DependentUpon>
     </None>
     <None Include="FCS\dsFCSRep.xsc">
       <DependentUpon>dsFCSRep.xsd</DependentUpon>
